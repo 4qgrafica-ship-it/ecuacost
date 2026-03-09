@@ -3,1412 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>¿Cuánto cuesta construir una casa en Ecuador? | Calculadora 2025</title>
-  <meta name="description" content="Calcula gratis el costo de construir tu casa en Ecuador por ciudad, metros cuadrados y acabados. Estimaciones reales para Cuenca, Quito, Guayaquil y más. Actualizado 2025." />
-  <meta name="keywords" content="costo construcción Ecuador, precio construir casa Ecuador, calculadora construcción Cuenca, construir casa Quito, precio metro cuadrado construcción Ecuador 2025" />
+  <title>Blog de Construcción en Ecuador | EcuaCost</title>
+  <meta name="description" content="Artículos sobre costos de construcción en Ecuador. Precios por ciudad, tipos de acabados, consejos para construir y más. Actualizado 2025." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://ecuacost.com/" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="¿Cuánto cuesta construir una casa en Ecuador? | EcuaCost" />
-  <meta property="og:description" content="Calculadora gratuita del costo de construcción en Ecuador. Resultados por ciudad, acabados y metros cuadrados en segundos." />
+  <link rel="canonical" href="https://ecuacost.com/blog/" />
+  <meta property="og:title" content="Blog de Construcción en Ecuador | EcuaCost" />
+  <meta property="og:description" content="Guías, precios y consejos para construir tu casa en Ecuador." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ecuacost.com/" />
-  <meta property="og:locale" content="es_EC" />
-  <meta property="og:image" content="https://ecuacost.com/og-image.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Calculadora de construcción en Ecuador 2025 | EcuaCost" />
-  <meta name="twitter:description" content="¿Cuánto cuesta construir tu casa? Estimado gratuito por ciudad y acabados." />
-
-  <!-- Structured Data: WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "EcuaCost — Calculadora de Construcción Ecuador",
-    "url": "https://ecuacost.com/",
-    "description": "Calculadora gratuita del costo de construcción de viviendas en Ecuador por ciudad, metros cuadrados y nivel de acabados.",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "inLanguage": "es-EC",
-    "author": { "@type": "Organization", "name": "EcuaCost", "url": "https://ecuacost.com" }
-  }
-  </script>
-
-  <!-- Structured Data: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Cuánto cuesta construir una casa en Ecuador por metro cuadrado en 2025?",
-        "acceptedAnswer": { "@type": "Answer", "text": "En 2025, el costo por metro cuadrado varía entre $450 y $1.050 según ciudad y acabados. Económicos: $450–$550/m². Medios: $640–$760/m². Altos: $850–$1.050/m²." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿El presupuesto incluye diseño y planos?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Esta calculadora estima solo costos directos de construcción. El diseño arquitectónico y los planos se contratan por separado con un arquitecto." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Se incluyen los permisos de construcción?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Los permisos municipales varían por ciudad y tipo de proyecto, y deben tramitarse aparte." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuánto cuesta construir una casa de 100 metros cuadrados en Cuenca?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Una casa de 100 m² en Cuenca con acabados medios cuesta aproximadamente entre $60.000 y $75.000 en 2025, dependiendo del tipo de terreno y número de pisos." }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ecuacost.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Calculadora de construcción Ecuador", "item": "https://ecuacost.com/" }
-    ]
-  }
-  </script>
-
+  <meta property="og:url" content="https://ecuacost.com/blog/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --ink: #1a1a18;
-      --paper: #f5f2ec;
-      --accent: #c94a06;
-      --accent-light: rgba(201,74,6,0.1);
-      --green: #2d6a4f;
-      --yellow: #e8b824;
-      --muted: #7a7670;
-      --border: #e0dbd0;
-      --card: #ffffff;
-      --font: 'Sora', sans-serif;
-      --mono: 'IBM Plex Mono', monospace;
-      --radius: 12px;
-      --shadow: 0 2px 16px rgba(0,0,0,0.07);
+      --ink: #1a1a18; --paper: #f5f2ec; --accent: #c94a06;
+      --muted: #7a7670; --border: #e0dbd0; --card: #ffffff;
+      --yellow: #e8b824; --font: 'Sora', sans-serif; --mono: 'IBM Plex Mono', monospace;
     }
+    body { background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.6; }
 
-    html { font-size: 16px; scroll-behavior: smooth; }
-
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font);
-      line-height: 1.6;
-    }
-
-    /* ── HEADER ── */
     header {
-      background: var(--ink);
-      color: #fff;
-      padding: 0.9rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      border-bottom: 3px solid var(--accent);
+      background: var(--ink); color: #fff; padding: 0.9rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200; border-bottom: 3px solid var(--accent);
     }
-
-    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; }
+    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; text-decoration: none; color: #fff; }
     .logo span { color: var(--accent); }
+    nav { display: flex; gap: 1.5rem; align-items: center; }
+    nav a { color: #a8a49e; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: color 0.15s; }
+    nav a:hover, nav a.active { color: #fff; }
 
-    .header-badge {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      background: var(--accent);
-      color: #fff;
-      padding: 0.25rem 0.65rem;
-      border-radius: 3px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* ── HERO ── */
     .hero {
-      background: var(--ink);
-      color: #fff;
-      padding: 3.5rem 2rem 2.5rem;
-      position: relative;
-      overflow: hidden;
+      background: var(--ink); color: #fff;
+      padding: 3rem 2rem 2.5rem; border-bottom: 3px solid var(--accent);
     }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-label { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.8rem; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.7rem; }
+    .hero-sub { font-size: 0.97rem; color: #a8a49e; max-width: 480px; }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; right: -80px;
-      width: 320px; height: 320px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.07;
-      pointer-events: none;
-    }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
 
-    .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
-
-    .hero-label {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 0.9rem;
-    }
-
-    h1 {
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-      margin-bottom: 0.9rem;
-    }
-
-    h1 mark {
-      background: none;
-      color: var(--yellow);
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-      color: #a8a49e;
-      max-width: 480px;
-      line-height: 1.7;
-    }
-
-    .hero-arrow {
-      margin-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      color: #6a6660;
-      font-family: var(--mono);
-    }
-
-    .hero-arrow svg { color: var(--accent); flex-shrink: 0; }
-
-    /* ── LAYOUT ── */
-    .wrap {
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
-    }
-
-    .grid {
+    .posts-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
-      align-items: start;
     }
 
-    @media (max-width: 700px) {
-      .grid { grid-template-columns: 1fr; }
-      header { padding: 0.9rem 1.25rem; }
-      .hero { padding: 2.5rem 1.25rem 2rem; }
-      .wrap { padding: 1.5rem 1rem 2.5rem; }
+    .post-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+
+    .post-thumb {
+      height: 8px; background: var(--accent);
+    }
+    .post-thumb.yellow { background: var(--yellow); }
+    .post-thumb.green  { background: #2d6a4f; }
+
+    .post-body { padding: 1.5rem; }
+
+    .post-tag {
+      font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.6rem;
     }
 
-    /* ── TRUST STRIP ── */
-    .trust-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
+    .post-title {
+      font-size: 1rem; font-weight: 700; line-height: 1.35;
+      letter-spacing: -0.02em; margin-bottom: 0.6rem; color: var(--ink);
     }
 
-    .trust-chip {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--ink);
+    .post-excerpt { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+    .post-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--mono); font-size: 0.68rem; color: #aaa9a4;
     }
 
-    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-
-    /* ── CARD ── */
-    .card {
-      background: var(--card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      box-shadow: var(--shadow);
+    .read-more {
+      font-size: 0.78rem; font-weight: 700; color: var(--accent);
+      display: flex; align-items: center; gap: 0.3rem;
     }
 
-    .card-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 1.4rem;
+    /* CTA banner */
+    .cta-banner {
+      background: var(--ink); color: #fff; border-radius: 12px;
+      padding: 2rem; margin-top: 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
     }
-
-    /* ── FIELDS ── */
-    .field { margin-bottom: 1.3rem; }
-
-    .field-label {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.45rem;
+    .cta-banner h2 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+    .cta-banner p { font-size: 0.85rem; color: #a8a49e; }
+    .cta-btn {
+      display: inline-block; padding: 0.75rem 1.5rem; background: var(--accent);
+      color: #fff; border-radius: 8px; text-decoration: none; font-weight: 700;
+      font-size: 0.9rem; white-space: nowrap; transition: background 0.15s;
     }
+    .cta-btn:hover { background: #a83a02; }
 
-    .field-label strong {
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .field-label span {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    select {
-      width: 100%;
-      padding: 0.65rem 0.9rem;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font);
-      font-size: 0.93rem;
-      font-weight: 500;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%237a7670' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.9rem center;
-      padding-right: 2.2rem;
-      outline: none;
-      cursor: pointer;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-light);
-    }
-
-    /* Slider */
-    .slider-wrap { position: relative; }
-
-    input[type="range"] {
-      width: 100%;
-      height: 6px;
-      border-radius: 3px;
-      background: linear-gradient(to right, var(--accent) 0%, var(--accent) var(--pct, 16%), var(--border) var(--pct, 16%));
-      outline: none;
-      appearance: none;
-      cursor: pointer;
-      margin-bottom: 0.35rem;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid #fff;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.2);
-      cursor: grab;
-    }
-
-    input[type="range"]::-webkit-slider-thumb:active { cursor: grabbing; }
-
-    .slider-ticks {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      margin-top: 0.1rem;
-    }
-
-    /* Toggle groups */
-    .toggle-group {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .toggle-group input[type="radio"] { display: none; }
-
-    .toggle-group label {
-      flex: 1;
-      text-align: center;
-      padding: 0.55rem 0.4rem;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--muted);
-      transition: all 0.15s;
-      position: relative;
-      line-height: 1.3;
-    }
-
-    .toggle-group input[type="radio"]:checked + label {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: #fff;
-    }
-
-    .popular-tag {
-      position: absolute;
-      top: -9px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.55rem;
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.15rem 0.45rem;
-      border-radius: 3px;
-      white-space: nowrap;
-    }
-
-    /* Quick examples */
-    .examples-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.25rem;
-    }
-
-    .ex { 
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      padding: 0.3rem 0.7rem;
-      border: 1.5px solid var(--border);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.12s;
-    }
-
-    .ex:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-
-    /* ── RESULT CARD ── */
-    .result-card {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .result-card::after {
-      content: '';
-      position: absolute;
-      bottom: -60px; right: -60px;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.08;
-      pointer-events: none;
-    }
-
-    .result-label { font-family: var(--mono); font-size: 0.65rem; color: #5a5650; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.3rem; }
-
-    .result-total {
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
-      font-weight: 800;
-      letter-spacing: -0.045em;
-      color: var(--yellow);
-      line-height: 1;
-      margin: 0.15rem 0 0.1rem;
-      transition: color 0.2s;
-    }
-
-    .result-range {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: #6a6660;
-      margin-bottom: 0.4rem;
-    }
-
-    .result-meta {
-      font-family: var(--mono);
-      font-size: 0.73rem;
-      color: #6a6660;
-      margin-bottom: 1.4rem;
-    }
-
-    .result-meta strong { color: #b8b4ab; }
-
-    /* Breakdown */
-    .breakdown { margin: 0 0 1.5rem; }
-
-    .breakdown-row {
-      display: grid;
-      grid-template-columns: 95px 1fr 70px;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .b-label { font-size: 0.75rem; color: #7a7670; }
-
-    .b-bar-bg {
-      height: 5px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .b-bar {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 0.5s cubic-bezier(.4,0,.2,1);
-    }
-
-    .b-val {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: #d8d4ce;
-      text-align: right;
-    }
-
-    /* CTA */
-    .cta {
-      display: block;
-      width: 100%;
-      padding: 0.9rem 1.5rem;
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.93rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
-      box-shadow: 0 4px 14px rgba(201,74,6,0.35);
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta:hover { background: #a83a02; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,74,6,0.4); }
-
-    .disclaimer {
-      margin-top: 0.9rem;
-      font-size: 0.69rem;
-      color: #5a5650;
-      font-family: var(--mono);
-      line-height: 1.5;
-      position: relative;
-      z-index: 1;
-    }
-
-    .disclaimer strong { color: var(--yellow); }
-
-    /* ── NEXT STEPS ── */
-    .next-steps {
-      grid-column: 1 / -1;
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      box-shadow: var(--shadow);
-    }
-
-    .next-steps h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    @media (max-width: 600px) { .steps-grid { grid-template-columns: 1fr; } }
-
-    .step {
-      display: flex;
-      gap: 0.85rem;
-      align-items: flex-start;
-    }
-
-    .step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .step-text strong { font-size: 0.85rem; display: block; margin-bottom: 0.2rem; }
-    .step-text p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
-
-    /* ── SEO SECTION ── */
-    .content { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 4rem; }
-
-    .content h2 {
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin: 2.5rem 0 0.75rem;
-      line-height: 1.2;
-    }
-
-    .content h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 1.75rem 0 0.5rem;
-    }
-
-    .content p {
-      font-size: 0.95rem;
-      color: #3a3830;
-      line-height: 1.8;
-      margin-bottom: 0.8rem;
-    }
-
-    /* Price table */
-    .ptable { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.87rem; border-radius: 8px; overflow: hidden; }
-    .ptable th { background: var(--ink); color: #fff; padding: 0.7rem 1rem; text-align: left; font-size: 0.75rem; letter-spacing: 0.03em; }
-    .ptable td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); }
-    .ptable tr:last-child td { border-bottom: none; }
-    .ptable tr:hover td { background: rgba(201,74,6,0.04); }
-    .ptable .n { font-family: var(--mono); font-weight: 600; color: var(--accent); }
-
-    /* FAQ */
-    .faq { margin-top: 0.5rem; }
-
-    .faq-item { border-bottom: 1px solid var(--border); }
-
-    .faq-q {
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 1rem 0;
-      font-family: var(--font);
-      font-size: 0.93rem;
-      font-weight: 700;
-      color: var(--ink);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .faq-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--accent-light);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); color: #fff; }
-
-    .faq-a {
-      display: none;
-      padding: 0 0 1rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .faq-item.open .faq-a { display: block; }
-
-    /* ── FOOTER ── */
     footer {
-      background: var(--ink);
-      color: #5a5650;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      line-height: 1.8;
+      background: var(--ink); color: #5a5650; text-align: center;
+      padding: 2rem; font-family: var(--mono); font-size: 0.72rem; line-height: 1.8;
     }
-
     footer a { color: var(--accent); text-decoration: none; }
 
-    /* ── WHATSAPP FLOAT ── */
-    .wa-float {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 300;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: #25d366;
-      color: #fff;
-      text-decoration: none;
-      padding: 0.7rem 1.1rem 0.7rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      transition: transform 0.15s, box-shadow 0.15s;
+    @media (max-width: 600px) {
+      header { padding: 0.9rem 1.25rem; }
+      nav a:not(.nav-home) { display: none; }
     }
-
-    .wa-float:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(37,211,102,0.5); }
-
-    .wa-float svg { flex-shrink: 0; }
-
-    @media (max-width: 480px) {
-      .wa-float span { display: none; }
-      .wa-float { padding: 0.85rem; border-radius: 50%; }
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .card, .next-steps { animation: fadeUp 0.45s ease both; }
-    .card:nth-child(2) { animation-delay: 0.07s; }
-    .next-steps        { animation-delay: 0.14s; }
-
-    @keyframes countUp {
-      from { opacity: 0.4; transform: translateY(6px); }
-      to   { opacity: 1;   transform: translateY(0); }
-    }
-
-    .count-anim { animation: countUp 0.3s ease; }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo">Ecua<span>Cost</span></div>
-  <div style="display:flex;align-items:center;gap:1.25rem;">
-    <a href="/blog/" style="color:#a8a49e;text-decoration:none;font-size:0.82rem;font-weight:600;">Blog</a>
-    <span class="header-badge">Calculadora 2025</span>
-  </div>
+  <a href="/" class="logo">Ecua<span>Cost</span></a>
+  <nav>
+    <a href="/" class="nav-home">← Calculadora</a>
+    <a href="/blog/" class="active">Blog</a>
+  </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-label">Ecuador · Cuenca · Quito · Guayaquil</p>
-    <h1>¿Cuánto cuesta construir<br>tu casa en <mark>Ecuador</mark>?</h1>
-    <p class="hero-sub">Ajusta los valores a tu proyecto y obtén un estimado claro en segundos — sin llamadas, sin formularios, sin rodeos.</p>
-    <p class="hero-arrow">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      Ajusta los datos abajo para tu caso
-    </p>
+    <p class="hero-label">// guías y precios</p>
+    <h1>Blog de construcción<br>en Ecuador</h1>
+    <p class="hero-sub">Precios reales, consejos prácticos y todo lo que necesitas saber antes de construir tu casa.</p>
   </div>
 </section>
 
-<!-- CALCULATOR -->
-<main>
-  <div class="wrap">
+<div class="wrap">
+  <div class="posts-grid">
 
-    <div class="trust-strip">
-      <div class="trust-chip"><span class="dot" style="background:var(--accent)"></span>Cálculo por ciudad y logística</div>
-      <div class="trust-chip"><span class="dot" style="background:var(--yellow)"></span>Desglose por etapa de obra</div>
-      <div class="trust-chip"><span class="dot" style="background:var(--green)"></span>Sin registro requerido</div>
-    </div>
-
-    <div class="grid">
-
-      <!-- FORM -->
-      <div class="card">
-        <p class="card-label">// datos de tu proyecto</p>
-
-        <div class="field">
-          <div class="field-label">
-            <strong>Ciudad</strong>
-            <span>varía logística y mano de obra</span>
-          </div>
-          <select id="city" aria-label="Ciudad del proyecto">
-            <option value="cuenca" selected>Cuenca</option>
-            <option value="quito">Quito</option>
-            <option value="guayaquil">Guayaquil</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <div class="field-label">
-            <strong>Metros cuadrados</strong>
-            <span id="m2-display" style="font-weight:700;color:var(--accent)">100 m²</span>
-          </div>
-          <div class="slider-wrap">
-            <input type="range" id="m2-slider" min="40" max="400" value="100" step="5" aria-label="Metros cuadrados" />
-            <div class="slider-ticks">
-              <span>40 m²</span><span>150 m²</span><span>250 m²</span><span>400 m²</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="field-label"><strong>Nivel de acabados</strong></div>
-          <div class="toggle-group" role="group" aria-label="Nivel de acabados">
-            <input type="radio" name="finish" id="f-eco" value="eco">
-            <label for="f-eco">Económicos</label>
-
-            <input type="radio" name="finish" id="f-med" value="med" checked>
-            <label for="f-med">
-              <span class="popular-tag">+ popular</span>
-              Medios
-            </label>
-
-            <input type="radio" name="finish" id="f-alt" value="alt">
-            <label for="f-alt">Altos</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="field-label">
-            <strong>Número de pisos</strong>
-            <span>más pisos = más estructura</span>
-          </div>
-          <select id="floors" aria-label="Número de pisos">
-            <option value="1" selected>1 piso</option>
-            <option value="2">2 pisos (+8%)</option>
-            <option value="3">3 pisos (+14%)</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <div class="field-label"><strong>Tipo de terreno</strong></div>
-          <div class="toggle-group" role="group" aria-label="Tipo de terreno">
-            <input type="radio" name="slope" id="s-flat" value="flat" checked>
-            <label for="s-flat">Plano</label>
-            <input type="radio" name="slope" id="s-slope" value="slope">
-            <label for="s-slope">En pendiente (+10%)</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="field-label" style="margin-bottom:0.5rem"><strong>Ejemplos rápidos</strong></div>
-          <div class="examples-row">
-            <button class="ex" data-city="cuenca"    data-m2="80"  data-finish="eco" data-floors="1" data-slope="flat">80 m² · econ.</button>
-            <button class="ex" data-city="quito"     data-m2="100" data-finish="med" data-floors="1" data-slope="flat">100 m² · Quito</button>
-            <button class="ex" data-city="cuenca"    data-m2="140" data-finish="alt" data-floors="2" data-slope="flat">140 m² · alto</button>
-            <button class="ex" data-city="guayaquil" data-m2="120" data-finish="med" data-floors="1" data-slope="slope">120 m² · pendiente</button>
-          </div>
+    <a href="/blog/cuanto-cuesta-construir-casa-100m2-cuenca/" class="post-card">
+      <div class="post-thumb"></div>
+      <div class="post-body">
+        <p class="post-tag">Precios · Cuenca</p>
+        <h2 class="post-title">¿Cuánto cuesta construir una casa de 100 m² en Cuenca en 2025?</h2>
+        <p class="post-excerpt">Desglose real por etapas: obra gruesa, estructura, instalaciones y acabados. Con rangos mínimo y máximo según el nivel de terminación.</p>
+        <div class="post-meta">
+          <span>Marzo 2025 · 6 min</span>
+          <span class="read-more">Leer artículo →</span>
         </div>
       </div>
+    </a>
 
-      <!-- RESULT -->
-      <div class="card result-card" aria-live="polite" aria-atomic="true">
-        <p class="result-label">// resultado estimado</p>
-
-        <div style="font-size:0.78rem;color:#6a6660;margin-bottom:0.15rem">Total estimado</div>
-        <div class="result-total" id="r-total">$68,000</div>
-        <div class="result-range" id="r-range">Rango probable: <strong id="r-min">$61,200</strong> – <strong id="r-max">$74,800</strong></div>
-        <div class="result-meta">≈ <strong id="r-cpm2">$680</strong>/m² · <span id="r-city">Cuenca</span> · <span id="r-finish">Acabados Medios</span></div>
-
-        <div class="breakdown">
-          <div class="breakdown-row">
-            <span class="b-label">Obra gruesa</span>
-            <div class="b-bar-bg"><div class="b-bar" id="bar-obra" style="width:80%;background:#c94a06"></div></div>
-            <span class="b-val" id="v-obra">$27,200</span>
-          </div>
-          <div class="breakdown-row">
-            <span class="b-label">Estructura</span>
-            <div class="b-bar-bg"><div class="b-bar" id="bar-est" style="width:40%;background:#e8b824"></div></div>
-            <span class="b-val" id="v-est">$13,600</span>
-          </div>
-          <div class="breakdown-row">
-            <span class="b-label">Instalaciones</span>
-            <div class="b-bar-bg"><div class="b-bar" id="bar-inst" style="width:30%;background:#2d6a4f"></div></div>
-            <span class="b-val" id="v-inst">$10,200</span>
-          </div>
-          <div class="breakdown-row">
-            <span class="b-label">Acabados</span>
-            <div class="b-bar-bg"><div class="b-bar" id="bar-acab" style="width:50%;background:#7ba7bc"></div></div>
-            <span class="b-val" id="v-acab">$17,000</span>
-          </div>
-        </div>
-
-        <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener">Solicitar cotización por WhatsApp →</a>
-
-        <!-- PDF UPSELL -->
-        <div id="pdf-box" style="margin-top:1rem;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;position:relative;z-index:1;">
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-            <div style="font-size:1.4rem;line-height:1">📄</div>
-            <div style="flex:1">
-              <div style="font-size:0.82rem;font-weight:700;color:#f0ece6;margin-bottom:0.2rem">Presupuesto detallado por partidas</div>
-              <div style="font-size:0.72rem;color:#7a7670;line-height:1.5">PDF profesional con +20 partidas de obra, materiales y mano de obra. Listo para comparar con contratistas.</div>
-            </div>
-            <div style="text-align:right;flex-shrink:0">
-              <div style="font-size:0.65rem;color:#7a7670;text-decoration:line-through">$19</div>
-              <div style="font-size:1rem;font-weight:800;color:var(--yellow)">$9</div>
-            </div>
-          </div>
-          <button id="pdf-pay-btn" onclick="initPayPal()" style="margin-top:0.85rem;width:100%;padding:0.65rem;background:var(--yellow);color:var(--ink);border:none;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
-            Descargar PDF detallado — $9
-          </button>
-          <div id="paypal-container" style="margin-top:0.75rem;display:none;"></div>
-        </div>
-
-        <p class="disclaimer">
-          Brújula, no contrato. Reserva un <strong>10–15%</strong> extra para imprevistos.<br>
-          No incluye planos, permisos, cerramiento ni piscina.
-        </p>
-      </div>
-
-      <!-- NEXT STEPS -->
-      <div class="next-steps">
-        <h2>¿Qué sigue después de calcular?</h2>
-        <div class="steps-grid">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-text">
-              <strong>Confirma el terreno</strong>
-              <p>Antes de cualquier compromiso, verifica escrituras, linderos y acceso a servicios básicos.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-text">
-              <strong>Contrata un arquitecto</strong>
-              <p>El diseño profesional evita errores costosos. Un buen plano ahorra más de lo que cuesta.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-text">
-              <strong>Pide 3 cotizaciones</strong>
-              <p>Compara presupuestos de al menos tres contratistas con especificaciones idénticas.</p>
-            </div>
-          </div>
+    <a href="/blog/precio-metro-cuadrado-construccion-ecuador/" class="post-card">
+      <div class="post-thumb yellow"></div>
+      <div class="post-body">
+        <p class="post-tag">Precios · Ecuador</p>
+        <h2 class="post-title">Precio del metro cuadrado de construcción en Ecuador 2025</h2>
+        <p class="post-excerpt">Comparativa completa por ciudad y nivel de acabados. Cuánto varía el precio entre Quito, Guayaquil, Cuenca y ciudades intermedias.</p>
+        <div class="post-meta">
+          <span>Marzo 2025 · 7 min</span>
+          <span class="read-more">Leer artículo →</span>
         </div>
       </div>
+    </a>
 
-    </div><!-- /grid -->
-  </div><!-- /wrap -->
-</main>
+    <a href="/blog/construir-o-comprar-casa-ecuador/" class="post-card">
+      <div class="post-thumb green"></div>
+      <div class="post-body">
+        <p class="post-tag">Guía · Decisiones</p>
+        <h2 class="post-title">¿Conviene más construir o comprar casa en Ecuador?</h2>
+        <p class="post-excerpt">Análisis financiero honesto con números reales. Cuándo vale la pena construir desde cero y cuándo es mejor comprar una casa terminada.</p>
+        <div class="post-meta">
+          <span>Marzo 2025 · 8 min</span>
+          <span class="read-more">Leer artículo →</span>
+        </div>
+      </div>
+    </a>
 
-<!-- SEO CONTENT -->
-<section class="content">
-
-  <h2>¿Cuánto cuesta construir una casa en Ecuador en 2025?</h2>
-
-  <p>El costo de construcción en Ecuador depende principalmente de cuatro variables: la ciudad, los metros cuadrados, el nivel de acabados y las condiciones del terreno. En 2025, los precios de referencia por metro cuadrado son:</p>
-
-  <table class="ptable" aria-label="Precios de construcción por acabado y ciudad en Ecuador 2025">
-    <thead>
-      <tr><th>Acabados</th><th>Cuenca</th><th>Quito</th><th>Guayaquil</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Económicos</td><td class="n">$450–$520/m²</td><td class="n">$480–$550/m²</td><td class="n">$460–$530/m²</td></tr>
-      <tr><td>Medios</td>    <td class="n">$640–$720/m²</td><td class="n">$680–$760/m²</td><td class="n">$660–$740/m²</td></tr>
-      <tr><td>Altos</td>     <td class="n">$850–$980/m²</td><td class="n">$900–$1.050/m²</td><td class="n">$870–$1.000/m²</td></tr>
-    </tbody>
-  </table>
-
-  <h3>¿Por qué varía el precio entre ciudades?</h3>
-  <p>La mano de obra, el costo de transporte de materiales y la demanda local generan diferencias importantes. Cuenca se destaca por la disponibilidad de mano de obra calificada a costos competitivos. Quito tiende a ser algo más caro por la logística de altura y la densidad urbana. Guayaquil tiene ventajas logísticas portuarias pero costos de climatización más altos.</p>
-  <p>Para proyectos en otras ciudades como Ambato, Loja, Ibarra o Manta, los valores de Cuenca son una buena referencia inicial, aunque se recomienda consultar con un profesional local para ajustes precisos.</p>
-
-  <h3>¿Qué incluye cada etapa del presupuesto?</h3>
-  <p><strong>Obra gruesa (40%):</strong> Excavación, cimientos, columnas, vigas, losa y paredes de bloque. Es la parte más crítica: los errores aquí no tienen corrección fácil.</p>
-  <p><strong>Estructura (20%):</strong> Sistema portante, escaleras si aplican, y cubierta. Define la vida útil del inmueble.</p>
-  <p><strong>Instalaciones (15%):</strong> Eléctricas, sanitarias, hidrosanitarias y gas. Una instalación bien dimensionada ahorra problemas durante décadas.</p>
-  <p><strong>Acabados (25%):</strong> Pisos, cerámicas, pintura, grifería, puertas y ventanas. Aquí se evapora el presupuesto cuando no se planifica con tiempo.</p>
-
-  <h3>Costos de construcción en otras ciudades de Ecuador</h3>
-  <p>Aunque esta calculadora cubre Cuenca, Quito y Guayaquil, la construcción también es activa en ciudades intermedias. En Ambato y Riobamba, los costos son similares a Cuenca. En Manta, el clima húmedo puede elevar los costos de materiales. En Loja, la disponibilidad limitada de ciertos materiales puede subir el precio un 5–10% frente a Cuenca.</p>
-
-  <h2>Preguntas frecuentes sobre construcción en Ecuador</h2>
-
-  <div class="faq">
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">¿Esta calculadora incluye diseño y planos? <span class="faq-icon">+</span></button>
-      <div class="faq-a">No. El cálculo cubre solo costos directos de construcción. El diseño arquitectónico y planos se contratan aparte con un arquitecto colegiado. En Ecuador, el costo típico de diseño es el 8–12% del valor de la obra.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">¿Se incluyen los permisos municipales? <span class="faq-icon">+</span></button>
-      <div class="faq-a">No. Los permisos varían por municipio, metraje y uso del suelo. En Cuenca, el trámite se gestiona en el GADMCC. En Quito, en el Municipio del DMQ. El costo puede representar el 1–3% del valor declarado de la obra.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">¿Cuánto cuesta construir una casa de 100 m² en Cuenca? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Con acabados medios, una casa de 100 m² en Cuenca cuesta aproximadamente entre $60.000 y $75.000 en 2025. En terreno plano y un piso, el estimado central es de $68.000. Ajusta con nuestra calculadora para tu caso específico.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">¿Por qué añadir un 10–15% de colchón? <span class="faq-icon">+</span></button>
-      <div class="faq-a">En Ecuador, casi toda obra de construcción tiene imprevistos: variaciones en precios de materiales, cambios de diseño durante la obra, condiciones del suelo distintas a las previstas, o retrasos por clima o proveedores. Un colchón del 10–15% es la diferencia entre terminar la casa y quedarla a medias.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">¿Incluye cerramiento, garaje o piscina? <span class="faq-icon">+</span></button>
-      <div class="faq-a">No. Obras exteriores como cerramiento perimetral, piscina, jardín, garaje independiente, cuarto de máquinas o cisterna deben cotizarse por separado con tu contratista.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">¿Es mejor construir o comprar una casa ya hecha en Ecuador? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Depende de tu situación. Construir te da control total sobre materiales, distribución y acabados, pero requiere tiempo (12–24 meses) y gestión activa. Comprar una casa ya terminada es más rápido, pero el precio por m² suele ser 20–40% más alto. Esta calculadora te ayuda a saber si el costo de construir vale la pena para tu caso.</div>
-    </div>
   </div>
 
-  <p style="margin-top:2.5rem;color:var(--muted);font-size:0.78rem;font-family:var(--mono);line-height:1.7">
-    Disclaimer: Valores referenciales basados en promedios del mercado ecuatoriano 2025. Para un presupuesto vinculante se requiere levantamiento técnico, especificaciones detalladas y cotizaciones formales de contratistas.
-  </p>
+  <div class="cta-banner">
+    <div>
+      <h2>¿Cuánto cuesta tu proyecto específico?</h2>
+      <p>Usa la calculadora gratuita — resultado en segundos, sin registro.</p>
+    </div>
+    <a href="/" class="cta-btn">Calcular ahora →</a>
+  </div>
 
-</section>
+</div>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2025 <a href="https://ecuacost.com">EcuaCost</a> — Calculadora de costos de construcción en Ecuador</p>
-  <p style="margin-top:0.4rem">Valores referenciales · No reemplaza cotización profesional · <a href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción%20en%20Ecuador" target="_blank" rel="noopener">Solicitar cotización</a></p>
+  <p style="margin-top:0.4rem">Valores referenciales · <a href="/">Calculadora</a> · <a href="/blog/">Blog</a></p>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.882a.5.5 0 00.611.625l6.218-1.452A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.372l-.36-.214-3.718.868.898-3.61-.235-.372A9.818 9.818 0 1112 21.818z"/>
-  </svg>
-  <span>Cotización por WhatsApp</span>
-</a>
-
-<script>
-  // ── COST MODEL ──
-  const BASE = {
-    cuenca:    { eco: 480, med: 680, alt: 920 },
-    quito:     { eco: 510, med: 720, alt: 970 },
-    guayaquil: { eco: 495, med: 700, alt: 945 },
-  };
-
-  const FLOOR_MULT = { '1': 1.00, '2': 1.08, '3': 1.14 };
-  const SLOPE_MULT = { flat: 1.00, slope: 1.10 };
-
-  const CITY_LABEL   = { cuenca: 'Cuenca', quito: 'Quito', guayaquil: 'Guayaquil' };
-  const FINISH_LABEL = { eco: 'Acabados Económicos', med: 'Acabados Medios', alt: 'Acabados Altos' };
-  const PROPS = { obra: 0.40, est: 0.20, inst: 0.15, acab: 0.25 };
-  const RANGE = 0.10; // ±10% range
-
-  function fmt(n) {
-    return '$' + Math.round(n).toLocaleString('es-EC');
-  }
-
-  function setEl(id, val) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = val;
-  }
-
-  function calculate() {
-    const city   = document.getElementById('city').value;
-    const m2     = parseInt(document.getElementById('m2-slider').value, 10);
-    const finish = document.querySelector('input[name="finish"]:checked').value;
-    const floors = document.getElementById('floors').value;
-    const slope  = document.querySelector('input[name="slope"]:checked').value;
-
-    const cpm2  = BASE[city][finish] * FLOOR_MULT[floors] * SLOPE_MULT[slope];
-    const total = cpm2 * m2;
-    const min   = total * (1 - RANGE);
-    const max   = total * (1 + RANGE);
-
-    const obra = total * PROPS.obra;
-    const est  = total * PROPS.est;
-    const inst = total * PROPS.inst;
-    const acab = total * PROPS.acab;
-
-    // Numbers
-    animNum('r-total', fmt(total));
-    setEl('r-min',    fmt(min));
-    setEl('r-max',    fmt(max));
-    setEl('r-cpm2',   fmt(cpm2));
-    setEl('r-city',   CITY_LABEL[city]);
-    setEl('r-finish', FINISH_LABEL[finish]);
-    setEl('v-obra',   fmt(obra));
-    setEl('v-est',    fmt(est));
-    setEl('v-inst',   fmt(inst));
-    setEl('v-acab',   fmt(acab));
-
-    // Bars (proportional relative to obra=max)
-    document.getElementById('bar-obra').style.width  = '80%';
-    document.getElementById('bar-est').style.width   = '40%';
-    document.getElementById('bar-inst').style.width  = '30%';
-    document.getElementById('bar-acab').style.width  = '50%';
-
-    // CTA URL
-    const enc = encodeURIComponent;
-    document.getElementById('cta-link').href =
-      `/cotizar?city=${enc(city)}&m2=${enc(m2)}&finish=${enc(finish)}&floors=${enc(floors)}&slope=${enc(slope)}&total=${enc(Math.round(total))}&cpm2=${enc(Math.round(cpm2))}`;
-
-    // WhatsApp message (shared by CTA and float button)
-    const waMsg = `Hola, calculé en EcuaCost una casa de ${m2} m² en ${CITY_LABEL[city]} con ${FINISH_LABEL[finish]}, ${floors} piso(s), terreno ${slope === 'flat' ? 'plano' : 'en pendiente'}. Estimado: ${fmt(total)} (≈ ${fmt(cpm2)}/m²). ¿Me pueden dar una cotización formal?`;
-    const waUrl = `https://wa.me/593987650775?text=${enc(waMsg)}`;
-    document.querySelector('.wa-float').href = waUrl;
-    document.getElementById('cta-link').href  = waUrl;
-
-    // Save state for PDF generation
-    _calcState = { city, m2, finish, floors, slope, total, cpm2,
-      cityLabel: CITY_LABEL[city], finishLabel: FINISH_LABEL[finish] };
-  }
-
-  function animNum(id, val) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.textContent = val;
-    el.classList.remove('count-anim');
-    void el.offsetWidth;
-    el.classList.add('count-anim');
-  }
-
-  // ── SLIDER ──
-  const slider = document.getElementById('m2-slider');
-  const m2Display = document.getElementById('m2-display');
-
-  function updateSlider() {
-    const min = parseInt(slider.min), max = parseInt(slider.max), val = parseInt(slider.value);
-    const pct = ((val - min) / (max - min)) * 100;
-    slider.style.setProperty('--pct', pct + '%');
-    m2Display.textContent = val + ' m²';
-  }
-
-  slider.addEventListener('input', () => { updateSlider(); calculate(); });
-
-  // ── OTHER INPUTS ──
-  document.getElementById('city').addEventListener('change', calculate);
-  document.getElementById('floors').addEventListener('change', calculate);
-  document.querySelectorAll('input[name="finish"], input[name="slope"]').forEach(el =>
-    el.addEventListener('change', calculate)
-  );
-
-  // ── QUICK EXAMPLES ──
-  document.querySelectorAll('.ex').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById('city').value = btn.dataset.city;
-      slider.value = btn.dataset.m2;
-      document.getElementById('floors').value = btn.dataset.floors;
-      document.querySelector(`input[name="finish"][value="${btn.dataset.finish}"]`).checked = true;
-      document.querySelector(`input[name="slope"][value="${btn.dataset.slope}"]`).checked = true;
-      updateSlider();
-      calculate();
-    });
-  });
-
-  // ── FAQ ──
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item   = btn.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  // ── INIT ──
-  updateSlider();
-  calculate();
-</script>
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=AYHnq8kyFbGrCgUUvSqSRbXt5F0qcCFgGjMyXLXsPwnPq3_p3CGa5G3Yi-nIBMVCdT-Lm4PJINtF_3Z3&currency=USD&components=buttons" data-namespace="paypal_sdk"></script>
-
-<script>
-  // ── GLOBAL STATE for PDF ──
-  let _calcState = {};
-
-  // Store calc state on every calculation (patch into existing calculate())
-  const _origCalculate = calculate;
-  // We'll patch below after calculate is defined.
-
-  function getCalcState() { return _calcState; }
-
-  function initPayPal() {
-    const box = document.getElementById('paypal-container');
-    const btn = document.getElementById('pdf-pay-btn');
-    box.style.display = 'block';
-    btn.style.display = 'none';
-    box.innerHTML = '';
-
-    paypal_sdk.Buttons({
-      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
-
-      createOrder: function(data, actions) {
-        const s = getCalcState();
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: '9.00', currency_code: 'USD' },
-            description: `Presupuesto EcuaCost: ${s.m2}m² en ${s.cityLabel} (${s.finishLabel})`,
-            payee: { email_address: '4q.grafica@gmail.com' }
-          }]
-        });
-      },
-
-      onApprove: function(data, actions) {
-        btn.textContent = '⏳ Procesando pago...';
-        btn.style.display = 'block';
-        box.style.display = 'none';
-        return actions.order.capture().then(function(details) {
-          generatePDF();
-        });
-      },
-
-      onCancel: function() {
-        box.style.display = 'none';
-        btn.style.display = 'block';
-        btn.textContent = 'Descargar PDF detallado — $9';
-      },
-
-      onError: function(err) {
-        box.style.display = 'none';
-        btn.style.display = 'block';
-        btn.textContent = 'Error — intentar de nuevo';
-        console.error('PayPal error:', err);
-      }
-    }).render('#paypal-container');
-  }
-
-  function generatePDF() {
-    const s = getCalcState();
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-
-    const W = 210, margin = 20;
-    let y = 0;
-
-    // ── HEADER ──
-    doc.setFillColor(26, 26, 24);
-    doc.rect(0, 0, W, 38, 'F');
-    doc.setFillColor(201, 74, 6);
-    doc.rect(0, 35, W, 3, 'F');
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(22);
-    doc.setTextColor(255, 255, 255);
-    doc.text('EcuaCost', margin, 18);
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
-    doc.setTextColor(150, 146, 140);
-    doc.text('Calculadora de construcción en Ecuador  ·  ecuacost.com', margin, 26);
-    doc.text(`Generado el ${new Date().toLocaleDateString('es-EC', {day:'2-digit',month:'long',year:'numeric'})}`, margin, 32);
-
-    y = 50;
-
-    // ── TITLE ──
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(16);
-    doc.setTextColor(26, 26, 24);
-    doc.text('Presupuesto Referencial de Construcción', margin, y);
-    y += 8;
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    doc.setTextColor(100, 96, 90);
-    doc.text(`${s.m2} m²  ·  ${s.cityLabel}  ·  ${s.finishLabel}  ·  ${s.floors} piso(s)  ·  Terreno ${s.slope === 'flat' ? 'plano' : 'en pendiente'}`, margin, y);
-    y += 12;
-
-    // ── TOTAL BOX ──
-    doc.setFillColor(26, 26, 24);
-    doc.roundedRect(margin, y, W - margin*2, 22, 3, 3, 'F');
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.setTextColor(150, 146, 140);
-    doc.text('TOTAL ESTIMADO', margin + 8, y + 8);
-    doc.setFontSize(18);
-    doc.setTextColor(232, 184, 36);
-    doc.text(fmtPDF(s.total), margin + 8, y + 18);
-    doc.setFontSize(10);
-    doc.setTextColor(150, 146, 140);
-    doc.text(`≈ ${fmtPDF(s.cpm2)} / m²`, W - margin - 45, y + 13);
-    doc.setFontSize(9);
-    doc.text(`Rango: ${fmtPDF(s.total * 0.9)} – ${fmtPDF(s.total * 1.1)}`, W - margin - 45, y + 19);
-    y += 30;
-
-    // ── SECTION: Desglose por etapa ──
-    y = sectionTitle(doc, 'DESGLOSE POR ETAPA DE OBRA', y, margin, W);
-
-    const etapas = [
-      { label: 'Obra gruesa',   pct: 0.40, color: [201, 74, 6] },
-      { label: 'Estructura',    pct: 0.20, color: [232, 184, 36] },
-      { label: 'Instalaciones', pct: 0.15, color: [45, 106, 79] },
-      { label: 'Acabados',      pct: 0.25, color: [123, 167, 188] },
-    ];
-
-    etapas.forEach(e => {
-      const val = s.total * e.pct;
-      doc.setFillColor(248, 246, 241);
-      doc.roundedRect(margin, y, W - margin*2, 10, 2, 2, 'F');
-      doc.setFillColor(...e.color);
-      doc.roundedRect(margin, y, 4, 10, 1, 1, 'F');
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
-      doc.setTextColor(26, 26, 24);
-      doc.text(e.label, margin + 8, y + 6.5);
-      doc.setFont('helvetica', 'bold');
-      doc.text(fmtPDF(val), W - margin - 35, y + 6.5);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
-      doc.setTextColor(130, 126, 120);
-      doc.text(`${Math.round(e.pct * 100)}% del total`, W - margin - 35, y + 6.5 + 4);
-      y += 13;
-    });
-
-    y += 5;
-
-    // ── SECTION: Partidas detalladas ──
-    y = sectionTitle(doc, 'PARTIDAS DETALLADAS', y, margin, W);
-
-    const partidas = buildPartidas(s);
-    partidas.forEach((p, i) => {
-      if (y > 260) { doc.addPage(); y = 20; }
-      const bg = i % 2 === 0 ? [252, 250, 246] : [255, 255, 255];
-      doc.setFillColor(...bg);
-      doc.rect(margin, y, W - margin*2, 9, 'F');
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.setTextColor(60, 56, 48);
-      doc.text(p.item, margin + 3, y + 6);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(26, 26, 24);
-      doc.text(fmtPDF(p.value), W - margin - 3, y + 6, { align: 'right' });
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7.5);
-      doc.setTextColor(150, 146, 140);
-      doc.text(p.note, margin + 3, y + 6 + 0.5, { maxWidth: 130 });
-      y += 10;
-    });
-
-    y += 8;
-    if (y > 255) { doc.addPage(); y = 20; }
-
-    // ── NOTAS ──
-    y = sectionTitle(doc, 'NOTAS IMPORTANTES', y, margin, W);
-    const notas = [
-      'Este presupuesto es referencial. Para un valor vinculante se requiere levantamiento técnico.',
-      'Se recomienda reservar un 10–15% adicional para imprevistos de obra.',
-      'No incluye: diseño arquitectónico, planos estructurales, permisos municipales.',
-      'No incluye: cerramiento perimetral, piscina, jardín, garaje independiente.',
-      'Los precios de materiales pueden variar según disponibilidad y temporada.',
-    ];
-    notas.forEach(n => {
-      doc.setFillColor(255, 248, 235);
-      doc.roundedRect(margin, y, W - margin*2, 8, 2, 2, 'F');
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
-      doc.setTextColor(100, 70, 20);
-      doc.text('→  ' + n, margin + 4, y + 5.5, { maxWidth: W - margin*2 - 8 });
-      y += 10;
-    });
-
-    // ── FOOTER ──
-    const pages = doc.getNumberOfPages();
-    for (let i = 1; i <= pages; i++) {
-      doc.setPage(i);
-      doc.setFillColor(26, 26, 24);
-      doc.rect(0, 285, W, 12, 'F');
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7.5);
-      doc.setTextColor(100, 96, 90);
-      doc.text('EcuaCost  ·  ecuacost.com  ·  Valores referenciales 2025', margin, 292);
-      doc.text(`Página ${i} de ${pages}`, W - margin, 292, { align: 'right' });
-    }
-
-    doc.save(`EcuaCost-Presupuesto-${s.cityLabel}-${s.m2}m2.pdf`);
-
-    // Reset button
-    const btn = document.getElementById('pdf-pay-btn');
-    btn.textContent = '✅ PDF descargado';
-    btn.style.background = '#2d6a4f';
-    btn.style.color = '#fff';
-    btn.style.display = 'block';
-  }
-
-  function sectionTitle(doc, title, y, margin, W) {
-    doc.setFillColor(201, 74, 6);
-    doc.rect(margin, y, W - margin*2, 0.5, 'F');
-    y += 5;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(201, 74, 6);
-    doc.text(title, margin, y);
-    y += 6;
-    return y;
-  }
-
-  function fmtPDF(n) {
-    return '$' + Math.round(n).toLocaleString('es-EC');
-  }
-
-  function buildPartidas(s) {
-    const t = s.total;
-    const isAlto = s.finish === 'alt';
-    const isMed  = s.finish === 'med';
-
-    return [
-      // OBRA GRUESA
-      { item: 'Excavación y movimiento de tierra',   value: t * 0.04, note: 'Incluye desalojo de material' },
-      { item: 'Cimientos y zapatas',                  value: t * 0.08, note: 'Hormigón f\'c=210 kg/cm²' },
-      { item: 'Columnas y vigas de hormigón',         value: t * 0.12, note: 'Estructura portante principal' },
-      { item: 'Losa de entrepiso / cubierta',         value: t * 0.10, note: 'Losa alivianada o maciza según diseño' },
-      { item: 'Paredes de bloque o ladrillo',         value: t * 0.06, note: 'Mampostería interior y exterior' },
-      // ESTRUCTURA
-      { item: 'Escaleras',                            value: s.floors > 1 ? t * 0.04 : t * 0.01, note: s.floors > 1 ? 'Hormigón o metálicas' : 'No aplica en 1 piso' },
-      { item: 'Cubierta / techo',                     value: t * 0.05, note: 'Losa, teja o zinc según diseño' },
-      { item: 'Impermeabilizaciones',                 value: t * 0.03, note: 'Cubiertas, baños y zonas húmedas' },
-      { item: 'Contrapisos',                          value: t * 0.04, note: 'Contrapiso de hormigón en planta baja' },
-      // INSTALACIONES
-      { item: 'Instalaciones eléctricas',             value: t * 0.06, note: 'Tablero, puntos de luz y tomacorrientes' },
-      { item: 'Instalaciones hidrosanitarias',        value: t * 0.05, note: 'Agua potable, aguas servidas y lluvias' },
-      { item: 'Instalación de gas centralizado',      value: t * 0.02, note: 'Opcional según diseño' },
-      { item: 'Red de datos y TV cable',              value: t * 0.02, note: 'Puntos de red y antena' },
-      // ACABADOS
-      { item: 'Enlucidos y masillados',               value: t * 0.04, note: 'Interior y exterior' },
-      { item: 'Pintura interior y exterior',          value: t * 0.04, note: isAlto ? 'Pintura de primera línea' : 'Pintura látex estándar' },
-      { item: 'Pisos (cerámica / porcelanato)',       value: t * (isAlto ? 0.06 : 0.04), note: isAlto ? 'Porcelanato importado' : isMed ? 'Porcelanato nacional' : 'Cerámica estándar' },
-      { item: 'Revestimientos de baño y cocina',      value: t * 0.03, note: 'Cerámica o porcelanato de pared' },
-      { item: 'Puertas interiores y exteriores',      value: t * (isAlto ? 0.04 : 0.03), note: isAlto ? 'Puertas de madera sólida' : 'Puertas de MDF o tambor' },
-      { item: 'Ventanas y vidrios',                   value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Aluminio y vidrio templado' : 'Aluminio estándar' },
-      { item: 'Grifería y sanitarios',                value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Línea alta (FV, Franz Viegener)' : 'Línea estándar' },
-      { item: 'Closets y muebles de cocina',          value: t * (isAlto ? 0.05 : isMed ? 0.03 : 0.02), note: isAlto ? 'Melanina importada o lacada' : 'Melanina nacional' },
-      { item: 'Mesones y granito',                    value: t * (isAlto ? 0.02 : 0.01), note: isAlto ? 'Granito o cuarzo' : 'Granito nacional' },
-    ];
-  }
-</script>
 </body>
 </html>
