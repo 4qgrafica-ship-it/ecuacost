@@ -862,7 +862,7 @@
           </div>
         </div>
 
-        <a href="#" id="cta-link" class="cta">Solicitar cotización formal →</a>
+        <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener">Solicitar cotización por WhatsApp →</a>
 
         <p class="disclaimer">
           Brújula, no contrato. Reserva un <strong>10–15%</strong> extra para imprevistos.<br>
@@ -971,7 +971,7 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2025 <a href="https://ecuacost.com">EcuaCost</a> — Calculadora de costos de construcción en Ecuador</p>
-  <p style="margin-top:0.4rem">Valores referenciales · No reemplaza cotización profesional · <a href="/cotizar">Solicitar cotización</a></p>
+  <p style="margin-top:0.4rem">Valores referenciales · No reemplaza cotización profesional · <a href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción%20en%20Ecuador" target="_blank" rel="noopener">Solicitar cotización</a></p>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
@@ -1048,10 +1048,11 @@
     document.getElementById('cta-link').href =
       `/cotizar?city=${enc(city)}&m2=${enc(m2)}&finish=${enc(finish)}&floors=${enc(floors)}&slope=${enc(slope)}&total=${enc(Math.round(total))}&cpm2=${enc(Math.round(cpm2))}`;
 
-    // WhatsApp message
-    const waMsg = `Hola, calculé en EcuaCost una casa de ${m2} m² en ${CITY_LABEL[city]} con ${FINISH_LABEL[finish]}. Estimado: ${fmt(total)}. ¿Me pueden dar una cotización formal?`;
-    document.querySelector('.wa-float').href =
-      `https://wa.me/593987650775?text=${enc(waMsg)}`;
+    // WhatsApp message (shared by CTA and float button)
+    const waMsg = `Hola, calculé en EcuaCost una casa de ${m2} m² en ${CITY_LABEL[city]} con ${FINISH_LABEL[finish]}, ${floors} piso(s), terreno ${slope === 'flat' ? 'plano' : 'en pendiente'}. Estimado: ${fmt(total)} (≈ ${fmt(cpm2)}/m²). ¿Me pueden dar una cotización formal?`;
+    const waUrl = `https://wa.me/593987650775?text=${enc(waMsg)}`;
+    document.querySelector('.wa-float').href = waUrl;
+    document.getElementById('cta-link').href  = waUrl;
   }
 
   function animNum(id, val) {
