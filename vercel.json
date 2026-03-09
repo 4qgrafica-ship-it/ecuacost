@@ -1,6 +1,4 @@
-Copy
-
 {
-  "cleanUrls": true,
-  "trailingSlash": false
+  "version": 2,
+  "cleanUrls": true
 }
