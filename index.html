@@ -864,6 +864,25 @@
 
         <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener">Solicitar cotización por WhatsApp →</a>
 
+        <!-- PDF UPSELL -->
+        <div id="pdf-box" style="margin-top:1rem;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;position:relative;z-index:1;">
+          <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+            <div style="font-size:1.4rem;line-height:1">📄</div>
+            <div style="flex:1">
+              <div style="font-size:0.82rem;font-weight:700;color:#f0ece6;margin-bottom:0.2rem">Presupuesto detallado por partidas</div>
+              <div style="font-size:0.72rem;color:#7a7670;line-height:1.5">PDF profesional con +20 partidas de obra, materiales y mano de obra. Listo para comparar con contratistas.</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0">
+              <div style="font-size:0.65rem;color:#7a7670;text-decoration:line-through">$19</div>
+              <div style="font-size:1rem;font-weight:800;color:var(--yellow)">$9</div>
+            </div>
+          </div>
+          <button id="pdf-pay-btn" onclick="initPayPal()" style="margin-top:0.85rem;width:100%;padding:0.65rem;background:var(--yellow);color:var(--ink);border:none;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+            Descargar PDF detallado — $9
+          </button>
+          <div id="paypal-container" style="margin-top:0.75rem;display:none;"></div>
+        </div>
+
         <p class="disclaimer">
           Brújula, no contrato. Reserva un <strong>10–15%</strong> extra para imprevistos.<br>
           No incluye planos, permisos, cerramiento ni piscina.
@@ -1053,6 +1072,10 @@
     const waUrl = `https://wa.me/593987650775?text=${enc(waMsg)}`;
     document.querySelector('.wa-float').href = waUrl;
     document.getElementById('cta-link').href  = waUrl;
+
+    // Save state for PDF generation
+    _calcState = { city, m2, finish, floors, slope, total, cpm2,
+      cityLabel: CITY_LABEL[city], finishLabel: FINISH_LABEL[finish] };
   }
 
   function animNum(id, val) {
@@ -1116,6 +1139,273 @@
   // ── INIT ──
   updateSlider();
   calculate();
+</script>
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AYHnq8kyFbGrCgUUvSqSRbXt5F0qcCFgGjMyXLXsPwnPq3_p3CGa5G3Yi-nIBMVCdT-Lm4PJINtF_3Z3&currency=USD&components=buttons" data-namespace="paypal_sdk"></script>
+
+<script>
+  // ── GLOBAL STATE for PDF ──
+  let _calcState = {};
+
+  // Store calc state on every calculation (patch into existing calculate())
+  const _origCalculate = calculate;
+  // We'll patch below after calculate is defined.
+
+  function getCalcState() { return _calcState; }
+
+  function initPayPal() {
+    const box = document.getElementById('paypal-container');
+    const btn = document.getElementById('pdf-pay-btn');
+    box.style.display = 'block';
+    btn.style.display = 'none';
+    box.innerHTML = '';
+
+    paypal_sdk.Buttons({
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
+
+      createOrder: function(data, actions) {
+        const s = getCalcState();
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: '9.00', currency_code: 'USD' },
+            description: `Presupuesto EcuaCost: ${s.m2}m² en ${s.cityLabel} (${s.finishLabel})`,
+            payee: { email_address: '4q.grafica@gmail.com' }
+          }]
+        });
+      },
+
+      onApprove: function(data, actions) {
+        btn.textContent = '⏳ Procesando pago...';
+        btn.style.display = 'block';
+        box.style.display = 'none';
+        return actions.order.capture().then(function(details) {
+          generatePDF();
+        });
+      },
+
+      onCancel: function() {
+        box.style.display = 'none';
+        btn.style.display = 'block';
+        btn.textContent = 'Descargar PDF detallado — $9';
+      },
+
+      onError: function(err) {
+        box.style.display = 'none';
+        btn.style.display = 'block';
+        btn.textContent = 'Error — intentar de nuevo';
+        console.error('PayPal error:', err);
+      }
+    }).render('#paypal-container');
+  }
+
+  function generatePDF() {
+    const s = getCalcState();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    const W = 210, margin = 20;
+    let y = 0;
+
+    // ── HEADER ──
+    doc.setFillColor(26, 26, 24);
+    doc.rect(0, 0, W, 38, 'F');
+    doc.setFillColor(201, 74, 6);
+    doc.rect(0, 35, W, 3, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.setTextColor(255, 255, 255);
+    doc.text('EcuaCost', margin, 18);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(150, 146, 140);
+    doc.text('Calculadora de construcción en Ecuador  ·  ecuacost.com', margin, 26);
+    doc.text(`Generado el ${new Date().toLocaleDateString('es-EC', {day:'2-digit',month:'long',year:'numeric'})}`, margin, 32);
+
+    y = 50;
+
+    // ── TITLE ──
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(26, 26, 24);
+    doc.text('Presupuesto Referencial de Construcción', margin, y);
+    y += 8;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(100, 96, 90);
+    doc.text(`${s.m2} m²  ·  ${s.cityLabel}  ·  ${s.finishLabel}  ·  ${s.floors} piso(s)  ·  Terreno ${s.slope === 'flat' ? 'plano' : 'en pendiente'}`, margin, y);
+    y += 12;
+
+    // ── TOTAL BOX ──
+    doc.setFillColor(26, 26, 24);
+    doc.roundedRect(margin, y, W - margin*2, 22, 3, 3, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(150, 146, 140);
+    doc.text('TOTAL ESTIMADO', margin + 8, y + 8);
+    doc.setFontSize(18);
+    doc.setTextColor(232, 184, 36);
+    doc.text(fmtPDF(s.total), margin + 8, y + 18);
+    doc.setFontSize(10);
+    doc.setTextColor(150, 146, 140);
+    doc.text(`≈ ${fmtPDF(s.cpm2)} / m²`, W - margin - 45, y + 13);
+    doc.setFontSize(9);
+    doc.text(`Rango: ${fmtPDF(s.total * 0.9)} – ${fmtPDF(s.total * 1.1)}`, W - margin - 45, y + 19);
+    y += 30;
+
+    // ── SECTION: Desglose por etapa ──
+    y = sectionTitle(doc, 'DESGLOSE POR ETAPA DE OBRA', y, margin, W);
+
+    const etapas = [
+      { label: 'Obra gruesa',   pct: 0.40, color: [201, 74, 6] },
+      { label: 'Estructura',    pct: 0.20, color: [232, 184, 36] },
+      { label: 'Instalaciones', pct: 0.15, color: [45, 106, 79] },
+      { label: 'Acabados',      pct: 0.25, color: [123, 167, 188] },
+    ];
+
+    etapas.forEach(e => {
+      const val = s.total * e.pct;
+      doc.setFillColor(248, 246, 241);
+      doc.roundedRect(margin, y, W - margin*2, 10, 2, 2, 'F');
+      doc.setFillColor(...e.color);
+      doc.roundedRect(margin, y, 4, 10, 1, 1, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(26, 26, 24);
+      doc.text(e.label, margin + 8, y + 6.5);
+      doc.setFont('helvetica', 'bold');
+      doc.text(fmtPDF(val), W - margin - 35, y + 6.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(130, 126, 120);
+      doc.text(`${Math.round(e.pct * 100)}% del total`, W - margin - 35, y + 6.5 + 4);
+      y += 13;
+    });
+
+    y += 5;
+
+    // ── SECTION: Partidas detalladas ──
+    y = sectionTitle(doc, 'PARTIDAS DETALLADAS', y, margin, W);
+
+    const partidas = buildPartidas(s);
+    partidas.forEach((p, i) => {
+      if (y > 260) { doc.addPage(); y = 20; }
+      const bg = i % 2 === 0 ? [252, 250, 246] : [255, 255, 255];
+      doc.setFillColor(...bg);
+      doc.rect(margin, y, W - margin*2, 9, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      doc.setTextColor(60, 56, 48);
+      doc.text(p.item, margin + 3, y + 6);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(26, 26, 24);
+      doc.text(fmtPDF(p.value), W - margin - 3, y + 6, { align: 'right' });
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.5);
+      doc.setTextColor(150, 146, 140);
+      doc.text(p.note, margin + 3, y + 6 + 0.5, { maxWidth: 130 });
+      y += 10;
+    });
+
+    y += 8;
+    if (y > 255) { doc.addPage(); y = 20; }
+
+    // ── NOTAS ──
+    y = sectionTitle(doc, 'NOTAS IMPORTANTES', y, margin, W);
+    const notas = [
+      'Este presupuesto es referencial. Para un valor vinculante se requiere levantamiento técnico.',
+      'Se recomienda reservar un 10–15% adicional para imprevistos de obra.',
+      'No incluye: diseño arquitectónico, planos estructurales, permisos municipales.',
+      'No incluye: cerramiento perimetral, piscina, jardín, garaje independiente.',
+      'Los precios de materiales pueden variar según disponibilidad y temporada.',
+    ];
+    notas.forEach(n => {
+      doc.setFillColor(255, 248, 235);
+      doc.roundedRect(margin, y, W - margin*2, 8, 2, 2, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(100, 70, 20);
+      doc.text('→  ' + n, margin + 4, y + 5.5, { maxWidth: W - margin*2 - 8 });
+      y += 10;
+    });
+
+    // ── FOOTER ──
+    const pages = doc.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i);
+      doc.setFillColor(26, 26, 24);
+      doc.rect(0, 285, W, 12, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.5);
+      doc.setTextColor(100, 96, 90);
+      doc.text('EcuaCost  ·  ecuacost.com  ·  Valores referenciales 2025', margin, 292);
+      doc.text(`Página ${i} de ${pages}`, W - margin, 292, { align: 'right' });
+    }
+
+    doc.save(`EcuaCost-Presupuesto-${s.cityLabel}-${s.m2}m2.pdf`);
+
+    // Reset button
+    const btn = document.getElementById('pdf-pay-btn');
+    btn.textContent = '✅ PDF descargado';
+    btn.style.background = '#2d6a4f';
+    btn.style.color = '#fff';
+    btn.style.display = 'block';
+  }
+
+  function sectionTitle(doc, title, y, margin, W) {
+    doc.setFillColor(201, 74, 6);
+    doc.rect(margin, y, W - margin*2, 0.5, 'F');
+    y += 5;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(201, 74, 6);
+    doc.text(title, margin, y);
+    y += 6;
+    return y;
+  }
+
+  function fmtPDF(n) {
+    return '$' + Math.round(n).toLocaleString('es-EC');
+  }
+
+  function buildPartidas(s) {
+    const t = s.total;
+    const isAlto = s.finish === 'alt';
+    const isMed  = s.finish === 'med';
+
+    return [
+      // OBRA GRUESA
+      { item: 'Excavación y movimiento de tierra',   value: t * 0.04, note: 'Incluye desalojo de material' },
+      { item: 'Cimientos y zapatas',                  value: t * 0.08, note: 'Hormigón f\'c=210 kg/cm²' },
+      { item: 'Columnas y vigas de hormigón',         value: t * 0.12, note: 'Estructura portante principal' },
+      { item: 'Losa de entrepiso / cubierta',         value: t * 0.10, note: 'Losa alivianada o maciza según diseño' },
+      { item: 'Paredes de bloque o ladrillo',         value: t * 0.06, note: 'Mampostería interior y exterior' },
+      // ESTRUCTURA
+      { item: 'Escaleras',                            value: s.floors > 1 ? t * 0.04 : t * 0.01, note: s.floors > 1 ? 'Hormigón o metálicas' : 'No aplica en 1 piso' },
+      { item: 'Cubierta / techo',                     value: t * 0.05, note: 'Losa, teja o zinc según diseño' },
+      { item: 'Impermeabilizaciones',                 value: t * 0.03, note: 'Cubiertas, baños y zonas húmedas' },
+      { item: 'Contrapisos',                          value: t * 0.04, note: 'Contrapiso de hormigón en planta baja' },
+      // INSTALACIONES
+      { item: 'Instalaciones eléctricas',             value: t * 0.06, note: 'Tablero, puntos de luz y tomacorrientes' },
+      { item: 'Instalaciones hidrosanitarias',        value: t * 0.05, note: 'Agua potable, aguas servidas y lluvias' },
+      { item: 'Instalación de gas centralizado',      value: t * 0.02, note: 'Opcional según diseño' },
+      { item: 'Red de datos y TV cable',              value: t * 0.02, note: 'Puntos de red y antena' },
+      // ACABADOS
+      { item: 'Enlucidos y masillados',               value: t * 0.04, note: 'Interior y exterior' },
+      { item: 'Pintura interior y exterior',          value: t * 0.04, note: isAlto ? 'Pintura de primera línea' : 'Pintura látex estándar' },
+      { item: 'Pisos (cerámica / porcelanato)',       value: t * (isAlto ? 0.06 : 0.04), note: isAlto ? 'Porcelanato importado' : isMed ? 'Porcelanato nacional' : 'Cerámica estándar' },
+      { item: 'Revestimientos de baño y cocina',      value: t * 0.03, note: 'Cerámica o porcelanato de pared' },
+      { item: 'Puertas interiores y exteriores',      value: t * (isAlto ? 0.04 : 0.03), note: isAlto ? 'Puertas de madera sólida' : 'Puertas de MDF o tambor' },
+      { item: 'Ventanas y vidrios',                   value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Aluminio y vidrio templado' : 'Aluminio estándar' },
+      { item: 'Grifería y sanitarios',                value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Línea alta (FV, Franz Viegener)' : 'Línea estándar' },
+      { item: 'Closets y muebles de cocina',          value: t * (isAlto ? 0.05 : isMed ? 0.03 : 0.02), note: isAlto ? 'Melanina importada o lacada' : 'Melanina nacional' },
+      { item: 'Mesones y granito',                    value: t * (isAlto ? 0.02 : 0.01), note: isAlto ? 'Granito o cuarzo' : 'Granito nacional' },
+    ];
+  }
 </script>
 </body>
 </html>
