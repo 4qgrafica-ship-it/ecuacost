@@ -80,6 +80,15 @@
   }
   </script>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1F6PFJVGS1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1F6PFJVGS1');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -865,7 +874,7 @@
           </div>
         </div>
 
-        <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener">Solicitar cotización por WhatsApp →</a>
+        <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'cta_result'})">Solicitar cotización por WhatsApp →</a>
 
         <!-- PDF UPSELL -->
         <div id="pdf-box" style="margin-top:1rem;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;position:relative;z-index:1;">
@@ -880,7 +889,7 @@
               <div style="font-size:1rem;font-weight:800;color:var(--yellow)">$9</div>
             </div>
           </div>
-          <button id="pdf-pay-btn" onclick="initPayPal()" style="margin-top:0.85rem;width:100%;padding:0.65rem;background:var(--yellow);color:var(--ink);border:none;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          <button id="pdf-pay-btn" onclick="gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'pdf_9usd'}); initPayPal()" style="margin-top:0.85rem;width:100%;padding:0.65rem;background:var(--yellow);color:var(--ink);border:none;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
             Descargar PDF detallado — $9
           </button>
           <div id="paypal-container" style="margin-top:0.75rem;display:none;"></div>
@@ -997,7 +1006,7 @@
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'float_button'})">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.882a.5.5 0 00.611.625l6.218-1.452A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.372l-.36-.214-3.718.868.898-3.61-.235-.372A9.818 9.818 0 1112 21.818z"/>
