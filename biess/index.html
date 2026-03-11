@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora de Crédito Hipotecario BIESS 2026 | EcuaCost</title>
-  <meta name="description" content="Calcula gratis tu crédito hipotecario del BIESS en Ecuador. Cuánto te presta, cuota mensual, plazo y tabla de amortización. Actualizado 2026." />
-  <meta name="keywords" content="calculadora crédito BIESS, crédito hipotecario BIESS 2026, cuánto presta el BIESS, cuota hipoteca BIESS Ecuador, tabla amortización BIESS" />
+  <title>Calculadora de Crédito Hipotecario BIESS 2025 | EcuaCost</title>
+  <meta name="description" content="Calcula gratis tu crédito hipotecario del BIESS en Ecuador. Cuánto te presta, cuota mensual, plazo y tabla de amortización. Actualizado 2025." />
+  <meta name="keywords" content="calculadora crédito BIESS, crédito hipotecario BIESS 2025, cuánto presta el BIESS, cuota hipoteca BIESS Ecuador, tabla amortización BIESS" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://ecuacost.com/biess/" />
 
-  <meta property="og:title" content="Calculadora de Crédito Hipotecario BIESS 2026 | EcuaCost" />
+  <meta property="og:title" content="Calculadora de Crédito Hipotecario BIESS 2025 | EcuaCost" />
   <meta property="og:description" content="¿Cuánto te presta el BIESS? Calcula tu cuota mensual, monto máximo y tabla de amortización en segundos." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ecuacost.com/biess/" />
@@ -37,8 +37,8 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "¿Cuánto presta el BIESS para vivienda en 2026?",
-        "acceptedAnswer": { "@type": "Answer", "text": "En 2026, el BIESS presta hasta $200.000 para vivienda nueva o usada, y hasta $100.000 para construcción en terreno propio. El monto depende de tu salario, tiempo de aportes y capacidad de pago." }
+        "name": "¿Cuánto presta el BIESS para vivienda en 2025?",
+        "acceptedAnswer": { "@type": "Answer", "text": "En 2025, el BIESS presta hasta $200.000 para vivienda nueva o usada, y hasta $100.000 para construcción en terreno propio. El monto depende de tu salario, tiempo de aportes y capacidad de pago." }
       },
       {
         "@type": "Question",
@@ -79,9 +79,17 @@
       --yellow: #e8b824; --green: #2d6a4f; --blue: #1a4a8a;
       --font: 'Sora', sans-serif; --mono: 'IBM Plex Mono', monospace;
       --accent-light: rgba(201,74,6,0.06);
-      mark { background: none; color: #e8b824; };
     }
     body { background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.6; }
+
+    mark { background: none; color: var(--yellow); }
+
+    /* NUMBER INPUT */
+    .num-input-wrap { position: relative; display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 8px; background: var(--card); transition: border-color 0.15s; }
+    .num-input-wrap:focus-within { border-color: var(--accent); }
+    .num-input-prefix { padding: 0 0.65rem; color: var(--muted); font-weight: 700; font-size: 0.95rem; border-right: 1.5px solid var(--border); line-height: 1; user-select: none; }
+    .num-input { width: 100%; padding: 0.65rem 0.75rem; border: none; border-radius: 0 8px 8px 0; font-family: var(--font); font-size: 0.95rem; font-weight: 700; color: var(--ink); background: transparent; outline: none; -moz-appearance: textfield; }
+    .num-input::-webkit-outer-spin-button, .num-input::-webkit-inner-spin-button { -webkit-appearance: none; }
 
     /* DISCLAIMER BAR */
     .disclaimer-bar {
@@ -135,7 +143,12 @@
 
     /* MAIN LAYOUT */
     .app-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-    @media (max-width: 760px) { .app-wrap { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) {
+      .app-wrap { grid-template-columns: 1fr; }
+      .col-inputs { order: 1; }
+      .col-results { order: 2; }
+      .col-info { order: 3; }
+    }
 
     /* PANEL */
     .panel { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.75rem; }
@@ -313,21 +326,21 @@
 
 <div class="disclaimer-bar">
   <span class="disclaimer-icon">⚠️</span>
-  <span><strong>Sitio independiente.</strong> EcuaCost no es el BIESS ni el IESS. Los valores son referenciales y pueden variar. Para solicitudes oficiales visita <a href="https://www.biess.fin.ec" target="_blank" rel="noopener">biess.fin.ec</a></span>
+  <span><strong>Sitio independiente — no oficial.</strong> EcuaCost no es el BIESS ni el IESS, no está afiliado ni relacionado con estas instituciones. Los valores son referenciales y pueden variar. Para solicitudes oficiales visita <a href="https://www.biess.fin.ec" target="_blank" rel="noopener">biess.fin.ec</a></span>
 </div>
 
 <section class="hero">
   <div class="hero-inner">
     <p class="hero-label">// crédito hipotecario</p>
-    <h1>Calculadora <mark>BIESS</mark><br>Ecuador 2026</h1>
-    <p class="hero-sub">Cuánto te presta el BIESS, tu cuota mensual exacta y tabla de amortización completa. Gratis, sin registro.</p>
+    <h1>Calculadora <mark>BIESS</mark><br>créditos hipotecarios Ecuador 2026</h1>
+    <p class="hero-sub">Cuánto te presta el BIESS, tu cuota mensual exacta y análisis completo. Gratis, sin registro.</p>
   </div>
 </section>
 
 <div class="app-wrap">
 
   <!-- LEFT: INPUTS -->
-  <div>
+  <div class="col-inputs">
     <div class="panel">
       <p class="panel-title">// datos del crédito</p>
 
@@ -336,15 +349,17 @@
         <div class="toggle-group" id="tipo-group">
           <button class="tg-btn active" data-val="vivienda">Vivienda</button>
           <button class="tg-btn" data-val="construccion">Construcción</button>
-          <button class="tg-btn" data-val="vip">Vivienda VIP</button>
+          <button class="tg-btn" data-val="vip">Credicasa 2.99%</button>
+          <button class="tg-btn" data-val="remodelacion">Remodelación</button>
+          <button class="tg-btn" data-val="terreno">Terreno</button>
         </div>
       </div>
 
       <div class="field">
         <label>Valor del inmueble / proyecto</label>
-        <div class="slider-row">
-          <input type="range" id="valor-slider" min="20000" max="200000" step="1000" value="80000" oninput="syncValor(this.value)">
-          <span class="slider-val" id="valor-display">$80.000</span>
+        <div class="num-input-wrap">
+          <span class="num-input-prefix">$</span>
+          <input type="number" class="num-input" id="valor-input" min="5000" max="500000" step="1000" value="80000" oninput="syncValor(this.value)" placeholder="80.000">
         </div>
       </div>
 
@@ -372,9 +387,9 @@
       <div class="field">
         <label>Tu salario mensual</label>
         <p class="field-hint">Determina tu capacidad de pago máxima (cuota ≤ 40% del salario)</p>
-        <div class="slider-row">
-          <input type="range" id="salario-slider" min="500" max="5000" step="50" value="1200" oninput="syncSalario(this.value)">
-          <span class="slider-val" id="salario-display">$1.200</span>
+        <div class="num-input-wrap">
+          <span class="num-input-prefix">$</span>
+          <input type="number" class="num-input" id="salario-input" min="100" max="20000" step="50" value="1200" oninput="syncSalario(this.value)" placeholder="1.200">
         </div>
       </div>
 
@@ -399,12 +414,12 @@
       <div class="info-box">
         <div class="ib-icon">🏠</div>
         <p class="ib-title">Monto máximo</p>
-        <p class="ib-text">Hasta $200.000 para vivienda y $100.000 para construcción.</p>
+        <p class="ib-text">Hasta $94.303 (vivienda general) · $65.000 (Credicasa 2.99%) · $100.000 (construcción).</p>
       </div>
       <div class="info-box">
         <div class="ib-icon">📅</div>
         <p class="ib-title">Plazo máximo</p>
-        <p class="ib-text">Hasta 25 años según edad y tipo de crédito.</p>
+        <p class="ib-text">Hasta 30 años (Credicasa) · 25 años (vivienda/construcción) · 10 años (remodelación/terreno).</p>
       </div>
       <div class="info-box">
         <div class="ib-icon">💰</div>
@@ -415,7 +430,7 @@
   </div>
 
   <!-- RIGHT: RESULT -->
-  <div>
+  <div class="col-results">
     <div class="result-card" id="result-card">
       <p class="result-label">// cuota mensual estimada</p>
       <div class="result-main" id="res-cuota">$487</div>
@@ -473,6 +488,33 @@
 
   </div>
 
+  <!-- TIPOS DE CRÉDITO — full width -->
+  <div class="panel" style="grid-column:1/-1;">
+    <p class="panel-title">// tipos de crédito hipotecario BIESS 2026</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem;margin-top:0.5rem;">
+      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--accent);">
+        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Vivienda en general</p>
+        <p style="font-size:0.78rem;color:var(--muted);">Compra de casa nueva o usada · hasta $94.303 · tasa 7.90% · plazo 25 años</p>
+      </div>
+      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--accent);">
+        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Construcción en terreno propio</p>
+        <p style="font-size:0.78rem;color:var(--muted);">Para construir desde cero · hasta $100.000 · tasa 7.90% · plazo 25 años</p>
+      </div>
+      <div style="background:#e8f5e9;border-radius:8px;padding:0.75rem 1rem;border-left:3px solid #2d6a4f;">
+        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;color:#2d6a4f;">Credicasa 2.99% <span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;background:#2d6a4f;color:#fff;padding:0.15rem 0.4rem;border-radius:3px;margin-left:0.3rem;">MEJOR TASA</span></p>
+        <p style="font-size:0.78rem;color:#2d6a4f;">Vivienda nueva · hasta $65.000 · tasa 2.99% · plazo 30 años · ingresos ≤ $1.527,94</p>
+      </div>
+      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--muted);">
+        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Remodelación y ampliación</p>
+        <p style="font-size:0.78rem;color:var(--muted);">Mejoras en vivienda propia · hasta $50.000 · tasa 9.74% · plazo 10 años</p>
+      </div>
+      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--muted);">
+        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Terreno</p>
+        <p style="font-size:0.78rem;color:var(--muted);">Compra de terreno · hasta $120.000 · hasta 90% del avalúo · tasa 9.74% · plazo 10 años</p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- RATES TABLE -->
@@ -482,12 +524,12 @@
     <thead><tr><th>Tipo de crédito</th><th>Tasa anual</th><th>Plazo máximo</th><th>Monto máximo</th></tr></thead>
     <tbody>
       <tr class="best">
-        <td>Vivienda de interés público (VIP) <span class="badge badge-green">Mejor tasa</span></td>
-        <td class="n">4.99%</td><td class="n">25 años</td><td class="n">$70.000</td>
+        <td>Credicasa 2.99% (vivienda nueva) <span class="badge badge-green">Mejor tasa</span></td>
+        <td class="n">2.99%</td><td class="n">30 años</td><td class="n">$65.000</td>
       </tr>
       <tr>
         <td>Vivienda en general</td>
-        <td class="n">7.90%</td><td class="n">25 años</td><td class="n">$200.000</td>
+        <td class="n">7.90%</td><td class="n">25 años</td><td class="n">$94.303</td>
       </tr>
       <tr>
         <td>Construcción en terreno propio</td>
@@ -495,11 +537,11 @@
       </tr>
       <tr>
         <td>Remodelación / ampliación</td>
-        <td class="n">9.74%</td><td class="n">15 años</td><td class="n">$50.000</td>
+        <td class="n">9.74%</td><td class="n">10 años</td><td class="n">$50.000</td>
       </tr>
       <tr>
         <td>Terreno</td>
-        <td class="n">9.74%</td><td class="n">15 años</td><td class="n">$50.000</td>
+        <td class="n">9.74%</td><td class="n">10 años</td><td class="n">$120.000</td>
       </tr>
     </tbody>
   </table>
@@ -600,20 +642,31 @@
     entrada: 20,
     plazo: 20,
     salario: 1200,
-    aportes: '60-120',
-    amortMode: 'anual' // 'mensual' | 'anual'
+    aportes: '60-120'
   };
 
   const TASAS = {
-    vivienda: 0.0790,
+    vivienda:     0.0790,
     construccion: 0.0790,
-    vip: 0.0499
+    vip:          0.0299,
+    remodelacion: 0.0974,
+    terreno:      0.0974
   };
 
   const MAX_MONTOS = {
-    vivienda: 200000,
+    vivienda:     94303,
     construccion: 100000,
-    vip: 70000
+    vip:          65000,
+    remodelacion: 50000,
+    terreno:      120000
+  };
+
+  const MAX_PLAZOS = {
+    vivienda:     25,
+    construccion: 25,
+    vip:          30,
+    remodelacion: 10,
+    terreno:      10
   };
 
   // ── TOGGLE GROUPS ──
@@ -625,6 +678,21 @@
         STATE[key] = btn.dataset.val;
         if (key === 'plazo') STATE.plazo = parseInt(btn.dataset.val);
         if (key === 'entrada') STATE.entrada = parseInt(btn.dataset.val);
+        // When tipo changes, cap plazo to max allowed
+        if (key === 'tipo') {
+          const maxP = MAX_PLAZOS[STATE.tipo];
+          if (STATE.plazo > maxP) {
+            STATE.plazo = maxP;
+            document.getElementById('plazo-group').querySelectorAll('.tg-btn').forEach(b => {
+              b.classList.toggle('active', parseInt(b.dataset.val) === maxP);
+              b.style.display = parseInt(b.dataset.val) > maxP ? 'none' : '';
+            });
+          } else {
+            document.getElementById('plazo-group').querySelectorAll('.tg-btn').forEach(b => {
+              b.style.display = parseInt(b.dataset.val) > maxP ? 'none' : '';
+            });
+          }
+        }
         calculate();
       });
     });
@@ -635,16 +703,16 @@
   setupToggle('plazo-group', 'plazo');
   setupToggle('aportes-group', 'aportes');
 
-  // ── SLIDERS ──
+  // ── INPUTS ──
   function syncValor(v) {
-    STATE.valor = parseInt(v);
-    document.getElementById('valor-display').textContent = '$' + parseInt(v).toLocaleString('es-EC');
+    const val = parseInt(v) || 0;
+    STATE.valor = val;
     calculate();
   }
 
   function syncSalario(v) {
-    STATE.salario = parseInt(v);
-    document.getElementById('salario-display').textContent = '$' + parseInt(v).toLocaleString('es-EC');
+    const val = parseInt(v) || 0;
+    STATE.salario = val;
     calculate();
   }
 
@@ -1073,45 +1141,59 @@
   }
 
   // ── PAYPAL BIESS ──
+  function waitForPaypal(namespace, onReady, onFail, attempts) {
+    attempts = attempts || 0;
+    if (window[namespace]) { onReady(); return; }
+    if (attempts > 20) { onFail(); return; }
+    setTimeout(function() { waitForPaypal(namespace, onReady, onFail, attempts + 1); }, 200);
+  }
+
   function initBiessPaypal() {
     const box = document.getElementById('paypal-biess-container');
     const btn = document.getElementById('pdf-pay-btn');
     box.style.display = 'block';
     btn.style.display = 'none';
-    box.innerHTML = '';
+    box.innerHTML = '<p style="color:#a8a49e;font-size:0.82rem;text-align:center;padding:0.5rem 0;">⏳ Cargando...</p>';
 
-    paypal_biess.Buttons({
-      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: '15.99', currency_code: 'USD' },
-            description: 'EcuaCost — Análisis Crédito BIESS Premium PDF',
-            payee: { email_address: '4q.grafica@gmail.com' }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        btn.textContent = '⏳ Procesando pago...';
-        btn.style.display = 'block';
-        box.style.display = 'none';
-        return actions.order.capture().then(function() {
-          gtag('event','purchase_pdf_biess',{ event_category:'conversion', value:15.99, currency:'USD' });
-          generatePDF();
-        });
-      },
-      onCancel: function() {
-        box.style.display = 'none';
-        btn.style.display = 'block';
-        btn.textContent = 'Descargar análisis completo — $15.99';
-      },
-      onError: function(err) {
-        box.style.display = 'none';
-        btn.style.display = 'block';
-        btn.textContent = 'Error — intentar de nuevo';
-        console.error('PayPal error:', err);
-      }
-    }).render('#paypal-biess-container');
+    waitForPaypal('paypal_biess', function() {
+      box.innerHTML = '';
+      paypal_biess.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: '15.99', currency_code: 'USD' },
+              description: 'EcuaCost — Análisis Crédito BIESS Premium PDF',
+              payee: { email_address: '4q.grafica@gmail.com' }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          btn.textContent = '⏳ Procesando pago...';
+          btn.style.display = 'block';
+          box.style.display = 'none';
+          return actions.order.capture().then(function() {
+            gtag('event','purchase_pdf_biess',{ event_category:'conversion', value:15.99, currency:'USD' });
+            generatePDF();
+          });
+        },
+        onCancel: function() {
+          box.style.display = 'none';
+          btn.style.display = 'block';
+          btn.textContent = 'Descargar análisis completo — $15.99';
+        },
+        onError: function(err) {
+          box.style.display = 'none';
+          btn.style.display = 'block';
+          btn.textContent = 'Error — intentar de nuevo';
+          console.error('PayPal error:', err);
+        }
+      }).render('#paypal-biess-container');
+    }, function() {
+      box.style.display = 'none';
+      btn.style.display = 'block';
+      btn.textContent = 'Error al cargar — intentar de nuevo';
+    });
   }
 
   // ── INIT ──
