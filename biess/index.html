@@ -65,6 +65,8 @@
 
   <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- PayPal SDK BIESS — namespace propio para evitar conflicto -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXO4u7wjOBVYGNKTmf4d_8NQVIRgKodMd4r-0g7jWB357dRMgySOzz7zrWJuwJxmHPAOSxVddfPnsGKn&currency=USD&components=buttons" data-namespace="paypal_biess"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -459,13 +461,12 @@
         <span class="pdf-price-old">$29</span>
         <span class="pdf-price-badge">oferta</span>
       </div>
-      <button id="pdf-pay-btn" onclick="initBiessPaypal()"
-        style="width:100%;padding:0.9rem;background:#ffc439;border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:background 0.15s;"
-        onmouseover="this.style.background='#f0b429'" onmouseout="this.style.background='#ffc439'">
-        <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.828l-1.167 7.397h3.48l.902-5.713h2.167c4.756 0 7.445-2.542 8.012-6.479z"/></svg>
-        Pagar con PayPal — $15.99
+      <button id="pdf-pay-btn" onclick="gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'biess_pdf_1599'}); initBiessPaypal()"
+        style="width:100%;padding:0.9rem;background:#ffc439;border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;color:#111;cursor:pointer;transition:opacity 0.15s;"
+        onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        Descargar análisis completo — $15.99
       </button>
-      <div id="paypal-biess-container" style="margin-top:0.75rem"></div>
+      <div id="paypal-biess-container" style="margin-top:0.75rem;display:none;"></div>
       <p class="pdf-note">Pago seguro con PayPal · Descarga inmediata · Valores referenciales</p>
     </div>
 
@@ -710,52 +711,6 @@
       `¿Me pueden ayudar con el proceso?`
     );
     document.getElementById('wa-result').href = `https://wa.me/593987650775?text=${msg}`;
-
-    // Build amort table
-    buildAmort(prestamo, tasaMensual, nMeses, cuota);
-  }
-
-  // ── AMORTIZATION ──
-  function buildAmort(prestamo, tasaMensual, nMeses, cuota) {
-    const tbody = document.getElementById('amort-body');
-    tbody.innerHTML = '';
-    let saldo = prestamo;
-
-    if (STATE.amortMode === 'mensual') {
-      for (let i = 1; i <= nMeses; i++) {
-        const interes = saldo * tasaMensual;
-        const capital = cuota - interes;
-        saldo -= capital;
-        if (saldo < 0) saldo = 0;
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>Mes ${i}</td><td class="n">${fmt(cuota)}</td><td class="n">${fmt(capital)}</td><td class="n">${fmt(interes)}</td><td class="n">${fmt(saldo)}</td>`;
-        tbody.appendChild(tr);
-      }
-    } else {
-      // Annual summary
-      let anioSaldo = prestamo;
-      const nAnios = nMeses / 12;
-      for (let a = 1; a <= nAnios; a++) {
-        let anioCapital = 0, anioInteres = 0;
-        for (let m = 0; m < 12; m++) {
-          const interes = anioSaldo * tasaMensual;
-          const capital = cuota - interes;
-          anioSaldo -= capital;
-          anioCapital += capital;
-          anioInteres += interes;
-          if (anioSaldo < 0) anioSaldo = 0;
-        }
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>Año ${a}</td><td class="n">${fmt(cuota * 12)}</td><td class="n">${fmt(anioCapital)}</td><td class="n">${fmt(anioInteres)}</td><td class="n">${fmt(anioSaldo)}</td>`;
-        tbody.appendChild(tr);
-      }
-    }
-  }
-
-  function toggleAmort() {
-    STATE.amortMode = STATE.amortMode === 'anual' ? 'mensual' : 'anual';
-    document.getElementById('amort-toggle').textContent = STATE.amortMode === 'anual' ? 'Ver mes a mes' : 'Ver año a año';
-    calculate();
   }
 
   // ── FAQ ──
@@ -1116,41 +1071,46 @@
     doc.save(`EcuaCost-BIESS-${tipoLabels[STATE.tipo].replace(/ /g,'-')}-${STATE.plazo}anios.pdf`);
   }
 
-  // ── PAYPAL BIESS (Client ID exclusivo) ──
-  let paypalLoaded = false;
+  // ── PAYPAL BIESS ──
   function initBiessPaypal() {
-    gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'biess_pdf_1599'});
+    const box = document.getElementById('paypal-biess-container');
     const btn = document.getElementById('pdf-pay-btn');
+    box.style.display = 'block';
     btn.style.display = 'none';
-    if (paypalLoaded) return;
-    paypalLoaded = true;
-    const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/sdk/js?client-id=AXO4u7wjOBVYGNKTmf4d_8NQVIRgKodMd4r-0g7jWB357dRMgySOzz7zrWJuwJxmHPAOSxVddfPnsGKn&currency=USD';
-    script.onload = () => {
-      paypal.Buttons({
-        style: { layout:'vertical', color:'gold', shape:'rect', label:'pay', height:45 },
-        createOrder: (data, actions) => actions.order.create({
-          purchase_units: [{ amount:{ value:'15.99' }, description:'EcuaCost — Análisis Crédito BIESS Premium PDF' }]
-        }),
-        onApprove: (data, actions) => actions.order.capture().then(() => {
+    box.innerHTML = '';
+
+    paypal_biess.Buttons({
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: '15.99', currency_code: 'USD' },
+            description: 'EcuaCost — Análisis Crédito BIESS Premium PDF',
+            payee: { email_address: '4q.grafica@gmail.com' }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        btn.textContent = '⏳ Procesando pago...';
+        btn.style.display = 'block';
+        box.style.display = 'none';
+        return actions.order.capture().then(function() {
           gtag('event','purchase_pdf_biess',{ event_category:'conversion', value:15.99, currency:'USD' });
-          document.getElementById('paypal-biess-container').innerHTML =
-            '<p style="color:#4ade80;font-size:0.85rem;text-align:center;padding:0.5rem 0;">⏳ Generando tu PDF...</p>';
-          setTimeout(() => generatePDF(), 300);
-        }),
-        onError: () => {
-          btn.style.display = 'flex';
-          paypalLoaded = false;
-          alert('Hubo un error con el pago. Por favor intenta de nuevo.');
-        }
-      }).render('#paypal-biess-container');
-    };
-    script.onerror = () => {
-      btn.style.display = 'flex';
-      paypalLoaded = false;
-      alert('No se pudo cargar PayPal. Verifica tu conexión e intenta de nuevo.');
-    };
-    document.head.appendChild(script);
+          generatePDF();
+        });
+      },
+      onCancel: function() {
+        box.style.display = 'none';
+        btn.style.display = 'block';
+        btn.textContent = 'Descargar análisis completo — $15.99';
+      },
+      onError: function(err) {
+        box.style.display = 'none';
+        btn.style.display = 'block';
+        btn.textContent = 'Error — intentar de nuevo';
+        console.error('PayPal error:', err);
+      }
+    }).render('#paypal-biess-container');
   }
 
   // ── INIT ──
