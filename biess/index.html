@@ -459,7 +459,7 @@
         <span class="pdf-price-old">$29</span>
         <span class="pdf-price-badge">oferta</span>
       </div>
-      <button id="pdf-pay-btn" onclick="pagarConPayPal()"
+      <button id="pdf-pay-btn" onclick="initBiessPaypal()"
         style="width:100%;padding:0.9rem;background:#ffc439;border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:background 0.15s;"
         onmouseover="this.style.background='#f0b429'" onmouseout="this.style.background='#ffc439'">
         <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.828l-1.167 7.397h3.48l.902-5.713h2.167c4.756 0 7.445-2.542 8.012-6.479z"/></svg>
@@ -1116,31 +1116,41 @@
     doc.save(`EcuaCost-BIESS-${tipoLabels[STATE.tipo].replace(/ /g,'-')}-${STATE.plazo}anios.pdf`);
   }
 
-  // ── PAYPAL DIRECTO ──
-  function pagarConPayPal() {
+  // ── PAYPAL BIESS (Client ID exclusivo) ──
+  let paypalLoaded = false;
+  function initBiessPaypal() {
     gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'biess_pdf_1599'});
-    // Abre PayPal.me en ventana nueva para pago de $15.99
-    const ventana = window.open(
-      'https://www.paypal.com/paypalme/4qgrafica/15.99USD',
-      '_blank', 'width=500,height=700'
-    );
-    // Muestra botón de descarga tras confirmación manual
-    document.getElementById('paypal-biess-container').innerHTML = `
-      <div style="background:rgba(255,255,255,0.07);border-radius:8px;padding:1rem;margin-top:0.5rem;text-align:center;">
-        <p style="color:#a8a49e;font-size:0.82rem;margin-bottom:0.75rem;">¿Ya completaste el pago en PayPal?</p>
-        <button onclick="confirmarPago()"
-          style="width:100%;padding:0.75rem;background:#2d6a4f;border:none;border-radius:8px;
-          font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:700;color:#fff;cursor:pointer;">
-          ✓ Sí, ya pagué — Descargar PDF
-        </button>
-      </div>`;
-  }
-
-  function confirmarPago() {
-    gtag('event','purchase_pdf_biess',{ event_category:'conversion', value:15.99, currency:'USD' });
-    document.getElementById('paypal-biess-container').innerHTML =
-      '<p style="color:#4ade80;font-size:0.85rem;text-align:center;padding:0.5rem 0;">⏳ Generando tu PDF...</p>';
-    setTimeout(() => generatePDF(), 300);
+    const btn = document.getElementById('pdf-pay-btn');
+    btn.style.display = 'none';
+    if (paypalLoaded) return;
+    paypalLoaded = true;
+    const script = document.createElement('script');
+    script.src = 'https://www.paypal.com/sdk/js?client-id=AXO4u7wjOBVYGNKTmf4d_8NQVIRgKodMd4r-0g7jWB357dRMgySOzz7zrWJuwJxmHPAOSxVddfPnsGKn&currency=USD';
+    script.onload = () => {
+      paypal.Buttons({
+        style: { layout:'vertical', color:'gold', shape:'rect', label:'pay', height:45 },
+        createOrder: (data, actions) => actions.order.create({
+          purchase_units: [{ amount:{ value:'15.99' }, description:'EcuaCost — Análisis Crédito BIESS Premium PDF' }]
+        }),
+        onApprove: (data, actions) => actions.order.capture().then(() => {
+          gtag('event','purchase_pdf_biess',{ event_category:'conversion', value:15.99, currency:'USD' });
+          document.getElementById('paypal-biess-container').innerHTML =
+            '<p style="color:#4ade80;font-size:0.85rem;text-align:center;padding:0.5rem 0;">⏳ Generando tu PDF...</p>';
+          setTimeout(() => generatePDF(), 300);
+        }),
+        onError: () => {
+          btn.style.display = 'flex';
+          paypalLoaded = false;
+          alert('Hubo un error con el pago. Por favor intenta de nuevo.');
+        }
+      }).render('#paypal-biess-container');
+    };
+    script.onerror = () => {
+      btn.style.display = 'flex';
+      paypalLoaded = false;
+      alert('No se pudo cargar PayPal. Verifica tu conexión e intenta de nuevo.');
+    };
+    document.head.appendChild(script);
   }
 
   // ── INIT ──
