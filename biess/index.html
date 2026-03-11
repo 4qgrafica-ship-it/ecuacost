@@ -147,7 +147,7 @@
       .app-wrap { grid-template-columns: 1fr; }
       .col-inputs { order: 1; }
       .col-results { order: 2; }
-      .col-info { order: 3; }
+      .col-tipos { order: 3; grid-column: 1 !important; }
     }
 
     /* PANEL */
@@ -326,7 +326,7 @@
 
 <div class="disclaimer-bar">
   <span class="disclaimer-icon">⚠️</span>
-  <span><strong>Sitio independiente.</strong> EcuaCost no es está relacionado al BIESS. Los valores son referenciales y pueden variar. Para trámites oficiales visita <a href="https://www.biess.fin.ec" target="_blank" rel="noopener">biess.fin.ec</a></span>
+  <span><strong>Sitio independiente — no oficial.</strong> EcuaCost no es el BIESS ni el IESS, no está afiliado ni relacionado con estas instituciones. Los valores son referenciales y pueden variar. Para solicitudes oficiales visita <a href="https://www.biess.fin.ec" target="_blank" rel="noopener">biess.fin.ec</a></span>
 </div>
 
 <section class="hero">
@@ -403,30 +403,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Info boxes -->
-    <div class="info-grid">
-      <div class="info-box">
-        <div class="ib-icon">📋</div>
-        <p class="ib-title">Requisito mínimo</p>
-        <p class="ib-text">36 aportaciones al IESS y estar activo como afiliado.</p>
-      </div>
-      <div class="info-box">
-        <div class="ib-icon">🏠</div>
-        <p class="ib-title">Monto máximo</p>
-        <p class="ib-text">Hasta $94.303 (vivienda general) · $65.000 (Credicasa 2.99%) · $100.000 (construcción).</p>
-      </div>
-      <div class="info-box">
-        <div class="ib-icon">📅</div>
-        <p class="ib-title">Plazo máximo</p>
-        <p class="ib-text">Hasta 30 años (Credicasa) · 25 años (vivienda/construcción) · 10 años (remodelación/terreno).</p>
-      </div>
-      <div class="info-box">
-        <div class="ib-icon">💰</div>
-        <p class="ib-title">Capacidad de pago</p>
-        <p class="ib-text">La cuota no puede superar el 40% de tu ingreso mensual.</p>
-      </div>
-    </div>
   </div>
 
   <!-- RIGHT: RESULT -->
@@ -489,7 +465,7 @@
   </div>
 
   <!-- TIPOS DE CRÉDITO — full width -->
-  <div class="panel" style="grid-column:1/-1;">
+  <div class="panel col-tipos" style="grid-column:1/-1;">
     <p class="panel-title">// tipos de crédito hipotecario BIESS 2026</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem;margin-top:0.5rem;">
       <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--accent);">
