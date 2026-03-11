@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Crédito Hipotecario BIESS 2026 | EcuaCost</title>
+  <meta name="description" content="Calcula gratis tu crédito hipotecario del BIESS en Ecuador. Cuánto te presta, cuota mensual, plazo y tabla de amortización. Actualizado 2026." />
+  <meta name="keywords" content="calculadora crédito BIESS, crédito hipotecario BIESS 2026, cuánto presta el BIESS, cuota hipoteca BIESS Ecuador, tabla amortización BIESS" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ecuacost.com/biess/" />
+
+  <meta property="og:title" content="Calculadora de Crédito Hipotecario BIESS 2026 | EcuaCost" />
+  <meta property="og:description" content="¿Cuánto te presta el BIESS? Calcula tu cuota mensual, monto máximo y tabla de amortización en segundos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ecuacost.com/biess/" />
+  <meta property="og:locale" content="es_EC" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora Crédito Hipotecario BIESS",
+    "url": "https://ecuacost.com/biess/",
+    "description": "Calculadora gratuita del crédito hipotecario del BIESS Ecuador. Cuota mensual, monto máximo y tabla de amortización.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "inLanguage": "es-EC",
+    "author": { "@type": "Organization", "name": "EcuaCost", "url": "https://ecuacost.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto presta el BIESS para vivienda en 2026?",
+        "acceptedAnswer": { "@type": "Answer", "text": "En 2026, el BIESS presta hasta $200.000 para vivienda nueva o usada, y hasta $100.000 para construcción en terreno propio. El monto depende de tu salario, tiempo de aportes y capacidad de pago." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la tasa de interés del BIESS para vivienda?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La tasa de interés del BIESS para crédito hipotecario de vivienda de interés público es del 4,99% anual. Para vivienda en general es del 7,90% anual. Los plazos van de 3 a 25 años." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuántos aportes necesito para pedir crédito hipotecario al BIESS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Necesitas un mínimo de 36 aportaciones al IESS (3 años) para acceder al crédito hipotecario del BIESS. Además, debes estar activo como afiliado y no tener deudas pendientes con el IESS." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo usar el crédito BIESS para construir en terreno propio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. El BIESS tiene una línea específica para construcción en terreno propio con un monto máximo de $100.000 y tasa del 7,90% anual." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1F6PFJVGS1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1F6PFJVGS1');</script>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a18; --paper: #f5f2ec; --accent: #c94a06;
+      --muted: #7a7670; --border: #e0dbd0; --card: #ffffff;
+      --yellow: #e8b824; --green: #2d6a4f; --blue: #1a4a8a;
+      --font: 'Sora', sans-serif; --mono: 'IBM Plex Mono', monospace;
+      --accent-light: rgba(201,74,6,0.06);
+    }
+    body { background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.6; }
+
+    /* DISCLAIMER BAR */
+    .disclaimer-bar {
+      background: #fff8e1; border-bottom: 2px solid var(--yellow);
+      padding: 0.65rem 2rem; display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.78rem; color: #5a4a00; line-height: 1.5; flex-wrap: wrap;
+    }
+    .disclaimer-bar strong { color: #3a3000; }
+    .disclaimer-bar a { color: #3a3000; font-weight: 700; }
+    .disclaimer-icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* PDF UPSELL */
+    .pdf-upsell {
+      background: linear-gradient(135deg, #1a1a18 0%, #2a2a28 100%);
+      border: 1.5px solid #3a3a38; border-radius: 12px;
+      padding: 1.5rem; margin-top: 1.25rem;
+    }
+    .pdf-upsell-label { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--yellow); margin-bottom: 0.6rem; }
+    .pdf-upsell h3 { font-size: 0.97rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; line-height: 1.3; }
+    .pdf-features { list-style: none; margin: 0.75rem 0 1rem; display: grid; gap: 0.35rem; }
+    .pdf-features li { font-size: 0.78rem; color: #a8a49e; padding-left: 1.25rem; position: relative; line-height: 1.45; }
+    .pdf-features li::before { content: '✓'; position: absolute; left: 0; color: var(--yellow); font-weight: 700; }
+    .pdf-price-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .pdf-price { font-size: 1.6rem; font-weight: 800; color: var(--yellow); letter-spacing: -0.03em; }
+    .pdf-price-old { font-family: var(--mono); font-size: 0.82rem; color: #5a5650; text-decoration: line-through; }
+    .pdf-price-badge { font-family: var(--mono); font-size: 0.62rem; background: var(--accent); color: #fff; padding: 0.2rem 0.5rem; border-radius: 3px; text-transform: uppercase; }
+    #paypal-biess-container button { border-radius: 8px !important; }
+    .pdf-note { font-size: 0.7rem; color: #5a5650; margin-top: 0.75rem; line-height: 1.5; text-align: center; }
+
+    /* HEADER */
+    header {
+      background: var(--ink); color: #fff; padding: 0.9rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200; border-bottom: 3px solid var(--accent);
+    }
+    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; text-decoration: none; color: #fff; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 1.25rem; align-items: center; }
+    nav a { color: #a8a49e; text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.15s; }
+    nav a:hover, nav a.active { color: #fff; }
+
+    /* HERO */
+    .hero {
+      background: var(--ink); color: #fff;
+      padding: 3rem 2rem 0; border-bottom: 3px solid var(--accent);
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero-label { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 0.75rem; }
+    .hero-sub { font-size: 0.95rem; color: #a8a49e; max-width: 520px; margin-bottom: 0; padding-bottom: 2rem; }
+
+    /* MAIN LAYOUT */
+    .app-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+    @media (max-width: 760px) { .app-wrap { grid-template-columns: 1fr; } }
+
+    /* PANEL */
+    .panel { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+    .panel-title { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.25rem; }
+
+    /* FORM ELEMENTS */
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--ink); }
+    .field-hint { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); margin-bottom: 0.4rem; }
+
+    input[type="number"], select {
+      width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--border);
+      border-radius: 8px; font-family: var(--font); font-size: 0.93rem;
+      background: var(--paper); color: var(--ink); outline: none;
+      transition: border-color 0.15s;
+    }
+    input[type="number"]:focus, select:focus { border-color: var(--accent); }
+
+    /* Toggle group */
+    .toggle-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tg-btn {
+      padding: 0.45rem 1rem; border: 1.5px solid var(--border);
+      border-radius: 8px; background: transparent; font-family: var(--font);
+      font-size: 0.82rem; font-weight: 600; color: var(--muted);
+      cursor: pointer; transition: all 0.12s;
+    }
+    .tg-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tg-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Slider */
+    .slider-row { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+    input[type="range"] {
+      flex: 1; -webkit-appearance: none; height: 4px;
+      background: var(--border); border-radius: 2px; outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 18px; height: 18px;
+      background: var(--accent); border-radius: 50%; cursor: pointer;
+    }
+    .slider-val { font-family: var(--mono); font-size: 0.82rem; font-weight: 600; color: var(--accent); min-width: 70px; text-align: right; }
+
+    /* RESULT CARD */
+    .result-card { background: var(--ink); color: #fff; border-radius: 14px; padding: 1.75rem; }
+    .result-label { font-family: var(--mono); font-size: 0.65rem; color: #5a5650; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.3rem; }
+    .result-main { font-size: 2.8rem; font-weight: 800; color: var(--yellow); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; }
+    .result-sub { font-family: var(--mono); font-size: 0.75rem; color: #5a5650; margin-bottom: 1.5rem; }
+
+    .result-rows { display: grid; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .result-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 7px;
+      font-size: 0.84rem;
+    }
+    .result-row span:last-child { font-family: var(--mono); font-weight: 600; color: #d8d4ce; }
+
+    .result-note { font-size: 0.75rem; color: #5a5650; line-height: 1.6; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.07); }
+
+    /* Eligibility indicator */
+    .eligibility {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem;
+      font-size: 0.84rem; font-weight: 600;
+    }
+    .eligibility.ok { background: rgba(45,106,79,0.15); color: #4ade80; }
+    .eligibility.warn { background: rgba(232,184,36,0.15); color: var(--yellow); }
+    .eligibility.no { background: rgba(201,74,6,0.15); color: #ff8a6a; }
+    .eligibility .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .eligibility.ok .dot { background: #4ade80; }
+    .eligibility.warn .dot { background: var(--yellow); }
+    .eligibility.no .dot { background: #ff8a6a; }
+
+    /* Amortization table */
+    .amort-wrap { margin-top: 1.5rem; }
+    .amort-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .amort-toggle { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
+    .amort-table-wrap { max-height: 260px; overflow-y: auto; border-radius: 8px; border: 1.5px solid var(--border); }
+    .amort-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    .amort-table th { background: var(--ink); color: #fff; padding: 0.5rem 0.75rem; text-align: right; position: sticky; top: 0; font-size: 0.7rem; }
+    .amort-table th:first-child { text-align: left; }
+    .amort-table td { padding: 0.45rem 0.75rem; border-bottom: 1px solid var(--border); text-align: right; }
+    .amort-table td:first-child { text-align: left; font-family: var(--mono); }
+    .amort-table tr:last-child td { border-bottom: none; }
+    .amort-table tr:hover td { background: var(--accent-light); }
+    .amort-table .n { font-family: var(--mono); }
+
+    /* CTA WhatsApp */
+    .cta-wa {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      width: 100%; padding: 0.85rem; background: #25d366; color: #fff;
+      border: none; border-radius: 10px; font-family: var(--font);
+      font-size: 0.93rem; font-weight: 700; cursor: pointer; text-decoration: none;
+      transition: background 0.15s; margin-top: 1rem;
+    }
+    .cta-wa:hover { background: #1da851; }
+
+    /* Info boxes */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 500px) { .info-grid { grid-template-columns: 1fr; } }
+    .info-box { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: 1.1rem; }
+    .info-box .ib-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .info-box .ib-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .info-box .ib-text { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+    /* Rates table */
+    .rates-section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 1.5rem; }
+    .section-title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .dtable { width: 100%; border-collapse: collapse; font-size: 0.87rem; border-radius: 8px; overflow: hidden; margin-bottom: 2rem; }
+    .dtable th { background: var(--ink); color: #fff; padding: 0.7rem 1rem; text-align: left; font-size: 0.75rem; }
+    .dtable td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); }
+    .dtable tr:last-child td { border-bottom: none; }
+    .dtable tr:hover td { background: var(--accent-light); }
+    .dtable .n { font-family: var(--mono); font-weight: 600; color: var(--accent); }
+    .dtable .best td { background: rgba(45,106,79,0.05); }
+    .badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 0.4rem; }
+    .badge-green { background: rgba(45,106,79,0.15); color: var(--green); }
+
+    /* FAQ */
+    .faq-section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; text-align: left;
+      padding: 1rem 0; font-family: var(--font); font-size: 0.93rem; font-weight: 700;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      color: var(--ink);
+    }
+    .faq-q .icon { font-size: 1.1rem; color: var(--accent); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .icon { transform: rotate(45deg); }
+    .faq-a { font-size: 0.9rem; color: #3a3830; line-height: 1.75; padding-bottom: 1rem; display: none; }
+    .faq-a.open { display: block; }
+
+    /* Link to construcción calc */
+    .cross-cta {
+      background: var(--ink); color: #fff; border-radius: 12px;
+      padding: 1.75rem; margin: 0 1.5rem 2rem; max-width: 1100px; margin-left: auto; margin-right: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .cross-cta h2 { font-size: 1rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .cross-cta p { font-size: 0.83rem; color: #a8a49e; }
+    .cross-btn { display: inline-block; padding: 0.7rem 1.4rem; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.88rem; white-space: nowrap; transition: background 0.15s; }
+    .cross-btn:hover { background: #a83a02; }
+
+    /* Float WA */
+    .wa-float {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100;
+      width: 52px; height: 52px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none;
+      transition: transform 0.15s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 26px; height: 26px; fill: #fff; }
+
+    footer { background: var(--ink); color: #5a5650; text-align: center; padding: 2rem; font-family: var(--mono); font-size: 0.72rem; line-height: 1.8; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      header { padding: 0.9rem 1.25rem; }
+      .hero { padding: 2rem 1.25rem 0; }
+      .app-wrap { padding: 1.5rem 1rem 3rem; }
+      .rates-section, .faq-section { padding-left: 1rem; padding-right: 1rem; }
+      .cross-cta { margin-left: 1rem; margin-right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">Ecua<span>Cost</span></a>
+  <nav>
+    <a href="/">Construcción</a>
+    <a href="/biess/" class="active">BIESS</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+</header>
+
+<div class="disclaimer-bar">
+  <span class="disclaimer-icon">⚠️</span>
+  <span><strong>Sitio independiente — no oficial.</strong> EcuaCost no es el BIESS ni el IESS, no está afiliado ni relacionado con estas instituciones. Los valores son referenciales y pueden variar. Para solicitudes oficiales visita <a href="https://www.biess.fin.ec" target="_blank" rel="noopener">biess.fin.ec</a></span>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">// crédito hipotecario</p>
+    <h1>Calculadora BIESS<br>Ecuador 2026</h1>
+    <p class="hero-sub">Cuánto te presta el BIESS, tu cuota mensual exacta y tabla de amortización completa. Gratis, sin registro.</p>
+  </div>
+</section>
+
+<div class="app-wrap">
+
+  <!-- LEFT: INPUTS -->
+  <div>
+    <div class="panel">
+      <p class="panel-title">// datos del crédito</p>
+
+      <div class="field">
+        <label>Tipo de crédito</label>
+        <div class="toggle-group" id="tipo-group">
+          <button class="tg-btn active" data-val="vivienda">Vivienda</button>
+          <button class="tg-btn" data-val="construccion">Construcción</button>
+          <button class="tg-btn" data-val="vip">Vivienda VIP</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Valor del inmueble / proyecto</label>
+        <div class="slider-row">
+          <input type="range" id="valor-slider" min="20000" max="200000" step="1000" value="80000" oninput="syncValor(this.value)">
+          <span class="slider-val" id="valor-display">$80.000</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Entrada (% del valor)</label>
+        <div class="toggle-group" id="entrada-group">
+          <button class="tg-btn" data-val="10">10%</button>
+          <button class="tg-btn active" data-val="20">20%</button>
+          <button class="tg-btn" data-val="30">30%</button>
+          <button class="tg-btn" data-val="40">40%</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Plazo del crédito</label>
+        <div class="toggle-group" id="plazo-group">
+          <button class="tg-btn" data-val="5">5 años</button>
+          <button class="tg-btn" data-val="10">10 años</button>
+          <button class="tg-btn" data-val="15">15 años</button>
+          <button class="tg-btn active" data-val="20">20 años</button>
+          <button class="tg-btn" data-val="25">25 años</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Tu salario mensual</label>
+        <p class="field-hint">Determina tu capacidad de pago máxima (cuota ≤ 40% del salario)</p>
+        <div class="slider-row">
+          <input type="range" id="salario-slider" min="500" max="5000" step="50" value="1200" oninput="syncSalario(this.value)">
+          <span class="slider-val" id="salario-display">$1.200</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Aportaciones al IESS</label>
+        <div class="toggle-group" id="aportes-group">
+          <button class="tg-btn" data-val="menos36">Menos de 36</button>
+          <button class="tg-btn" data-val="36-60">36–60</button>
+          <button class="tg-btn active" data-val="60-120">60–120</button>
+          <button class="tg-btn" data-val="mas120">Más de 120</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info boxes -->
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="ib-icon">📋</div>
+        <p class="ib-title">Requisito mínimo</p>
+        <p class="ib-text">36 aportaciones al IESS y estar activo como afiliado.</p>
+      </div>
+      <div class="info-box">
+        <div class="ib-icon">🏠</div>
+        <p class="ib-title">Monto máximo</p>
+        <p class="ib-text">Hasta $200.000 para vivienda y $100.000 para construcción.</p>
+      </div>
+      <div class="info-box">
+        <div class="ib-icon">📅</div>
+        <p class="ib-title">Plazo máximo</p>
+        <p class="ib-text">Hasta 25 años según edad y tipo de crédito.</p>
+      </div>
+      <div class="info-box">
+        <div class="ib-icon">💰</div>
+        <p class="ib-title">Capacidad de pago</p>
+        <p class="ib-text">La cuota no puede superar el 40% de tu ingreso mensual.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: RESULT -->
+  <div>
+    <div class="result-card" id="result-card">
+      <p class="result-label">// cuota mensual estimada</p>
+      <div class="result-main" id="res-cuota">$487</div>
+      <p class="result-sub" id="res-sub">20 años · tasa 7.90% anual</p>
+
+      <div id="eligibility-box" class="eligibility ok">
+        <div class="dot"></div>
+        <span id="eligibility-text">Cuota dentro de tu capacidad de pago</span>
+      </div>
+
+      <div class="result-rows">
+        <div class="result-row"><span>Valor del inmueble</span><span id="res-valor">$80.000</span></div>
+        <div class="result-row"><span>Entrada requerida</span><span id="res-entrada">$16.000</span></div>
+        <div class="result-row"><span>Monto del préstamo</span><span id="res-prestamo">$64.000</span></div>
+        <div class="result-row"><span>Tasa de interés</span><span id="res-tasa">7.90% anual</span></div>
+        <div class="result-row"><span>Total a pagar</span><span id="res-total">$116.880</span></div>
+        <div class="result-row"><span>Total intereses</span><span id="res-intereses">$52.880</span></div>
+      </div>
+
+      <a href="#" id="wa-result" class="cta-wa" target="_blank" rel="noopener" style="display:none"
+         onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'biess_cta'})">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L0 24l6.335-1.507A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.388l-.36-.214-3.762.895.952-3.671-.235-.376A9.808 9.808 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+        Consultar con un asesor por WhatsApp
+      </a>
+
+      <p class="result-note">Valores referenciales. La aprobación final depende de la evaluación del BIESS según tu historial de aportes, deudas vigentes y documentación.</p>
+    </div>
+
+    <!-- PDF UPSELL -->
+    <div class="pdf-upsell">
+      <p class="pdf-upsell-label">// informe premium</p>
+      <h3>Descarga tu análisis completo en PDF</h3>
+      <ul class="pdf-features">
+        <li>Tabla de amortización completa mes a mes (todos los años)</li>
+        <li>Comparativa de 3 escenarios: entrada 10%, 20% y 30%</li>
+        <li>Comparativa BIESS vs banco privado con tasas reales</li>
+        <li>Checklist de documentos por tipo de crédito</li>
+        <li>Guía paso a paso del proceso de solicitud (5 etapas)</li>
+        <li>Costos ocultos: avalúo, escrituras, alcabala, notaría</li>
+        <li>Glosario hipotecario en lenguaje simple</li>
+      </ul>
+      <div class="pdf-price-row">
+        <span class="pdf-price">$15.99</span>
+        <span class="pdf-price-old">$29</span>
+        <span class="pdf-price-badge">oferta</span>
+      </div>
+      <button id="pdf-pay-btn" onclick="initBiessPaypal()"
+        style="width:100%;padding:0.9rem;background:#ffc439;border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:background 0.15s;"
+        onmouseover="this.style.background='#f0b429'" onmouseout="this.style.background='#ffc439'"
+        onclick="gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'biess_pdf_1599'}); initBiessPaypal()">
+        <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.828l-1.167 7.397h3.48l.902-5.713h2.167c4.756 0 7.445-2.542 8.012-6.479z"/></svg>
+        Pagar con PayPal — $15.99
+      </button>
+      <div id="paypal-biess-container" style="margin-top:0.75rem"></div>
+      <p class="pdf-note">Pago seguro con PayPal · Descarga inmediata · Valores referenciales</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- RATES TABLE -->
+<div class="rates-section">
+  <h2 class="section-title">Tasas de interés BIESS 2026</h2>
+  <table class="dtable">
+    <thead><tr><th>Tipo de crédito</th><th>Tasa anual</th><th>Plazo máximo</th><th>Monto máximo</th></tr></thead>
+    <tbody>
+      <tr class="best">
+        <td>Vivienda de interés público (VIP) <span class="badge badge-green">Mejor tasa</span></td>
+        <td class="n">4.99%</td><td class="n">25 años</td><td class="n">$70.000</td>
+      </tr>
+      <tr>
+        <td>Vivienda en general</td>
+        <td class="n">7.90%</td><td class="n">25 años</td><td class="n">$200.000</td>
+      </tr>
+      <tr>
+        <td>Construcción en terreno propio</td>
+        <td class="n">7.90%</td><td class="n">25 años</td><td class="n">$100.000</td>
+      </tr>
+      <tr>
+        <td>Remodelación / ampliación</td>
+        <td class="n">9.74%</td><td class="n">15 años</td><td class="n">$50.000</td>
+      </tr>
+      <tr>
+        <td>Terreno</td>
+        <td class="n">9.74%</td><td class="n">15 años</td><td class="n">$50.000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CROSS CTA -->
+<div class="cross-cta">
+  <div>
+    <h2>¿Ya sabes cuánto cuesta construir tu casa?</h2>
+    <p>Usa la calculadora de construcción para estimar el presupuesto antes de pedir el crédito.</p>
+  </div>
+  <a href="/" class="cross-btn">Calculadora de construcción →</a>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2 class="section-title">Preguntas frecuentes sobre el crédito BIESS</h2>
+
+  <div class="faq-item">
+    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+      ¿Cuántos aportes necesito para pedir crédito hipotecario al BIESS?
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-a">
+      Necesitas un mínimo de <strong>36 aportaciones</strong> al IESS (3 años continuos o discontinuos). Además debes estar activo como afiliado al momento de la solicitud y no tener deudas pendientes con el IESS o el BIESS.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+      ¿Puedo usar el crédito BIESS si trabajo en el sector privado?
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-a">
+      Sí. El crédito hipotecario del BIESS está disponible para todos los afiliados activos al IESS, tanto del sector privado como público. Lo importante es tener las 36 aportaciones mínimas y estar activo.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+      ¿Cuánto tiempo tarda la aprobación del crédito BIESS?
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-a">
+      El proceso de aprobación toma entre <strong>30 y 60 días hábiles</strong> desde la presentación completa de documentos. Los pasos incluyen: pre-calificación en línea, presentación de documentos, avalúo del inmueble, análisis legal y desembolso.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+      ¿Qué documentos necesito para solicitar el crédito?
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-a">
+      Los documentos básicos son: cédula de identidad, papeleta de votación, tres últimos roles de pago, promesa de compraventa del inmueble (o planos aprobados si es construcción), avalúo del inmueble, y certificado de no adeudar al IESS. El BIESS puede solicitar documentos adicionales según el caso.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+      ¿El BIESS financia el 100% del valor del inmueble?
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-a">
+      No. El BIESS financia hasta el <strong>80% del valor del avalúo</strong> del inmueble, lo que significa que necesitas tener al menos el 20% de entrada. En algunos casos de vivienda VIP puede financiar hasta el 90%.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+      ¿Puedo combinar el crédito BIESS con el bono de vivienda del MIDUVI?
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-a">
+      Sí. El bono de vivienda del MIDUVI es compatible con el crédito hipotecario del BIESS. El bono puede usarse como parte de la entrada, reduciendo el monto que necesitas aportar de tu propio bolsillo.
+    </div>
+  </div>
+
+</div>
+
+<!-- Float WA -->
+<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20información%20sobre%20el%20crédito%20BIESS" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"
+   onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'biess_float'})">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L0 24l6.335-1.507A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.388l-.36-.214-3.762.895.952-3.671-.235-.376A9.808 9.808 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+</a>
+
+<footer>
+  <p>© 2026 <a href="https://ecuacost.com">EcuaCost</a> — Calculadoras de construcción y crédito hipotecario en Ecuador</p>
+  <p style="margin-top:0.4rem"><a href="/">Construcción</a> · <a href="/biess/">BIESS</a> · <a href="/blog/">Blog</a></p>
+  <p style="margin-top:0.4rem">Valores referenciales · No somos el BIESS ni el IESS · Para solicitudes oficiales visita <a href="https://www.biess.fin.ec" target="_blank" rel="noopener">biess.fin.ec</a></p>
+</footer>
+
+<script>
+  // ── STATE ──
+  const STATE = {
+    tipo: 'vivienda',
+    valor: 80000,
+    entrada: 20,
+    plazo: 20,
+    salario: 1200,
+    aportes: '60-120',
+    amortMode: 'anual' // 'mensual' | 'anual'
+  };
+
+  const TASAS = {
+    vivienda: 0.0790,
+    construccion: 0.0790,
+    vip: 0.0499
+  };
+
+  const MAX_MONTOS = {
+    vivienda: 200000,
+    construccion: 100000,
+    vip: 70000
+  };
+
+  // ── TOGGLE GROUPS ──
+  function setupToggle(groupId, key) {
+    document.getElementById(groupId).querySelectorAll('.tg-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById(groupId).querySelectorAll('.tg-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        STATE[key] = btn.dataset.val;
+        if (key === 'plazo') STATE.plazo = parseInt(btn.dataset.val);
+        if (key === 'entrada') STATE.entrada = parseInt(btn.dataset.val);
+        calculate();
+      });
+    });
+  }
+
+  setupToggle('tipo-group', 'tipo');
+  setupToggle('entrada-group', 'entrada');
+  setupToggle('plazo-group', 'plazo');
+  setupToggle('aportes-group', 'aportes');
+
+  // ── SLIDERS ──
+  function syncValor(v) {
+    STATE.valor = parseInt(v);
+    document.getElementById('valor-display').textContent = '$' + parseInt(v).toLocaleString('es-EC');
+    calculate();
+  }
+
+  function syncSalario(v) {
+    STATE.salario = parseInt(v);
+    document.getElementById('salario-display').textContent = '$' + parseInt(v).toLocaleString('es-EC');
+    calculate();
+  }
+
+  // ── FORMAT ──
+  const fmt = n => '$' + Math.round(n).toLocaleString('es-EC');
+
+  // ── CALCULATE ──
+  function calculate() {
+    const tasa = TASAS[STATE.tipo];
+    const tasaMensual = tasa / 12;
+    const nMeses = STATE.plazo * 12;
+    const entradaAmt = STATE.valor * (STATE.entrada / 100);
+    let prestamo = STATE.valor - entradaAmt;
+
+    // Cap by max monto
+    const maxMonto = MAX_MONTOS[STATE.tipo];
+    if (prestamo > maxMonto) prestamo = maxMonto;
+
+    // Monthly payment (annuity formula)
+    let cuota;
+    if (tasaMensual === 0) {
+      cuota = prestamo / nMeses;
+    } else {
+      cuota = prestamo * (tasaMensual * Math.pow(1 + tasaMensual, nMeses)) / (Math.pow(1 + tasaMensual, nMeses) - 1);
+    }
+
+    const totalPago = cuota * nMeses;
+    const totalIntereses = totalPago - prestamo;
+    const capacidadMax = STATE.salario * 0.40;
+
+    // Update UI
+    document.getElementById('res-cuota').textContent = fmt(cuota);
+    document.getElementById('res-sub').textContent = `${STATE.plazo} años · tasa ${(tasa * 100).toFixed(2)}% anual`;
+    document.getElementById('res-valor').textContent = fmt(STATE.valor);
+    document.getElementById('res-entrada').textContent = fmt(entradaAmt);
+    document.getElementById('res-prestamo').textContent = fmt(prestamo);
+    document.getElementById('res-tasa').textContent = `${(tasa * 100).toFixed(2)}% anual`;
+    document.getElementById('res-total').textContent = fmt(totalPago);
+    document.getElementById('res-intereses').textContent = fmt(totalIntereses);
+
+    // Eligibility
+    const eligBox = document.getElementById('eligibility-box');
+    const eligText = document.getElementById('eligibility-text');
+    eligBox.className = 'eligibility';
+
+    if (STATE.aportes === 'menos36') {
+      eligBox.classList.add('no');
+      eligText.textContent = 'No cumples el mínimo de 36 aportes';
+    } else if (cuota > capacidadMax) {
+      eligBox.classList.add('warn');
+      eligText.textContent = `Cuota supera el 40% de tu salario (máx. ${fmt(capacidadMax)}/mes)`;
+    } else {
+      eligBox.classList.add('ok');
+      eligText.textContent = `Cuota dentro de tu capacidad de pago ✓`;
+    }
+
+    // WA link
+    const msg = encodeURIComponent(
+      `Hola, calculé mi crédito BIESS en EcuaCost:\n` +
+      `• Tipo: ${STATE.tipo}\n` +
+      `• Valor: ${fmt(STATE.valor)}\n` +
+      `• Préstamo: ${fmt(prestamo)}\n` +
+      `• Cuota estimada: ${fmt(cuota)}/mes\n` +
+      `• Plazo: ${STATE.plazo} años\n` +
+      `¿Me pueden ayudar con el proceso?`
+    );
+    document.getElementById('wa-result').href = `https://wa.me/593987650775?text=${msg}`;
+
+    // Build amort table
+    buildAmort(prestamo, tasaMensual, nMeses, cuota);
+  }
+
+  // ── AMORTIZATION ──
+  function buildAmort(prestamo, tasaMensual, nMeses, cuota) {
+    const tbody = document.getElementById('amort-body');
+    tbody.innerHTML = '';
+    let saldo = prestamo;
+
+    if (STATE.amortMode === 'mensual') {
+      for (let i = 1; i <= nMeses; i++) {
+        const interes = saldo * tasaMensual;
+        const capital = cuota - interes;
+        saldo -= capital;
+        if (saldo < 0) saldo = 0;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>Mes ${i}</td><td class="n">${fmt(cuota)}</td><td class="n">${fmt(capital)}</td><td class="n">${fmt(interes)}</td><td class="n">${fmt(saldo)}</td>`;
+        tbody.appendChild(tr);
+      }
+    } else {
+      // Annual summary
+      let anioSaldo = prestamo;
+      const nAnios = nMeses / 12;
+      for (let a = 1; a <= nAnios; a++) {
+        let anioCapital = 0, anioInteres = 0;
+        for (let m = 0; m < 12; m++) {
+          const interes = anioSaldo * tasaMensual;
+          const capital = cuota - interes;
+          anioSaldo -= capital;
+          anioCapital += capital;
+          anioInteres += interes;
+          if (anioSaldo < 0) anioSaldo = 0;
+        }
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>Año ${a}</td><td class="n">${fmt(cuota * 12)}</td><td class="n">${fmt(anioCapital)}</td><td class="n">${fmt(anioInteres)}</td><td class="n">${fmt(anioSaldo)}</td>`;
+        tbody.appendChild(tr);
+      }
+    }
+  }
+
+  function toggleAmort() {
+    STATE.amortMode = STATE.amortMode === 'anual' ? 'mensual' : 'anual';
+    document.getElementById('amort-toggle').textContent = STATE.amortMode === 'anual' ? 'Ver mes a mes' : 'Ver año a año';
+    calculate();
+  }
+
+  // ── FAQ ──
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isOpen);
+    answer.classList.toggle('open', !isOpen);
+  }
+
+  // ── INIT ──
+  calculate();
+
+  // ── PAYPAL ──
+  paypal.Buttons({
+    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+    createOrder: (data, actions) => actions.order.create({
+      purchase_units: [{ amount: { value: '15.99' }, description: 'EcuaCost — Análisis Crédito BIESS Premium PDF' }]
+    }),
+    onApprove: (data, actions) => actions.order.capture().then(() => {
+      gtag('event', 'purchase_pdf_biess', { event_category: 'conversion', value: 15.99, currency: 'USD' });
+      generatePDF();
+    }),
+    onError: err => alert('Hubo un error con el pago. Por favor intenta de nuevo.')
+  }).render('#paypal-biess-container');
+
+  // ── PDF GENERATOR ──
+  function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const tasa = TASAS[STATE.tipo];
+    const tasaMensual = tasa / 12;
+    const nMeses = STATE.plazo * 12;
+    const entradaAmt = STATE.valor * (STATE.entrada / 100);
+    let prestamo = STATE.valor - entradaAmt;
+    if (prestamo > MAX_MONTOS[STATE.tipo]) prestamo = MAX_MONTOS[STATE.tipo];
+    let cuota;
+    if (tasaMensual === 0) { cuota = prestamo / nMeses; }
+    else { cuota = prestamo * (tasaMensual * Math.pow(1+tasaMensual,nMeses)) / (Math.pow(1+tasaMensual,nMeses)-1); }
+    const totalPago = cuota * nMeses;
+    const totalIntereses = totalPago - prestamo;
+    const fmtN = n => '$' + Math.round(n).toLocaleString('es-EC');
+    const tipoLabels = { vivienda: 'Vivienda en general', construccion: 'Construcción en terreno propio', vip: 'Vivienda de Interés Público (VIP)' };
+
+    let y = 0;
+    const W = 210, M = 18;
+
+    // ── COVER ──
+    doc.setFillColor(26,26,24); doc.rect(0,0,W,60,'F');
+    doc.setFillColor(201,74,6); doc.rect(0,60,W,3,'F');
+    doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold'); doc.setFontSize(22);
+    doc.text('EcuaCost', M, 22);
+    doc.setFontSize(10); doc.setFont('helvetica','normal');
+    doc.setTextColor(168,164,158);
+    doc.text('Calculadoras financieras para Ecuador', M, 30);
+    doc.setTextColor(232,184,36); doc.setFont('helvetica','bold'); doc.setFontSize(16);
+    doc.text('Análisis de Crédito Hipotecario BIESS', M, 46);
+    doc.setTextColor(100,100,100); doc.setFont('helvetica','normal'); doc.setFontSize(8);
+    doc.text('Generado el ' + new Date().toLocaleDateString('es-EC') + ' · ecuacost.com/biess', M, 56);
+
+    // DISCLAIMER
+    y = 72;
+    doc.setFillColor(255,248,225); doc.roundedRect(M,y,W-M*2,14,2,2,'F');
+    doc.setTextColor(90,74,0); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+    doc.text('⚠ SITIO INDEPENDIENTE — NO OFICIAL', M+4, y+5.5);
+    doc.setFont('helvetica','normal');
+    doc.text('EcuaCost no es el BIESS ni el IESS. Valores referenciales. Para solicitudes oficiales: biess.fin.ec', M+4, y+11);
+
+    // ── SECTION 1: RESUMEN ──
+    y = 94;
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('01  RESUMEN DEL CRÉDITO', M+4, y+5.5);
+
+    y += 13;
+    doc.setFillColor(232,184,36); doc.roundedRect(M,y,W-M*2,22,2,2,'F');
+    doc.setTextColor(26,26,24); doc.setFontSize(22); doc.setFont('helvetica','bold');
+    doc.text(fmtN(cuota), M+4, y+10);
+    doc.setFontSize(8); doc.setFont('helvetica','normal');
+    doc.text('CUOTA MENSUAL ESTIMADA', M+4, y+16);
+    doc.setFontSize(8);
+    doc.text(`${STATE.plazo} años · tasa ${(tasa*100).toFixed(2)}% anual · ${tipoLabels[STATE.tipo]}`, M+4, y+20.5);
+
+    y += 28;
+    const rows1 = [
+      ['Tipo de crédito', tipoLabels[STATE.tipo]],
+      ['Valor del inmueble / proyecto', fmtN(STATE.valor)],
+      ['Entrada requerida (' + STATE.entrada + '%)', fmtN(entradaAmt)],
+      ['Monto del préstamo', fmtN(prestamo)],
+      ['Tasa de interés anual', (tasa*100).toFixed(2) + '%'],
+      ['Plazo', STATE.plazo + ' años (' + nMeses + ' cuotas)'],
+      ['Total a pagar', fmtN(totalPago)],
+      ['Total en intereses', fmtN(totalIntereses)],
+      ['Costo del dinero (%)', ((totalIntereses/prestamo)*100).toFixed(1) + '% del capital'],
+    ];
+    rows1.forEach((r, i) => {
+      doc.setFillColor(i%2===0 ? 248:255, i%2===0 ? 245:255, i%2===0 ? 238:255);
+      doc.rect(M, y, W-M*2, 7, 'F');
+      doc.setTextColor(90,90,85); doc.setFontSize(8); doc.setFont('helvetica','normal');
+      doc.text(r[0], M+3, y+5);
+      doc.setTextColor(201,74,6); doc.setFont('helvetica','bold');
+      doc.text(r[1], W-M-3, y+5, { align:'right' });
+      y += 7;
+    });
+
+    // ── SECTION 2: COMPARATIVA DE ESCENARIOS ──
+    y += 8;
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('02  COMPARATIVA DE ESCENARIOS DE ENTRADA', M+4, y+5.5);
+
+    y += 12;
+    const escenarios = [10,20,30,40];
+    const colW = (W-M*2) / escenarios.length;
+    doc.setFillColor(26,26,24);
+    doc.rect(M, y, W-M*2, 8, 'F');
+    doc.setTextColor(168,164,158); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+    ['Entrada', 'Préstamo', 'Cuota/mes', 'Total pagado'].forEach((h, i) => {
+      doc.text(h, M + colW*i + colW/2, y+5.5, {align:'center'});
+    });
+    y += 8;
+    escenarios.forEach((pct, ri) => {
+      const entAmt = STATE.valor * (pct/100);
+      let prest = STATE.valor - entAmt;
+      if (prest > MAX_MONTOS[STATE.tipo]) prest = MAX_MONTOS[STATE.tipo];
+      const c = prest * (tasaMensual * Math.pow(1+tasaMensual,nMeses)) / (Math.pow(1+tasaMensual,nMeses)-1);
+      const tp = c * nMeses;
+      const isActive = pct === STATE.entrada;
+      doc.setFillColor(isActive ? 232:ri%2===0?248:255, isActive ? 184:ri%2===0?245:255, isActive ? 36:ri%2===0?238:255);
+      doc.rect(M, y, W-M*2, 8, 'F');
+      const vals = [pct+'% ('+fmtN(entAmt)+')', fmtN(prest), fmtN(c)+'/mes', fmtN(tp)];
+      vals.forEach((v, i) => {
+        doc.setTextColor(isActive?26:90, isActive?26:90, isActive?24:85);
+        doc.setFontSize(7.5);
+        doc.setFont('helvetica', isActive?'bold':'normal');
+        doc.text(v, M + colW*i + colW/2, y+5.5, {align:'center'});
+      });
+      y += 8;
+    });
+    if (STATE.entrada === STATE.entrada) {
+      doc.setTextColor(90,74,0); doc.setFontSize(7); doc.setFont('helvetica','italic');
+      doc.text('* Fila resaltada corresponde a tu escenario actual', M, y+4);
+      y += 8;
+    }
+
+    // ── SECTION 3: BIESS VS BANCO PRIVADO ──
+    y += 4;
+    if (y > 230) { doc.addPage(); y = 20; }
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('03  BIESS VS BANCO PRIVADO', M+4, y+5.5);
+    y += 12;
+
+    const bancos = [
+      { nombre: 'BIESS (tu crédito)', tasa: tasa },
+      { nombre: 'Banco Pichincha', tasa: 0.0970 },
+      { nombre: 'Banco Guayaquil', tasa: 0.1050 },
+      { nombre: 'Banco del Pacífico', tasa: 0.0899 },
+      { nombre: 'Mutualista Pichincha', tasa: 0.0920 },
+    ];
+    doc.setFillColor(26,26,24); doc.rect(M,y,W-M*2,8,'F');
+    doc.setTextColor(168,164,158); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+    const bCols = [(W-M*2)*0.38, (W-M*2)*0.2, (W-M*2)*0.22, (W-M*2)*0.2];
+    ['Institución','Tasa anual','Cuota/mes','Total pagado'].forEach((h,i) => {
+      const x = M + bCols.slice(0,i).reduce((a,b)=>a+b,0) + bCols[i]/2;
+      doc.text(h, x, y+5.5, {align:'center'});
+    });
+    y += 8;
+    bancos.forEach((b, ri) => {
+      const tm = b.tasa/12;
+      const c = prestamo * (tm * Math.pow(1+tm,nMeses)) / (Math.pow(1+tm,nMeses)-1);
+      const tp = c * nMeses;
+      const isBiess = ri === 0;
+      doc.setFillColor(isBiess?45:ri%2===0?248:255, isBiess?106:ri%2===0?245:255, isBiess?79:ri%2===0?238:255);
+      if (isBiess) doc.setFillColor(45,106,79);
+      doc.rect(M,y,W-M*2,8,'F');
+      const vals = [b.nombre, (b.tasa*100).toFixed(2)+'%', fmtN(c)+'/mes', fmtN(tp)];
+      vals.forEach((v,i) => {
+        const x = M + bCols.slice(0,i).reduce((a,b)=>a+b,0) + bCols[i]/2;
+        doc.setTextColor(isBiess?255:90, isBiess?255:90, isBiess?255:85);
+        doc.setFontSize(7.5); doc.setFont('helvetica', isBiess?'bold':'normal');
+        doc.text(v, x, y+5.5, {align:'center'});
+      });
+      y += 8;
+    });
+
+    // ── NEW PAGE: AMORTIZATION + DOCS ──
+    doc.addPage(); y = 20;
+
+    // SECTION 4: TABLA AMORTIZACIÓN COMPLETA
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('04  TABLA DE AMORTIZACIÓN MES A MES', M+4, y+5.5);
+    y += 12;
+
+    doc.setFillColor(26,26,24); doc.rect(M,y,W-M*2,7,'F');
+    doc.setTextColor(168,164,158); doc.setFontSize(7); doc.setFont('helvetica','bold');
+    const aC = [(W-M*2)*0.15,(W-M*2)*0.22,(W-M*2)*0.22,(W-M*2)*0.22,(W-M*2)*0.19];
+    ['Mes','Cuota','Capital','Interés','Saldo'].forEach((h,i)=>{
+      doc.text(h, M+aC.slice(0,i).reduce((a,b)=>a+b,0)+aC[i]/2, y+5, {align:'center'});
+    });
+    y += 7;
+
+    let saldo = prestamo;
+    for (let i = 1; i <= nMeses; i++) {
+      if (y > 275) { doc.addPage(); y = 20; }
+      const int = saldo * tasaMensual;
+      const cap = cuota - int;
+      saldo -= cap; if (saldo < 0) saldo = 0;
+      doc.setFillColor(i%2===0?248:255, i%2===0?245:255, i%2===0?238:255);
+      doc.rect(M,y,W-M*2,5.5,'F');
+      const vals = [i+'', fmtN(cuota), fmtN(cap), fmtN(int), fmtN(saldo)];
+      vals.forEach((v,j)=>{
+        doc.setTextColor(80,80,75); doc.setFontSize(6.5); doc.setFont('helvetica','normal');
+        doc.text(v, M+aC.slice(0,j).reduce((a,b)=>a+b,0)+aC[j]/2, y+4, {align:'center'});
+      });
+      y += 5.5;
+    }
+
+    // ── NEW PAGE: CHECKLIST + PROCESO + COSTOS ──
+    doc.addPage(); y = 20;
+
+    // SECTION 5: CHECKLIST
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('05  CHECKLIST DE DOCUMENTOS', M+4, y+5.5);
+    y += 12;
+
+    const docsComunes = ['Cédula de identidad (original y copia)', 'Papeleta de votación vigente', 'Tres últimos roles de pago o planillas del IESS', 'Certificado de no adeudar al IESS', 'Promesa de compraventa (vivienda) o planos aprobados (construcción)', 'Avalúo del inmueble realizado por perito autorizado', 'Certificado de gravámenes del Registro de la Propiedad'];
+    const docsExtra = { construccion: ['Planos arquitectónicos aprobados por municipio', 'Permiso de construcción vigente', 'Presupuesto de obra detallado'], vip: ['Certificado de calificación VIP del MIDUVI', 'Compromiso de compraventa con constructora registrada'] };
+
+    doc.setTextColor(45,106,79); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('Documentos comunes a todos los tipos de crédito:', M, y); y += 6;
+    docsComunes.forEach(d => {
+      doc.setFillColor(240,255,245); doc.rect(M,y,W-M*2,6,'F');
+      doc.setTextColor(26,26,24); doc.setFontSize(7.5); doc.setFont('helvetica','normal');
+      doc.text('☐  ' + d, M+3, y+4.5); y += 6;
+    });
+
+    if (docsExtra[STATE.tipo]) {
+      y += 4;
+      doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+      doc.text('Documentos adicionales para ' + tipoLabels[STATE.tipo] + ':', M, y); y += 6;
+      docsExtra[STATE.tipo].forEach(d => {
+        doc.setFillColor(255,245,240); doc.rect(M,y,W-M*2,6,'F');
+        doc.setTextColor(26,26,24); doc.setFontSize(7.5); doc.setFont('helvetica','normal');
+        doc.text('☐  ' + d, M+3, y+4.5); y += 6;
+      });
+    }
+
+    // SECTION 6: PROCESO
+    y += 8;
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('06  PROCESO DE SOLICITUD — 5 ETAPAS', M+4, y+5.5);
+    y += 12;
+    const pasos = [
+      ['1. Pre-calificación en línea', '~1 día', 'Ingresa a biess.fin.ec → "Créditos" → "Hipotecario" y verifica tu elegibilidad con tu número de cédula.'],
+      ['2. Preparación de documentos', '1–2 semanas', 'Reúne todos los documentos del checklist. Solicita el avalúo del inmueble a un perito del BIESS ($200–400).'],
+      ['3. Presentación del expediente', '1 día', 'Entrega el expediente completo en una agencia BIESS. Recibirás un número de trámite para seguimiento.'],
+      ['4. Análisis y aprobación', '30–60 días hábiles', 'El BIESS revisa el expediente legal, técnico y financiero. Pueden solicitar documentos adicionales.'],
+      ['5. Desembolso y escrituras', '1–2 semanas', 'Firma de escrituras en notaría, inscripción en el Registro de la Propiedad y desembolso del crédito.'],
+    ];
+    pasos.forEach((p, i) => {
+      if (y > 260) { doc.addPage(); y = 20; }
+      doc.setFillColor(i%2===0?26:34, i%2===0?26:34, i%2===0?24:32);
+      doc.roundedRect(M,y,W-M*2,18,1,1,'F');
+      doc.setTextColor(232,184,36); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+      doc.text(p[0], M+3, y+5.5);
+      doc.setTextColor(168,164,158); doc.setFontSize(6.5);
+      doc.text('Tiempo estimado: ' + p[1], M+3, y+10);
+      doc.setTextColor(200,196,190); doc.setFont('helvetica','normal'); doc.setFontSize(6.5);
+      doc.text(p[2], M+3, y+15, {maxWidth: W-M*2-6});
+      y += 22;
+    });
+
+    // SECTION 7: COSTOS OCULTOS
+    y += 4;
+    if (y > 230) { doc.addPage(); y = 20; }
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('07  COSTOS ADICIONALES QUE DEBES PRESUPUESTAR', M+4, y+5.5);
+    y += 12;
+
+    const costos = [
+      ['Avalúo del inmueble', '$200 – $400', 'Perito autorizado por el BIESS. Obligatorio.'],
+      ['Escritura de compraventa', '~0.5% del valor', 'Honorarios del notario y trámites legales.'],
+      ['Impuesto de alcabala', '1% del valor', 'Impuesto municipal por transferencia de dominio.'],
+      ['Registro de la Propiedad', '0.1–0.2% del valor', 'Inscripción de la escritura y la hipoteca.'],
+      ['Seguro de desgravamen', 'Incluido en cuota', 'El BIESS lo descuenta automáticamente de la cuota mensual.'],
+      ['Seguro de incendio', '$80–150/año', 'Obligatorio durante toda la vigencia del crédito.'],
+      ['Honorarios legales (opcional)', '$200–500', 'Abogado para revisión del contrato. Recomendado.'],
+    ];
+    const cTotal = STATE.valor * 0.025;
+    costos.forEach((c, i) => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      doc.setFillColor(i%2===0?248:255, i%2===0?245:255, i%2===0?238:255);
+      doc.rect(M,y,W-M*2,10,'F');
+      doc.setTextColor(26,26,24); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+      doc.text(c[0], M+3, y+4.5);
+      doc.setTextColor(201,74,6); doc.setFont('helvetica','bold');
+      doc.text(c[1], W-M-3, y+4.5, {align:'right'});
+      doc.setTextColor(90,90,85); doc.setFontSize(6.5); doc.setFont('helvetica','normal');
+      doc.text(c[2], M+3, y+8.5);
+      y += 10;
+    });
+    y += 4;
+    doc.setFillColor(255,248,225); doc.roundedRect(M,y,W-M*2,10,2,2,'F');
+    doc.setTextColor(90,74,0); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+    doc.text('Reserva recomendada para costos adicionales:', M+3, y+4.5);
+    doc.setTextColor(201,74,6);
+    doc.text('~' + fmtN(cTotal) + ' (aprox. 2–3% del valor del inmueble)', W-M-3, y+4.5, {align:'right'});
+    doc.setTextColor(90,74,0); doc.setFont('helvetica','normal'); doc.setFontSize(6.5);
+    doc.text('Ten este monto disponible además de la entrada para cubrir todos los gastos del proceso.', M+3, y+8.5);
+    y += 14;
+
+    // SECTION 8: GLOSARIO
+    if (y > 220) { doc.addPage(); y = 20; }
+    doc.setFillColor(26,26,24); doc.roundedRect(M,y,W-M*2,8,2,2,'F');
+    doc.setTextColor(201,74,6); doc.setFontSize(8); doc.setFont('helvetica','bold');
+    doc.text('08  GLOSARIO HIPOTECARIO', M+4, y+5.5);
+    y += 12;
+
+    const glosario = [
+      ['Amortización', 'Proceso de pago gradual del préstamo. Cada cuota incluye una parte de capital y una de interés.'],
+      ['Capital', 'El monto real del préstamo, sin contar los intereses.'],
+      ['Cuota', 'Pago mensual fijo que incluye capital + interés + seguro de desgravamen.'],
+      ['Desgravamen', 'Seguro que cancela la deuda si el titular fallece o queda con discapacidad permanente.'],
+      ['Entrada / cuota inicial', 'Porcentaje del valor que debes pagar de tu propio dinero antes de recibir el crédito.'],
+      ['Hipoteca', 'Garantía legal que el banco tiene sobre el inmueble hasta que termines de pagar el crédito.'],
+      ['Interés', 'Costo del dinero prestado. Se calcula sobre el saldo pendiente cada mes.'],
+      ['Plazo', 'Número de años o meses en que pagarás el crédito.'],
+      ['Saldo', 'Monto que todavía debes en un momento determinado del crédito.'],
+      ['Tasa nominal', 'Tasa de interés anual expresada como porcentaje (ej: 7.90% anual).'],
+    ];
+    glosario.forEach((g, i) => {
+      if (y > 265) { doc.addPage(); y = 20; }
+      doc.setFillColor(i%2===0?248:255, i%2===0?245:255, i%2===0?238:255);
+      doc.rect(M,y,W-M*2,10,'F');
+      doc.setTextColor(201,74,6); doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+      doc.text(g[0], M+3, y+4.5);
+      doc.setTextColor(60,58,55); doc.setFont('helvetica','normal'); doc.setFontSize(7);
+      doc.text(g[1], M+3, y+8.5, {maxWidth: W-M*2-6});
+      y += 10;
+    });
+
+    // ── FOOTER on all pages ──
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let p = 1; p <= totalPages; p++) {
+      doc.setPage(p);
+      doc.setFillColor(26,26,24); doc.rect(0,285,W,12,'F');
+      doc.setTextColor(90,88,80); doc.setFontSize(6.5); doc.setFont('helvetica','normal');
+      doc.text('EcuaCost · ecuacost.com/biess · Sitio independiente, no oficial · Valores referenciales', M, 291);
+      doc.text('Página ' + p + ' de ' + totalPages, W-M, 291, {align:'right'});
+    }
+
+    doc.save(`EcuaCost-BIESS-${tipoLabels[STATE.tipo].replace(/ /g,'-')}-${STATE.plazo}anios.pdf`);
+  }
+
+  // ── PAYPAL (lazy load) ──
+  let paypalLoaded = false;
+  function initBiessPaypal() {
+    const btn = document.getElementById('pdf-pay-btn');
+    btn.style.display = 'none';
+    if (paypalLoaded) return;
+    paypalLoaded = true;
+    const script = document.createElement('script');
+    script.src = 'https://www.paypal.com/sdk/js?client-id=AYHnq8kyFbGrCgUUvSqSRbXt5F0qcCFgGjMyXLXsPwnPq3_p3CGa5G3Yi-nIBMVCdT-Lm4PJINtF_3Z3&currency=USD';
+    script.onload = () => {
+      paypal.Buttons({
+        style: { layout:'vertical', color:'gold', shape:'rect', label:'pay', height:45 },
+        createOrder: (data, actions) => actions.order.create({
+          purchase_units: [{ amount:{ value:'15.99' }, description:'EcuaCost — Análisis Crédito BIESS Premium PDF' }]
+        }),
+        onApprove: (data, actions) => actions.order.capture().then(() => {
+          gtag('event','purchase_pdf_biess',{ event_category:'conversion', value:15.99, currency:'USD' });
+          generatePDF();
+        }),
+        onError: () => {
+          btn.style.display = 'flex';
+          paypalLoaded = false;
+          alert('Hubo un error con el pago. Por favor intenta de nuevo.');
+        }
+      }).render('#paypal-biess-container');
+    };
+    document.head.appendChild(script);
+  }
+
+  // ── INIT ──
+  calculate();
+</script>
+
+</body>
+</html>
