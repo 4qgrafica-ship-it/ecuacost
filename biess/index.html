@@ -69,20 +69,26 @@
   <script src="https://www.paypal.com/sdk/js?client-id=AXO4u7wjOBVYGNKTmf4d_8NQVIRgKodMd4r-0g7jWB357dRMgySOzz7zrWJuwJxmHPAOSxVddfPnsGKn&currency=USD&components=buttons" data-namespace="paypal_biess"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ink: #1a1a18; --paper: #f5f2ec; --accent: #c94a06;
-      --muted: #7a7670; --border: #e0dbd0; --card: #ffffff;
-      --yellow: #e8b824; --green: #2d6a4f; --blue: #1a4a8a;
-      --font: 'Sora', sans-serif; --mono: 'IBM Plex Mono', monospace;
-      --accent-light: rgba(201,74,6,0.06);
+      --azul:#1a3a6b;--azul-dark:#142d54;--azul-light:#e6ecf7;
+      --amarillo:#f7c800;--amarillo-bg:#fffbe6;
+      --rojo:#af1c1c;
+      --ink:#2c2c2c;--mid:#5a5a5a;--light:#f4f5f7;
+      --borde:#dde2ea;--blanco:#ffffff;
+      --accent:#1a3a6b;--accent-light:rgba(26,58,107,0.08);
+      --muted:#5a5a5a;--border:#dde2ea;--card:#ffffff;--paper:#f4f5f7;
+      --yellow:#f7c800;--green:#2d6a4f;--blue:#1a3a6b;
+      --serif:'Source Serif 4',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+      --font:'Inter',system-ui,sans-serif;
+      --mono:'Inter',system-ui,sans-serif;
     }
-    body { background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.6; }
-
-    mark { background: none; color: var(--yellow); }
+    body { background: var(--light); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+    mark { background: none; color: var(--amarillo); }
 
     /* NUMBER INPUT */
     .num-input-wrap { position: relative; display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 8px; background: var(--card); transition: border-color 0.15s; }
@@ -119,27 +125,29 @@
     #paypal-biess-container button { border-radius: 8px !important; }
     .pdf-note { font-size: 0.7rem; color: #5a5650; margin-top: 0.75rem; line-height: 1.5; text-align: center; }
 
+    /* GOV BAR */
+    .gov-bar{background:var(--azul-dark);padding:5px 2rem;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:.02em}
+
     /* HEADER */
-    header {
-      background: var(--ink); color: #fff; padding: 0.9rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 200; border-bottom: 3px solid var(--accent);
-    }
-    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; text-decoration: none; color: #fff; }
-    .logo span { color: var(--accent); }
-    nav { display: flex; gap: 1.25rem; align-items: center; }
-    nav a { color: #a8a49e; text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.15s; }
-    nav a:hover, nav a.active { color: #fff; }
+    header{background:#ffffff;border-bottom:1px solid var(--borde);box-shadow:0 2px 8px rgba(0,0,0,0.06);position:sticky;top:0;z-index:200;padding:0}
+    .header-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo-img{height:22px;width:auto;display:block}
+    nav{display:flex;align-items:center;gap:.25rem}
+    nav a{color:var(--mid);text-decoration:none;font-size:.84rem;font-weight:500;padding:.45rem .85rem;border-radius:6px;transition:background .15s,color .15s}
+    nav a:hover{background:var(--light);color:var(--azul)}
+    nav a.active{color:var(--azul);font-weight:600}
+    .nav-cta{background:var(--azul)!important;color:#fff!important;font-weight:600}
+    .nav-cta:hover{background:var(--azul-dark)!important}
+
+    /* TRICOLOR */
+    .tricolor{height:5px;background:linear-gradient(90deg,var(--amarillo) 0%,var(--amarillo) 33.33%,var(--azul) 33.33%,var(--azul) 66.66%,var(--rojo) 66.66%,var(--rojo) 100%)}
 
     /* HERO */
-    .hero {
-      background: var(--ink); color: #fff;
-      padding: 3rem 2rem 0; border-bottom: 3px solid var(--accent);
-    }
-    .hero-inner { max-width: 1100px; margin: 0 auto; }
-    .hero-label { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem; }
-    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 0.75rem; }
-    .hero-sub { font-size: 0.95rem; color: #a8a49e; max-width: 520px; margin-bottom: 0; padding-bottom: 2rem; }
+    .hero{background:linear-gradient(135deg,var(--azul) 0%,#4a80c4 100%);color:#fff;padding:3rem 2rem 0;position:relative;overflow:hidden}
+    .hero-inner{max-width:1100px;margin:0 auto}
+    .hero-label{font-size:.7rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
+    .hero h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:.75rem;color:#fff}
+    .hero-sub{font-size:.95rem;color:rgba(255,255,255,.75);max-width:520px;margin-bottom:0;padding-bottom:2rem}
 
     /* MAIN LAYOUT */
     .app-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
@@ -151,8 +159,8 @@
     }
 
     /* PANEL */
-    .panel { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.75rem; }
-    .panel-title { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.25rem; }
+    .panel{background:var(--blanco);border:1px solid var(--borde);border-radius:6px;padding:1.75rem;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+    .panel-title{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--azul);margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:2px solid var(--azul-light)}
 
     /* FORM ELEMENTS */
     .field { margin-bottom: 1.25rem; }
@@ -160,23 +168,23 @@
     .field-hint { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); margin-bottom: 0.4rem; }
 
     input[type="number"], select {
-      width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--border);
-      border-radius: 8px; font-family: var(--font); font-size: 0.93rem;
-      background: var(--paper); color: var(--ink); outline: none;
+      width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--borde);
+      border-radius: 6px; font-family: var(--sans); font-size: 0.93rem;
+      background: var(--blanco); color: var(--ink); outline: none;
       transition: border-color 0.15s;
     }
-    input[type="number"]:focus, select:focus { border-color: var(--accent); }
+    input[type="number"]:focus, select:focus { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(26,58,107,.1); }
 
     /* Toggle group */
     .toggle-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .tg-btn {
-      padding: 0.45rem 1rem; border: 1.5px solid var(--border);
-      border-radius: 8px; background: transparent; font-family: var(--font);
-      font-size: 0.82rem; font-weight: 600; color: var(--muted);
+      padding: 0.45rem 1rem; border: 1.5px solid var(--borde);
+      border-radius: 6px; background: var(--blanco); font-family: var(--sans);
+      font-size: 0.82rem; font-weight: 500; color: var(--mid);
       cursor: pointer; transition: all 0.12s;
     }
-    .tg-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .tg-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .tg-btn:hover { border-color: var(--azul); color: var(--azul); }
+    .tg-btn.active { background: var(--azul); border-color: var(--azul); color: #fff; }
 
     /* Slider */
     .slider-row { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
@@ -186,143 +194,158 @@
     }
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none; width: 18px; height: 18px;
-      background: var(--accent); border-radius: 50%; cursor: pointer;
+      background: var(--azul); border-radius: 50%; cursor: pointer;
     }
-    .slider-val { font-family: var(--mono); font-size: 0.82rem; font-weight: 600; color: var(--accent); min-width: 70px; text-align: right; }
+    .slider-val { font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: var(--azul); min-width: 70px; text-align: right; }
 
     /* RESULT CARD */
-    .result-card { background: var(--ink); color: #fff; border-radius: 14px; padding: 1.75rem; }
-    .result-label { font-family: var(--mono); font-size: 0.65rem; color: #5a5650; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.3rem; }
-    .result-main { font-size: 2.8rem; font-weight: 800; color: var(--yellow); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; }
-    .result-sub { font-family: var(--mono); font-size: 0.75rem; color: #5a5650; margin-bottom: 1.5rem; }
+    .result-card { background: var(--blanco); color: var(--ink); border-radius: 6px; padding: 1.75rem; border: 1px solid var(--borde); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .result-label { font-size: 0.65rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.3rem; font-family:var(--serif);font-weight:700; }
+    .result-main { font-family:var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--ink); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; background:var(--amarillo); display:inline-block; padding:.15rem .5rem; border-radius:4px; }
+    .result-sub { font-size: 0.75rem; color: var(--mid); margin-bottom: 1.5rem; }
 
     .result-rows { display: grid; gap: 0.5rem; margin-bottom: 1.5rem; }
     .result-row {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 7px;
-      font-size: 0.84rem;
+      padding: 0.55rem 0.85rem; background: var(--light); border-radius: 6px;
+      font-size: 0.84rem; border: 1px solid var(--borde);
     }
-    .result-row span:last-child { font-family: var(--mono); font-weight: 600; color: #d8d4ce; }
+    .result-row span:last-child { font-weight: 600; color: var(--azul); }
 
-    .result-note { font-size: 0.75rem; color: #5a5650; line-height: 1.6; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.07); }
+    .result-note { font-size: 0.75rem; color: var(--mid); line-height: 1.6; padding-top: 1rem; border-top: 1px solid var(--borde); }
 
     /* Eligibility indicator */
     .eligibility {
       display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem;
+      padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1rem;
       font-size: 0.84rem; font-weight: 600;
     }
-    .eligibility.ok { background: rgba(45,106,79,0.15); color: #4ade80; }
-    .eligibility.warn { background: rgba(232,184,36,0.15); color: var(--yellow); }
-    .eligibility.no { background: rgba(201,74,6,0.15); color: #ff8a6a; }
+    .eligibility.ok { background: rgba(45,106,79,0.1); color: #2d6a4f; border: 1px solid rgba(45,106,79,.2); }
+    .eligibility.warn { background: var(--amarillo-bg); color: #7a5a00; border: 1px solid var(--amarillo); }
+    .eligibility.no { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
     .eligibility .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .eligibility.ok .dot { background: #4ade80; }
-    .eligibility.warn .dot { background: var(--yellow); }
-    .eligibility.no .dot { background: #ff8a6a; }
+    .eligibility.ok .dot { background: #2d6a4f; }
+    .eligibility.warn .dot { background: var(--amarillo); }
+    .eligibility.no .dot { background: #ef4444; }
 
     /* Amortization table */
     .amort-wrap { margin-top: 1.5rem; }
     .amort-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
-    .amort-toggle { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
-    .amort-table-wrap { max-height: 260px; overflow-y: auto; border-radius: 8px; border: 1.5px solid var(--border); }
+    .amort-toggle { font-size: 0.68rem; color: var(--azul); cursor: pointer; text-decoration: underline; }
+    .amort-table-wrap { max-height: 260px; overflow-y: auto; border-radius: 6px; border: 1px solid var(--borde); }
     .amort-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
-    .amort-table th { background: var(--ink); color: #fff; padding: 0.5rem 0.75rem; text-align: right; position: sticky; top: 0; font-size: 0.7rem; }
+    .amort-table th { background: var(--azul); color: #fff; padding: 0.5rem 0.75rem; text-align: right; position: sticky; top: 0; font-size: 0.7rem; }
     .amort-table th:first-child { text-align: left; }
-    .amort-table td { padding: 0.45rem 0.75rem; border-bottom: 1px solid var(--border); text-align: right; }
-    .amort-table td:first-child { text-align: left; font-family: var(--mono); }
+    .amort-table td { padding: 0.45rem 0.75rem; border-bottom: 1px solid var(--borde); text-align: right; }
+    .amort-table td:first-child { text-align: left; }
     .amort-table tr:last-child td { border-bottom: none; }
-    .amort-table tr:hover td { background: var(--accent-light); }
-    .amort-table .n { font-family: var(--mono); }
-
-    /* CTA WhatsApp */
-    .cta-wa {
-      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-      width: 100%; padding: 0.85rem; background: #25d366; color: #fff;
-      border: none; border-radius: 10px; font-family: var(--font);
-      font-size: 0.93rem; font-weight: 700; cursor: pointer; text-decoration: none;
-      transition: background 0.15s; margin-top: 1rem;
-    }
-    .cta-wa:hover { background: #1da851; }
-
-    /* Info boxes */
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-    @media (max-width: 500px) { .info-grid { grid-template-columns: 1fr; } }
-    .info-box { background: var(--card); border: 1.5px solid var(--border); border-radius: 10px; padding: 1.1rem; }
-    .info-box .ib-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
-    .info-box .ib-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .info-box .ib-text { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+    .amort-table tr:hover td { background: var(--azul-light); }
+    .amort-table .n { font-weight: 600; }
 
     /* Rates table */
     .rates-section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 1.5rem; }
-    .section-title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .dtable { width: 100%; border-collapse: collapse; font-size: 0.87rem; border-radius: 8px; overflow: hidden; margin-bottom: 2rem; }
-    .dtable th { background: var(--ink); color: #fff; padding: 0.7rem 1rem; text-align: left; font-size: 0.75rem; }
-    .dtable td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); }
+    .section-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--azul); margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 2px solid var(--azul-light); }
+    .dtable { width: 100%; border-collapse: collapse; font-size: 0.87rem; border-radius: 6px; overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--borde); }
+    .dtable th { background: var(--azul); color: #fff; padding: 0.7rem 1rem; text-align: left; font-size: 0.75rem; }
+    .dtable td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--borde); }
     .dtable tr:last-child td { border-bottom: none; }
-    .dtable tr:hover td { background: var(--accent-light); }
-    .dtable .n { font-family: var(--mono); font-weight: 600; color: var(--accent); }
+    .dtable tr:nth-child(even) td { background: var(--light); }
+    .dtable tr:hover td { background: var(--azul-light); }
+    .dtable .n { font-weight: 600; color: var(--azul); }
     .dtable .best td { background: rgba(45,106,79,0.05); }
-    .badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 0.4rem; }
+    .badge { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 0.4rem; }
     .badge-green { background: rgba(45,106,79,0.15); color: var(--green); }
+
+    /* PDF UPSELL */
+    .pdf-upsell {
+      background: var(--azul);
+      border-radius: 6px; padding: 1.5rem; margin-top: 1.25rem;
+    }
+    .pdf-upsell-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amarillo); margin-bottom: 0.6rem; }
+    .pdf-upsell h3 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.3; }
+    .pdf-features { list-style: none; margin: 0.75rem 0 1rem; display: grid; gap: 0.35rem; }
+    .pdf-features li { font-size: 0.78rem; color: rgba(255,255,255,.7); padding-left: 1.25rem; position: relative; line-height: 1.45; }
+    .pdf-features li::before { content: '✓'; position: absolute; left: 0; color: var(--amarillo); font-weight: 700; }
+    .pdf-price-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .pdf-price { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--amarillo); letter-spacing: -0.03em; }
+    .pdf-price-old { font-size: 0.82rem; color: rgba(255,255,255,.4); text-decoration: line-through; }
+    .pdf-price-badge { font-size: 0.62rem; background: var(--rojo); color: #fff; padding: 0.2rem 0.5rem; border-radius: 3px; text-transform: uppercase; }
+    .pdf-note { font-size: 0.7rem; color: rgba(255,255,255,.45); margin-top: 0.75rem; line-height: 1.5; text-align: center; }
+
+    /* DISCLAIMER BAR */
+    .disclaimer-bar {
+      background: var(--amarillo-bg); border-bottom: 2px solid var(--amarillo);
+      padding: 0.65rem 2rem; display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.78rem; color: #5a4a00; line-height: 1.5; flex-wrap: wrap;
+    }
+    .disclaimer-bar strong { color: #3a3000; }
+    .disclaimer-bar a { color: #3a3000; font-weight: 700; }
 
     /* FAQ */
     .faq-section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
-    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--borde); }
     .faq-q {
       width: 100%; background: none; border: none; text-align: left;
-      padding: 1rem 0; font-family: var(--font); font-size: 0.93rem; font-weight: 700;
+      padding: 1rem 0; font-family: var(--sans); font-size: 0.93rem; font-weight: 600;
       cursor: pointer; display: flex; justify-content: space-between; align-items: center;
       color: var(--ink);
     }
-    .faq-q .icon { font-size: 1.1rem; color: var(--accent); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-q .icon { font-size: 1.1rem; color: var(--azul); transition: transform 0.2s; flex-shrink: 0; }
     .faq-q[aria-expanded="true"] .icon { transform: rotate(45deg); }
-    .faq-a { font-size: 0.9rem; color: #3a3830; line-height: 1.75; padding-bottom: 1rem; display: none; }
+    .faq-a { font-size: 0.9rem; color: var(--mid); line-height: 1.75; padding-bottom: 1rem; display: none; }
     .faq-a.open { display: block; }
 
-    /* Link to construcción calc */
+    /* CROSS CTA */
     .cross-cta {
-      background: var(--ink); color: #fff; border-radius: 12px;
+      background: var(--azul); color: #fff; border-radius: 6px;
       padding: 1.75rem; margin: 0 1.5rem 2rem; max-width: 1100px; margin-left: auto; margin-right: auto;
       display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
     }
-    .cross-cta h2 { font-size: 1rem; font-weight: 800; margin-bottom: 0.25rem; }
-    .cross-cta p { font-size: 0.83rem; color: #a8a49e; }
-    .cross-btn { display: inline-block; padding: 0.7rem 1.4rem; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.88rem; white-space: nowrap; transition: background 0.15s; }
-    .cross-btn:hover { background: #a83a02; }
+    .cross-cta h2 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .cross-cta p { font-size: 0.83rem; color: rgba(255,255,255,.65); }
+    .cross-btn { display: inline-block; padding: 0.7rem 1.4rem; background: var(--amarillo); color: #3a2800; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.88rem; white-space: nowrap; transition: opacity 0.15s; }
+    .cross-btn:hover { opacity: .88; }
 
-    /* Float WA */
-    .wa-float {
-      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100;
-      width: 52px; height: 52px; background: #25d366; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none;
-      transition: transform 0.15s;
-    }
-    .wa-float:hover { transform: scale(1.08); }
-    .wa-float svg { width: 26px; height: 26px; fill: #fff; }
+    /* INFO BOXES */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 500px) { .info-grid { grid-template-columns: 1fr; } }
+    .info-box { background: var(--blanco); border: 1px solid var(--borde); border-radius: 6px; padding: 1.1rem; }
+    .info-box .ib-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .info-box .ib-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .info-box .ib-text { font-size: 0.78rem; color: var(--mid); line-height: 1.55; }
 
-    footer { background: var(--ink); color: #5a5650; text-align: center; padding: 2rem; font-family: var(--mono); font-size: 0.72rem; line-height: 1.8; }
-    footer a { color: var(--accent); text-decoration: none; }
+    footer { background: var(--azul-dark); color: rgba(255,255,255,.45); text-align: center; padding: 2rem; font-size: 0.72rem; line-height: 1.8; }
+    footer a { color: var(--amarillo); text-decoration: none; }
 
     @media (max-width: 600px) {
-      header { padding: 0.9rem 1.25rem; }
-      .hero { padding: 2rem 1.25rem 0; }
+      .header-inner { padding: 0 1rem; }
+      .hero { padding: 2rem 1rem 0; }
       .app-wrap { padding: 1.5rem 1rem 3rem; }
       .rates-section, .faq-section { padding-left: 1rem; padding-right: 1rem; }
       .cross-cta { margin-left: 1rem; margin-right: 1rem; }
+      .gov-bar { padding: 5px 1rem; }
     }
   </style>
 </head>
 <body>
 
+<div class="gov-bar">
+  <span>República del Ecuador · Herramienta de referencia técnica</span>
+  <span>Actualizado 2026</span>
+</div>
+
 <header>
-  <a href="/" class="logo">Ecua<span>Cost</span></a>
-  <nav>
-    <a href="/">Construcción</a>
-    <a href="/biess/" class="active">BIESS</a>
-    <a href="/blog/">Blog</a>
-  </nav>
+  <div class="header-inner">
+    <a href="/"><img src="/images/ecua-cost-logo.svg" alt="EcuaCost" class="logo-img"></a>
+    <nav>
+      <a href="/">Construcción</a>
+      <a href="/biess/" class="active nav-cta">BIESS</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
 </header>
+
+<div class="tricolor"></div>
 
 <div class="disclaimer-bar">
   <span class="disclaimer-icon">⚠️</span>
@@ -454,7 +477,7 @@
         <span class="pdf-price-badge">oferta</span>
       </div>
       <button id="pdf-pay-btn" onclick="gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'biess_pdf_1599'}); initBiessPaypal()"
-        style="width:100%;padding:0.9rem;background:#ffc439;border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;color:#111;cursor:pointer;transition:opacity 0.15s;"
+        style="width:100%;padding:0.9rem;background:var(--amarillo);border:none;border-radius:6px;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:700;color:#1a1a1a;cursor:pointer;transition:opacity 0.15s;"
         onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
         Descargar análisis completo — $15.99
       </button>
@@ -468,25 +491,25 @@
   <div class="panel col-tipos" style="grid-column:1/-1;">
     <p class="panel-title">// tipos de crédito hipotecario BIESS 2026</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem;margin-top:0.5rem;">
-      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--accent);">
-        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Vivienda en general</p>
-        <p style="font-size:0.78rem;color:var(--muted);">Compra de casa nueva o usada · hasta $94.303 · tasa 7.90% · plazo 25 años</p>
+      <div style="background:var(--light);border-radius:6px;padding:0.75rem 1rem;border-left:3px solid var(--azul);">
+        <p style="font-weight:700;font-size:0.85rem;margin-bottom:0.2rem;">Vivienda en general</p>
+        <p style="font-size:0.78rem;color:var(--mid);">Compra de casa nueva o usada · hasta $94.303 · tasa 7.90% · plazo 25 años</p>
       </div>
-      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--accent);">
-        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Construcción en terreno propio</p>
-        <p style="font-size:0.78rem;color:var(--muted);">Para construir desde cero · hasta $100.000 · tasa 7.90% · plazo 25 años</p>
+      <div style="background:var(--light);border-radius:6px;padding:0.75rem 1rem;border-left:3px solid var(--azul);">
+        <p style="font-weight:700;font-size:0.85rem;margin-bottom:0.2rem;">Construcción en terreno propio</p>
+        <p style="font-size:0.78rem;color:var(--mid);">Para construir desde cero · hasta $100.000 · tasa 7.90% · plazo 25 años</p>
       </div>
-      <div style="background:#e8f5e9;border-radius:8px;padding:0.75rem 1rem;border-left:3px solid #2d6a4f;">
-        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;color:#2d6a4f;">Credicasa 2.99% <span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;background:#2d6a4f;color:#fff;padding:0.15rem 0.4rem;border-radius:3px;margin-left:0.3rem;">MEJOR TASA</span></p>
+      <div style="background:#e8f5e9;border-radius:6px;padding:0.75rem 1rem;border-left:3px solid #2d6a4f;">
+        <p style="font-weight:700;font-size:0.85rem;margin-bottom:0.2rem;color:#2d6a4f;">Credicasa 2.99% <span style="font-size:0.62rem;background:#2d6a4f;color:#fff;padding:0.15rem 0.4rem;border-radius:3px;margin-left:0.3rem;">MEJOR TASA</span></p>
         <p style="font-size:0.78rem;color:#2d6a4f;">Vivienda nueva · hasta $65.000 · tasa 2.99% · plazo 30 años · ingresos ≤ $1.527,94</p>
       </div>
-      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--muted);">
-        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Remodelación y ampliación</p>
-        <p style="font-size:0.78rem;color:var(--muted);">Mejoras en vivienda propia · hasta $50.000 · tasa 9.74% · plazo 10 años</p>
+      <div style="background:var(--light);border-radius:6px;padding:0.75rem 1rem;border-left:3px solid var(--mid);">
+        <p style="font-weight:700;font-size:0.85rem;margin-bottom:0.2rem;">Remodelación y ampliación</p>
+        <p style="font-size:0.78rem;color:var(--mid);">Mejoras en vivienda propia · hasta $50.000 · tasa 9.74% · plazo 10 años</p>
       </div>
-      <div style="background:var(--paper);border-radius:8px;padding:0.75rem 1rem;border-left:3px solid var(--muted);">
-        <p style="font-weight:800;font-size:0.85rem;margin-bottom:0.2rem;">Terreno</p>
-        <p style="font-size:0.78rem;color:var(--muted);">Compra de terreno · hasta $120.000 · hasta 90% del avalúo · tasa 9.74% · plazo 10 años</p>
+      <div style="background:var(--light);border-radius:6px;padding:0.75rem 1rem;border-left:3px solid var(--mid);">
+        <p style="font-weight:700;font-size:0.85rem;margin-bottom:0.2rem;">Terreno</p>
+        <p style="font-size:0.78rem;color:var(--mid);">Compra de terreno · hasta $120.000 · hasta 90% del avalúo · tasa 9.74% · plazo 10 años</p>
       </div>
     </div>
   </div>
@@ -598,11 +621,6 @@
 
 </div>
 
-<!-- Float WA -->
-<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20información%20sobre%20el%20crédito%20BIESS" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"
-   onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'biess_float'})">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L0 24l6.335-1.507A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.388l-.36-.214-3.762.895.952-3.671-.235-.376A9.808 9.808 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
-</a>
 
 <footer>
   <p>© 2026 <a href="https://ecuacost.com">EcuaCost</a> — Calculadoras de construcción y crédito hipotecario en Ecuador</p>
@@ -769,19 +787,6 @@
   // ── INIT ──
   calculate();
 
-  // ── PAYPAL ──
-  paypal.Buttons({
-    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
-    createOrder: (data, actions) => actions.order.create({
-      purchase_units: [{ amount: { value: '15.99' }, description: 'EcuaCost — Análisis Crédito BIESS Premium PDF' }]
-    }),
-    onApprove: (data, actions) => actions.order.capture().then(() => {
-      gtag('event', 'purchase_pdf_biess', { event_category: 'conversion', value: 15.99, currency: 'USD' });
-      generatePDF();
-    }),
-    onError: err => alert('Hubo un error con el pago. Por favor intenta de nuevo.')
-  }).render('#paypal-biess-container');
-
   // ── PDF GENERATOR ──
   function generatePDF() {
     const { jsPDF } = window.jspdf;
@@ -804,8 +809,8 @@
     const W = 210, M = 18;
 
     // ── COVER ──
-    doc.setFillColor(26,26,24); doc.rect(0,0,W,60,'F');
-    doc.setFillColor(201,74,6); doc.rect(0,60,W,3,'F');
+    doc.setFillColor(26,58,107); doc.rect(0,0,W,60,'F');
+    doc.setFillColor(247,200,0); doc.rect(0,60,W,3,'F');
     doc.setTextColor(255,255,255);
     doc.setFont('helvetica','bold'); doc.setFontSize(22);
     doc.text('EcuaCost', M, 22);
