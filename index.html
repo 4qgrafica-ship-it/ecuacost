@@ -103,36 +103,36 @@
     .ex:hover{border-color:var(--azul);color:var(--azul);background:var(--azul-light)}
 
     /* RESULT CARD */
-    .rc{background:var(--azul);border-color:var(--azul);color:#fff}
-    .rc .card-hdr{border-bottom-color:rgba(255,255,255,.15)}
+    .rc{background:var(--blanco);border-color:var(--borde);color:var(--ink)}
+    .rc .card-hdr{border-bottom-color:var(--azul-light)}
     .rc .card-dot{background:var(--amarillo)}
-    .rc .card-hdr span{color:rgba(255,255,255,.6)}
-    .rtotal{font-family:var(--serif);font-size:clamp(2.4rem,6vw,3.2rem);font-weight:700;letter-spacing:-.03em;color:var(--amarillo);line-height:1;margin-bottom:.3rem}
-    .rrange{font-size:.75rem;color:rgba(255,255,255,.55);margin-bottom:.3rem}
-    .rrange strong{color:rgba(255,255,255,.8)}
-    .rmeta{font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
-    .rmeta strong{color:rgba(255,255,255,.75)}
+    .rc .card-hdr span{color:var(--azul)}
+    .rtotal{font-family:var(--serif);font-size:clamp(2.4rem,6vw,3.2rem);font-weight:700;letter-spacing:-.03em;color:var(--azul);line-height:1;margin-bottom:.3rem}
+    .rrange{font-size:.75rem;color:var(--mid);margin-bottom:.3rem}
+    .rrange strong{color:var(--ink)}
+    .rmeta{font-size:.75rem;color:var(--mid);margin-bottom:1.5rem}
+    .rmeta strong{color:var(--ink)}
     .bkd{margin-bottom:1.5rem}
     .brow{display:grid;grid-template-columns:100px 1fr 68px;align-items:center;gap:.6rem;margin-bottom:.65rem}
-    .blbl{font-size:.73rem;color:rgba(255,255,255,.6)}
-    .bbg{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+    .blbl{font-size:.73rem;color:var(--mid)}
+    .bbg{height:4px;background:var(--borde);border-radius:2px;overflow:hidden}
     .bbar{height:100%;border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-    .bval{font-size:.73rem;color:rgba(255,255,255,.85);text-align:right;font-weight:600}
-    .rdiv{height:1px;background:rgba(255,255,255,.12);margin:1.25rem 0}
+    .bval{font-size:.73rem;color:var(--ink);text-align:right;font-weight:600}
+    .rdiv{height:1px;background:var(--borde);margin:1.25rem 0}
     .cta-wa{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.8rem 1.25rem;background:#25d366;color:#fff;text-align:center;border-radius:var(--r);text-decoration:none;font-weight:600;font-size:.88rem;border:none;cursor:pointer;transition:background .15s,transform .1s;box-shadow:0 3px 12px rgba(37,211,102,.35);margin-bottom:1rem}
     .cta-wa:hover{background:#1db954;transform:translateY(-1px)}
-    .pdfbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:1rem}
+    .pdfbox{background:var(--azul-light);border:1px solid var(--borde);border-radius:var(--r);padding:1rem}
     .pdftop{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.85rem}
-    .pdficon{width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
-    .pdftitle{font-size:.82rem;font-weight:600;color:#fff;margin-bottom:.2rem}
-    .pdfdesc{font-size:.71rem;color:rgba(255,255,255,.55);line-height:1.5}
+    .pdficon{width:36px;height:36px;background:var(--blanco);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;border:1px solid var(--borde)}
+    .pdftitle{font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+    .pdfdesc{font-size:.71rem;color:var(--mid);line-height:1.5}
     .pdfprice{text-align:right;flex-shrink:0}
-    .pdfprice .old{font-size:.65rem;color:rgba(255,255,255,.35);text-decoration:line-through}
-    .pdfprice .new{font-size:1.1rem;font-weight:700;color:var(--amarillo)}
-    .btn-pdf{width:100%;padding:.65rem;background:var(--amarillo);color:#3a2800;border:none;border-radius:var(--r);font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s}
+    .pdfprice .old{font-size:.65rem;color:var(--mid);text-decoration:line-through}
+    .pdfprice .new{font-size:1.1rem;font-weight:700;color:var(--azul)}
+    .btn-pdf{width:100%;padding:.65rem;background:var(--azul);color:#fff;border:none;border-radius:var(--r);font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s}
     .btn-pdf:hover{opacity:.9;transform:translateY(-1px)}
-    .disc{margin-top:1rem;font-size:.67rem;color:rgba(255,255,255,.38);line-height:1.6}
-    .disc strong{color:rgba(255,255,255,.6)}
+    .disc{margin-top:1rem;font-size:.67rem;color:var(--mid);line-height:1.6}
+    .disc strong{color:var(--ink)}
 
     /* NEXT STEPS */
     .nxt{grid-column:1/-1;background:var(--blanco);border:1px solid var(--borde);border-top:3px solid var(--azul);border-radius:var(--r);padding:1.75rem;box-shadow:var(--shadow);animation:fadeUp .4s .12s ease both}
