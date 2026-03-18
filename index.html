@@ -47,17 +47,17 @@
     .gov-bar{background:var(--azul-dark);padding:5px 2rem;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:.02em}
 
     /* HEADER */
-    header{background:var(--blanco);border-bottom:1px solid var(--borde);box-shadow:var(--shadow);position:sticky;top:0;z-index:200}
+    header{background:var(--azul-dark);border-bottom:none;box-shadow:none;position:sticky;top:0;z-index:200}
     .header-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo-img{height:22px;width:auto;display:block}
+    .logo-img{height:22px;width:auto;display:block;filter:brightness(0) invert(1)}
     nav{display:flex;align-items:center;gap:.25rem}
-    nav a{color:var(--mid);text-decoration:none;font-size:.84rem;font-weight:500;padding:.45rem .85rem;border-radius:var(--r);transition:background .15s,color .15s}
-    nav a:hover{background:var(--light);color:var(--azul)}
-    .nav-cta{background:var(--azul)!important;color:#fff!important;font-weight:600}
-    .nav-cta:hover{background:var(--azul-dark)!important}
+    nav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.84rem;font-weight:500;padding:.45rem .85rem;border-radius:var(--r);transition:background .15s,color .15s}
+    nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+    .nav-cta{background:var(--amarillo)!important;color:#1a1a1a!important;font-weight:600}
+    .nav-cta:hover{background:#e6b800!important;color:#1a1a1a!important}
 
     /* TRICOLOR */
-    .tricolor{height:5px;background:linear-gradient(90deg,var(--amarillo) 0%,var(--amarillo) 33.33%,var(--azul) 33.33%,var(--azul) 66.66%,var(--rojo) 66.66%,var(--rojo) 100%)}
+    .tricolor{height:4px;background:linear-gradient(90deg,var(--amarillo) 0%,var(--amarillo) 33.33%,rgba(255,255,255,.3) 33.33%,rgba(255,255,255,.3) 66.66%,var(--rojo) 66.66%,var(--rojo) 100%)}
 
     /* HERO */
     .hero{background:var(--azul);color:#fff;padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}
@@ -121,15 +121,15 @@
     .rdiv{height:1px;background:var(--borde);margin:1.25rem 0}
     .cta-wa{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.8rem 1.25rem;background:#25d366;color:#fff;text-align:center;border-radius:var(--r);text-decoration:none;font-weight:600;font-size:.88rem;border:none;cursor:pointer;transition:background .15s,transform .1s;box-shadow:0 3px 12px rgba(37,211,102,.35);margin-bottom:1rem}
     .cta-wa:hover{background:#1db954;transform:translateY(-1px)}
-    .pdfbox{background:var(--azul-light);border:1px solid var(--borde);border-radius:var(--r);padding:1rem}
+    .pdfbox{background:var(--azul);border:1px solid var(--azul-dark);border-radius:var(--r);padding:1rem}
     .pdftop{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.85rem}
-    .pdficon{width:36px;height:36px;background:var(--blanco);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;border:1px solid var(--borde)}
-    .pdftitle{font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
-    .pdfdesc{font-size:.71rem;color:var(--mid);line-height:1.5}
+    .pdficon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;border:1px solid rgba(255,255,255,.2)}
+    .pdftitle{font-size:.82rem;font-weight:600;color:#fff;margin-bottom:.2rem}
+    .pdfdesc{font-size:.71rem;color:rgba(255,255,255,.65);line-height:1.5}
     .pdfprice{text-align:right;flex-shrink:0}
-    .pdfprice .old{font-size:.65rem;color:var(--mid);text-decoration:line-through}
-    .pdfprice .new{font-size:1.1rem;font-weight:700;color:var(--azul)}
-    .btn-pdf{width:100%;padding:.65rem;background:var(--azul);color:#fff;border:none;border-radius:var(--r);font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s}
+    .pdfprice .old{font-size:.65rem;color:rgba(255,255,255,.45);text-decoration:line-through}
+    .pdfprice .new{font-size:1.1rem;font-weight:700;color:var(--amarillo)}
+    .btn-pdf{width:100%;padding:.65rem;background:var(--amarillo);color:#1a1a1a;border:none;border-radius:var(--r);font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s}
     .btn-pdf:hover{opacity:.9;transform:translateY(-1px)}
     .disc{margin-top:1rem;font-size:.67rem;color:var(--mid);line-height:1.6}
     .disc strong{color:var(--ink)}
@@ -401,7 +401,7 @@
 
 <footer>
   <div class="footer-in">
-    <img src="/images/ecua-cost-logo.svg" alt="EcuaCost">
+    <span style="font-size:.95rem;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:-.01em">EcuaCost</span>
     <div class="flinks">
       <a href="/biess/">Calculadora BIESS</a>
       <a href="/blog/">Blog</a>
