@@ -109,7 +109,6 @@
       --mono: 'IBM Plex Mono', monospace;
       --radius: 12px;
       --shadow: 0 2px 16px rgba(0,0,0,0.07);
-      #cta-link { display: none; }
     }
 
     html { font-size: 16px; scroll-behavior: smooth; }
@@ -135,8 +134,31 @@
       border-bottom: 3px solid var(--accent);
     }
 
-    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; }
-    .logo span { color: var(--accent); }
+    /* ── LOGO ──
+       Cuando tengas tu logo listo, reemplaza el bloque .logo-text por:
+       <img src="/images/logo.svg" alt="EcuaCost" class="logo-img">
+       y ajusta el alto con .logo-img { height: 36px; }
+    */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    /* Fallback texto — se oculta automáticamente si existe logo-img */
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .logo-text span { color: var(--accent); }
 
     .header-badge {
       font-family: var(--mono);
@@ -284,10 +306,7 @@
       margin-bottom: 0.45rem;
     }
 
-    .field-label strong {
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
+    .field-label strong { font-size: 0.82rem; font-weight: 700; }
 
     .field-label span {
       font-family: var(--mono);
@@ -357,10 +376,7 @@
     }
 
     /* Toggle groups */
-    .toggle-group {
-      display: flex;
-      gap: 0.4rem;
-    }
+    .toggle-group { display: flex; gap: 0.4rem; }
 
     .toggle-group input[type="radio"] { display: none; }
 
@@ -409,7 +425,7 @@
       margin-top: 0.25rem;
     }
 
-    .ex { 
+    .ex {
       font-family: var(--mono);
       font-size: 0.68rem;
       padding: 0.3rem 0.7rem;
@@ -443,7 +459,14 @@
       pointer-events: none;
     }
 
-    .result-label { font-family: var(--mono); font-size: 0.65rem; color: #5a5650; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.3rem; }
+    .result-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: #5a5650;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
 
     .result-total {
       font-size: clamp(2.2rem, 6vw, 3.4rem);
@@ -563,11 +586,7 @@
 
     @media (max-width: 600px) { .steps-grid { grid-template-columns: 1fr; } }
 
-    .step {
-      display: flex;
-      gap: 0.85rem;
-      align-items: flex-start;
-    }
+    .step { display: flex; gap: 0.85rem; align-items: flex-start; }
 
     .step-num {
       width: 32px;
@@ -621,7 +640,6 @@
 
     /* FAQ */
     .faq { margin-top: 0.5rem; }
-
     .faq-item { border-bottom: 1px solid var(--border); }
 
     .faq-q {
@@ -702,7 +720,6 @@
     }
 
     .wa-float:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(37,211,102,0.5); }
-
     .wa-float svg { flex-shrink: 0; }
 
     @media (max-width: 480px) {
@@ -732,7 +749,22 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">Ecua<span>Cost</span></div>
+  <div class="logo-area">
+    <!--
+      ══════════════════════════════════════════════════
+      LOGO: cuando tengas tu archivo listo, descomenta
+      la línea <img> y borra el bloque .logo-text.
+
+      Pasos:
+      1. Crea la carpeta /images en tu repo
+      2. Sube tu logo como /images/logo.svg (o .png)
+      3. Descomenta: <img src="/images/logo.svg" ...>
+      4. Borra el <div class="logo-text">...</div>
+      ══════════════════════════════════════════════════
+    -->
+    <!-- <img src="/images/logo.svg" alt="EcuaCost" class="logo-img"> -->
+    <div class="logo-text">Ecua<span>Cost</span></div>
+  </div>
   <div style="display:flex;align-items:center;gap:1.25rem;">
     <a href="/biess/" style="color:#a8a49e;text-decoration:none;font-size:0.82rem;font-weight:600;">Calculadora BIESS</a>
     <a href="/blog/" style="color:#a8a49e;text-decoration:none;font-size:0.82rem;font-weight:600;">Blog</a>
@@ -876,7 +908,10 @@
           </div>
         </div>
 
-       <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener" onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'cta_result'})">Solicitar cotización por WhatsApp →</a>
+        <a href="#" id="cta-link" class="cta" target="_blank" rel="noopener"
+           onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'cta_result'})">
+          Solicitar cotización por WhatsApp →
+        </a>
 
         <!-- PDF UPSELL -->
         <div id="pdf-box" style="margin-top:1rem;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:1rem;position:relative;z-index:1;">
@@ -891,7 +926,10 @@
               <div style="font-size:1rem;font-weight:800;color:var(--yellow)">$9</div>
             </div>
           </div>
-          <button id="pdf-pay-btn" onclick="gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'pdf_9usd'}); initPayPal()" style="margin-top:0.85rem;width:100%;padding:0.65rem;background:var(--yellow);color:var(--ink);border:none;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          <button id="pdf-pay-btn"
+            onclick="gtag('event','click_pdf_buy',{'event_category':'conversion','event_label':'pdf_9usd'}); initPayPal()"
+            style="margin-top:0.85rem;width:100%;padding:0.65rem;background:var(--yellow);color:var(--ink);border:none;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;"
+            onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
             Descargar PDF detallado — $9
           </button>
           <div id="paypal-container" style="margin-top:0.75rem;display:none;"></div>
@@ -936,7 +974,7 @@
 </main>
 
 <!-- BIESS CROSS CTA -->
-<div style="background:var(--ink);padding:1.75rem 2rem;margin:0 0 0 0;">
+<div style="background:var(--ink);padding:1.75rem 2rem;">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
     <div>
       <h2 style="font-size:1rem;font-weight:800;color:#fff;margin-bottom:0.25rem;">¿Ya sabes cómo vas a financiar la construcción?</h2>
@@ -1019,7 +1057,9 @@
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'float_button'})">
+<a class="wa-float" href="https://wa.me/593987650775?text=Hola,%20quiero%20una%20cotización%20de%20construcción"
+   target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"
+   onclick="gtag('event','click_whatsapp',{'event_category':'conversion','event_label':'float_button'})">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.882a.5.5 0 00.611.625l6.218-1.452A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.372l-.36-.214-3.718.868.898-3.61-.235-.372A9.818 9.818 0 1112 21.818z"/>
@@ -1027,21 +1067,37 @@
   <span>Cotización por WhatsApp</span>
 </a>
 
+<!-- ═══════════════════════════════════════════════════
+     SCRIPTS — todo en un solo bloque, orden correcto:
+     1. _calcState declarado primero (fix del bug)
+     2. Modelo de costos y calculate()
+     3. Eventos de UI
+     4. jsPDF (librería externa)
+     5. PayPal SDK (librería externa)
+     6. initPayPal() y generatePDF()
+     ═══════════════════════════════════════════════════ -->
+
 <script>
-  // ── COST MODEL ──
+  // ══════════════════════════════════════════════
+  // 1. ESTADO GLOBAL — declarado ANTES de usarlo
+  // ══════════════════════════════════════════════
+  let _calcState = {};
+
+  // ══════════════════════════════════════════════
+  // 2. MODELO DE COSTOS
+  // ══════════════════════════════════════════════
   const BASE = {
     cuenca:    { eco: 480, med: 680, alt: 920 },
     quito:     { eco: 510, med: 720, alt: 970 },
     guayaquil: { eco: 495, med: 700, alt: 945 },
   };
 
-  const FLOOR_MULT = { '1': 1.00, '2': 1.08, '3': 1.14 };
-  const SLOPE_MULT = { flat: 1.00, slope: 1.10 };
-
-  const CITY_LABEL   = { cuenca: 'Cuenca', quito: 'Quito', guayaquil: 'Guayaquil' };
+  const FLOOR_MULT  = { '1': 1.00, '2': 1.08, '3': 1.14 };
+  const SLOPE_MULT  = { flat: 1.00, slope: 1.10 };
+  const CITY_LABEL  = { cuenca: 'Cuenca', quito: 'Quito', guayaquil: 'Guayaquil' };
   const FINISH_LABEL = { eco: 'Acabados Económicos', med: 'Acabados Medios', alt: 'Acabados Altos' };
   const PROPS = { obra: 0.40, est: 0.20, inst: 0.15, acab: 0.25 };
-  const RANGE = 0.10; // ±10% range
+  const RANGE = 0.10;
 
   function fmt(n) {
     return '$' + Math.round(n).toLocaleString('es-EC');
@@ -1052,6 +1108,7 @@
     if (el) el.textContent = val;
   }
 
+  // ── CALCULATE — guarda estado en _calcState ──
   function calculate() {
     const city   = document.getElementById('city').value;
     const m2     = parseInt(document.getElementById('m2-slider').value, 10);
@@ -1069,7 +1126,7 @@
     const inst = total * PROPS.inst;
     const acab = total * PROPS.acab;
 
-    // Numbers
+    // Actualizar UI
     animNum('r-total', fmt(total));
     setEl('r-min',    fmt(min));
     setEl('r-max',    fmt(max));
@@ -1081,26 +1138,26 @@
     setEl('v-inst',   fmt(inst));
     setEl('v-acab',   fmt(acab));
 
-    // Bars (proportional relative to obra=max)
+    // Barras
     document.getElementById('bar-obra').style.width  = '80%';
     document.getElementById('bar-est').style.width   = '40%';
     document.getElementById('bar-inst').style.width  = '30%';
     document.getElementById('bar-acab').style.width  = '50%';
 
-    // CTA URL
-    const enc = encodeURIComponent;
-    document.getElementById('cta-link').href =
-      `/cotizar?city=${enc(city)}&m2=${enc(m2)}&finish=${enc(finish)}&floors=${enc(floors)}&slope=${enc(slope)}&total=${enc(Math.round(total))}&cpm2=${enc(Math.round(cpm2))}`;
+    // WhatsApp URL dinámica
+    const enc    = encodeURIComponent;
+    const waMsg  = `Hola, calculé en EcuaCost una casa de ${m2} m² en ${CITY_LABEL[city]} con ${FINISH_LABEL[finish]}, ${floors} piso(s), terreno ${slope === 'flat' ? 'plano' : 'en pendiente'}. Estimado: ${fmt(total)} (≈ ${fmt(cpm2)}/m²). ¿Me pueden dar una cotización formal?`;
+    const waUrl  = `https://wa.me/593987650775?text=${enc(waMsg)}`;
+    document.querySelector('.wa-float').href       = waUrl;
+    document.getElementById('cta-link').href       = waUrl;
 
-    // WhatsApp message (shared by CTA and float button)
-    const waMsg = `Hola, calculé en EcuaCost una casa de ${m2} m² en ${CITY_LABEL[city]} con ${FINISH_LABEL[finish]}, ${floors} piso(s), terreno ${slope === 'flat' ? 'plano' : 'en pendiente'}. Estimado: ${fmt(total)} (≈ ${fmt(cpm2)}/m²). ¿Me pueden dar una cotización formal?`;
-    const waUrl = `https://wa.me/593987650775?text=${enc(waMsg)}`;
-    document.querySelector('.wa-float').href = waUrl;
-    document.getElementById('cta-link').href  = waUrl;
-
-    // Save state for PDF generation
-    _calcState = { city, m2, finish, floors, slope, total, cpm2,
-      cityLabel: CITY_LABEL[city], finishLabel: FINISH_LABEL[finish] };
+    // ── GUARDAR ESTADO para PDF (fix del bug) ──
+    _calcState = {
+      city, m2, finish, floors, slope,
+      total, cpm2,
+      cityLabel:   CITY_LABEL[city],
+      finishLabel: FINISH_LABEL[finish]
+    };
   }
 
   function animNum(id, val) {
@@ -1112,8 +1169,12 @@
     el.classList.add('count-anim');
   }
 
-  // ── SLIDER ──
-  const slider = document.getElementById('m2-slider');
+  // ══════════════════════════════════════════════
+  // 3. EVENTOS DE UI
+  // ══════════════════════════════════════════════
+
+  // Slider
+  const slider    = document.getElementById('m2-slider');
   const m2Display = document.getElementById('m2-display');
 
   function updateSlider() {
@@ -1124,28 +1185,26 @@
   }
 
   slider.addEventListener('input', () => { updateSlider(); calculate(); });
-
-  // ── OTHER INPUTS ──
   document.getElementById('city').addEventListener('change', calculate);
   document.getElementById('floors').addEventListener('change', calculate);
   document.querySelectorAll('input[name="finish"], input[name="slope"]').forEach(el =>
     el.addEventListener('change', calculate)
   );
 
-  // ── QUICK EXAMPLES ──
+  // Ejemplos rápidos
   document.querySelectorAll('.ex').forEach(btn => {
     btn.addEventListener('click', () => {
       document.getElementById('city').value = btn.dataset.city;
       slider.value = btn.dataset.m2;
       document.getElementById('floors').value = btn.dataset.floors;
       document.querySelector(`input[name="finish"][value="${btn.dataset.finish}"]`).checked = true;
-      document.querySelector(`input[name="slope"][value="${btn.dataset.slope}"]`).checked = true;
+      document.querySelector(`input[name="slope"][value="${btn.dataset.slope}"]`).checked   = true;
       updateSlider();
       calculate();
     });
   });
 
-  // ── FAQ ──
+  // FAQ
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item   = btn.parentElement;
@@ -1161,24 +1220,23 @@
     });
   });
 
-  // ── INIT ──
+  // Init al cargar
   updateSlider();
   calculate();
 </script>
+
 <!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=AYHnq8kyFbGrCgUUvSqSRbXt5F0qcCFgGjMyXLXsPwnPq3_p3CGa5G3Yi-nIBMVCdT-Lm4PJINtF_3Z3&currency=USD&components=buttons" data-namespace="paypal_sdk"></script>
 
 <script>
-  // ── GLOBAL STATE for PDF ──
-  let _calcState = {};
-
-  // Store calc state on every calculation (patch into existing calculate())
-  const _origCalculate = calculate;
-  // We'll patch below after calculate is defined.
-
-  function getCalcState() { return _calcState; }
+  // ══════════════════════════════════════════════
+  // 4. PAYPAL + PDF
+  //    _calcState ya está disponible aquí porque
+  //    se declaró en el bloque anterior.
+  // ══════════════════════════════════════════════
 
   function initPayPal() {
     const box = document.getElementById('paypal-container');
@@ -1191,7 +1249,7 @@
       style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
 
       createOrder: function(data, actions) {
-        const s = getCalcState();
+        const s = _calcState;
         return actions.order.create({
           purchase_units: [{
             amount: { value: '9.00', currency_code: 'USD' },
@@ -1202,38 +1260,46 @@
       },
 
       onApprove: function(data, actions) {
-        btn.textContent = '⏳ Procesando pago...';
-        btn.style.display = 'block';
-        box.style.display = 'none';
-        return actions.order.capture().then(function(details) {
+        const btn = document.getElementById('pdf-pay-btn');
+        const box = document.getElementById('paypal-container');
+        btn.textContent    = '⏳ Procesando pago...';
+        btn.style.display  = 'block';
+        box.style.display  = 'none';
+        return actions.order.capture().then(function() {
           generatePDF();
         });
       },
 
       onCancel: function() {
+        const box = document.getElementById('paypal-container');
+        const btn = document.getElementById('pdf-pay-btn');
         box.style.display = 'none';
         btn.style.display = 'block';
-        btn.textContent = 'Descargar PDF detallado — $9';
+        btn.textContent   = 'Descargar PDF detallado — $9';
       },
 
       onError: function(err) {
+        const box = document.getElementById('paypal-container');
+        const btn = document.getElementById('pdf-pay-btn');
         box.style.display = 'none';
         btn.style.display = 'block';
-        btn.textContent = 'Error — intentar de nuevo';
+        btn.textContent   = 'Error — intentar de nuevo';
         console.error('PayPal error:', err);
       }
+
     }).render('#paypal-container');
   }
 
+  // ── GENERAR PDF ──
   function generatePDF() {
-    const s = getCalcState();
+    const s = _calcState;
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
     const W = 210, margin = 20;
     let y = 0;
 
-    // ── HEADER ──
+    // Header
     doc.setFillColor(26, 26, 24);
     doc.rect(0, 0, W, 38, 'F');
     doc.setFillColor(201, 74, 6);
@@ -1252,7 +1318,7 @@
 
     y = 50;
 
-    // ── TITLE ──
+    // Título
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(16);
     doc.setTextColor(26, 26, 24);
@@ -1265,7 +1331,7 @@
     doc.text(`${s.m2} m²  ·  ${s.cityLabel}  ·  ${s.finishLabel}  ·  ${s.floors} piso(s)  ·  Terreno ${s.slope === 'flat' ? 'plano' : 'en pendiente'}`, margin, y);
     y += 12;
 
-    // ── TOTAL BOX ──
+    // Caja total
     doc.setFillColor(26, 26, 24);
     doc.roundedRect(margin, y, W - margin*2, 22, 3, 3, 'F');
     doc.setFont('helvetica', 'bold');
@@ -1282,7 +1348,7 @@
     doc.text(`Rango: ${fmtPDF(s.total * 0.9)} – ${fmtPDF(s.total * 1.1)}`, W - margin - 45, y + 19);
     y += 30;
 
-    // ── SECTION: Desglose por etapa ──
+    // Desglose por etapa
     y = sectionTitle(doc, 'DESGLOSE POR ETAPA DE OBRA', y, margin, W);
 
     const etapas = [
@@ -1313,7 +1379,7 @@
 
     y += 5;
 
-    // ── SECTION: Partidas detalladas ──
+    // Partidas detalladas
     y = sectionTitle(doc, 'PARTIDAS DETALLADAS', y, margin, W);
 
     const partidas = buildPartidas(s);
@@ -1339,7 +1405,7 @@
     y += 8;
     if (y > 255) { doc.addPage(); y = 20; }
 
-    // ── NOTAS ──
+    // Notas
     y = sectionTitle(doc, 'NOTAS IMPORTANTES', y, margin, W);
     const notas = [
       'Este presupuesto es referencial. Para un valor vinculante se requiere levantamiento técnico.',
@@ -1358,7 +1424,7 @@
       y += 10;
     });
 
-    // ── FOOTER ──
+    // Footer en todas las páginas
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
       doc.setPage(i);
@@ -1373,12 +1439,12 @@
 
     doc.save(`EcuaCost-Presupuesto-${s.cityLabel}-${s.m2}m2.pdf`);
 
-    // Reset button
+    // Reset botón
     const btn = document.getElementById('pdf-pay-btn');
-    btn.textContent = '✅ PDF descargado';
-    btn.style.background = '#2d6a4f';
-    btn.style.color = '#fff';
-    btn.style.display = 'block';
+    btn.textContent       = '✅ PDF descargado';
+    btn.style.background  = '#2d6a4f';
+    btn.style.color       = '#fff';
+    btn.style.display     = 'block';
   }
 
   function sectionTitle(doc, title, y, margin, W) {
@@ -1403,34 +1469,31 @@
     const isMed  = s.finish === 'med';
 
     return [
-      // OBRA GRUESA
-      { item: 'Excavación y movimiento de tierra',   value: t * 0.04, note: 'Incluye desalojo de material' },
-      { item: 'Cimientos y zapatas',                  value: t * 0.08, note: 'Hormigón f\'c=210 kg/cm²' },
-      { item: 'Columnas y vigas de hormigón',         value: t * 0.12, note: 'Estructura portante principal' },
-      { item: 'Losa de entrepiso / cubierta',         value: t * 0.10, note: 'Losa alivianada o maciza según diseño' },
-      { item: 'Paredes de bloque o ladrillo',         value: t * 0.06, note: 'Mampostería interior y exterior' },
-      // ESTRUCTURA
-      { item: 'Escaleras',                            value: s.floors > 1 ? t * 0.04 : t * 0.01, note: s.floors > 1 ? 'Hormigón o metálicas' : 'No aplica en 1 piso' },
-      { item: 'Cubierta / techo',                     value: t * 0.05, note: 'Losa, teja o zinc según diseño' },
-      { item: 'Impermeabilizaciones',                 value: t * 0.03, note: 'Cubiertas, baños y zonas húmedas' },
-      { item: 'Contrapisos',                          value: t * 0.04, note: 'Contrapiso de hormigón en planta baja' },
-      // INSTALACIONES
-      { item: 'Instalaciones eléctricas',             value: t * 0.06, note: 'Tablero, puntos de luz y tomacorrientes' },
-      { item: 'Instalaciones hidrosanitarias',        value: t * 0.05, note: 'Agua potable, aguas servidas y lluvias' },
-      { item: 'Instalación de gas centralizado',      value: t * 0.02, note: 'Opcional según diseño' },
-      { item: 'Red de datos y TV cable',              value: t * 0.02, note: 'Puntos de red y antena' },
-      // ACABADOS
-      { item: 'Enlucidos y masillados',               value: t * 0.04, note: 'Interior y exterior' },
-      { item: 'Pintura interior y exterior',          value: t * 0.04, note: isAlto ? 'Pintura de primera línea' : 'Pintura látex estándar' },
-      { item: 'Pisos (cerámica / porcelanato)',       value: t * (isAlto ? 0.06 : 0.04), note: isAlto ? 'Porcelanato importado' : isMed ? 'Porcelanato nacional' : 'Cerámica estándar' },
-      { item: 'Revestimientos de baño y cocina',      value: t * 0.03, note: 'Cerámica o porcelanato de pared' },
-      { item: 'Puertas interiores y exteriores',      value: t * (isAlto ? 0.04 : 0.03), note: isAlto ? 'Puertas de madera sólida' : 'Puertas de MDF o tambor' },
-      { item: 'Ventanas y vidrios',                   value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Aluminio y vidrio templado' : 'Aluminio estándar' },
-      { item: 'Grifería y sanitarios',                value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Línea alta (FV, Franz Viegener)' : 'Línea estándar' },
-      { item: 'Closets y muebles de cocina',          value: t * (isAlto ? 0.05 : isMed ? 0.03 : 0.02), note: isAlto ? 'Melanina importada o lacada' : 'Melanina nacional' },
-      { item: 'Mesones y granito',                    value: t * (isAlto ? 0.02 : 0.01), note: isAlto ? 'Granito o cuarzo' : 'Granito nacional' },
+      { item: 'Excavación y movimiento de tierra',  value: t * 0.04, note: 'Incluye desalojo de material' },
+      { item: 'Cimientos y zapatas',                 value: t * 0.08, note: "Hormigón f'c=210 kg/cm²" },
+      { item: 'Columnas y vigas de hormigón',        value: t * 0.12, note: 'Estructura portante principal' },
+      { item: 'Losa de entrepiso / cubierta',        value: t * 0.10, note: 'Losa alivianada o maciza según diseño' },
+      { item: 'Paredes de bloque o ladrillo',        value: t * 0.06, note: 'Mampostería interior y exterior' },
+      { item: 'Escaleras',                           value: s.floors > 1 ? t * 0.04 : t * 0.01, note: s.floors > 1 ? 'Hormigón o metálicas' : 'No aplica en 1 piso' },
+      { item: 'Cubierta / techo',                    value: t * 0.05, note: 'Losa, teja o zinc según diseño' },
+      { item: 'Impermeabilizaciones',                value: t * 0.03, note: 'Cubiertas, baños y zonas húmedas' },
+      { item: 'Contrapisos',                         value: t * 0.04, note: 'Contrapiso de hormigón en planta baja' },
+      { item: 'Instalaciones eléctricas',            value: t * 0.06, note: 'Tablero, puntos de luz y tomacorrientes' },
+      { item: 'Instalaciones hidrosanitarias',       value: t * 0.05, note: 'Agua potable, aguas servidas y lluvias' },
+      { item: 'Instalación de gas centralizado',     value: t * 0.02, note: 'Opcional según diseño' },
+      { item: 'Red de datos y TV cable',             value: t * 0.02, note: 'Puntos de red y antena' },
+      { item: 'Enlucidos y masillados',              value: t * 0.04, note: 'Interior y exterior' },
+      { item: 'Pintura interior y exterior',         value: t * 0.04, note: isAlto ? 'Pintura de primera línea' : 'Pintura látex estándar' },
+      { item: 'Pisos (cerámica / porcelanato)',      value: t * (isAlto ? 0.06 : 0.04), note: isAlto ? 'Porcelanato importado' : isMed ? 'Porcelanato nacional' : 'Cerámica estándar' },
+      { item: 'Revestimientos de baño y cocina',     value: t * 0.03, note: 'Cerámica o porcelanato de pared' },
+      { item: 'Puertas interiores y exteriores',     value: t * (isAlto ? 0.04 : 0.03), note: isAlto ? 'Puertas de madera sólida' : 'Puertas de MDF o tambor' },
+      { item: 'Ventanas y vidrios',                  value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Aluminio y vidrio templado' : 'Aluminio estándar' },
+      { item: 'Grifería y sanitarios',               value: t * (isAlto ? 0.04 : 0.02), note: isAlto ? 'Línea alta (FV, Franz Viegener)' : 'Línea estándar' },
+      { item: 'Closets y muebles de cocina',         value: t * (isAlto ? 0.05 : isMed ? 0.03 : 0.02), note: isAlto ? 'Melanina importada o lacada' : 'Melanina nacional' },
+      { item: 'Mesones y granito',                   value: t * (isAlto ? 0.02 : 0.01), note: isAlto ? 'Granito o cuarzo' : 'Granito nacional' },
     ];
   }
 </script>
+
 </body>
 </html>
